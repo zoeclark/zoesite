@@ -1,0 +1,78 @@
+/* === Reset link states to prevent browser defaults === */
+.room-link,
+.room-link:visited,
+.room-link:active,
+.room-link:focus {
+  color: transparent;
+  text-decoration: none;
+}
+
+/* === Background + container styles remain unchanged === */
+#background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: black!important;
+  z-index: -1;
+}
+
+#overlay {
+  position: relative;
+  z-index: 10;
+  display: grid;
+  grid-template-columns: repeat(2, max-content);
+  justify-content: center;
+  align-content: center;
+  height: 100vh;
+  padding: 2rem;
+  gap: 1.5rem;
+}
+
+/* === Pulse animation === */
+@keyframes strongPulse {
+  0%   { box-shadow: 0 0 6px rgba(255, 255, 255, 0.2); }
+  50%  { box-shadow: 0 0 20px rgba(255, 255, 255, 0.8); }
+  100% { box-shadow: 0 0 6px rgba(255, 255, 255, 0.2); }
+}
+
+/* === Main clickable link box === */
+.room-link {
+    /* shrink dimensions */
+  min-width: 5rem;
+  min-height: 2rem;
+  padding: 0.6rem 1rem;
+
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* min-width: 8rem;
+  min-height: 3rem;
+  padding: 1.2rem 2rem;
+  border-radius: 0.5rem; */
+  background-color: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(6px);
+  box-shadow: 0 0 6px rgba(255, 255, 255, 0.2);
+  animation: strongPulse 2.5s infinite ease-in-out;
+  transition: all 0.3s ease;
+  overflow: hidden;
+  text-decoration: none;
+  color: transparent; /* fallback; label is in span anyway */
+}
+
+.room-link span {
+  color: transparent;
+  font-size: 0.8rem;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+.room-link:hover span {
+  color: white;
+}
+

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Image Fader</title>
+  <link rel="stylesheet" href="../shared/style.css">
+</head>
+<body>
+  <div id="controls">
+  <div id="prevBtnWrapper">
+    <button id="prevBtn">←</button>
+  </div>
+  <div id="pauseBtnWrapper">
+    <button id="pauseBtn">▶</button>
+  </div>
+  <div id="nextBtnWrapper">
+    <button id="nextBtn">→</button>
+  </div>
+  
+  <div id="fadeSliderGroup">
+    <label for="fadeSpeedSlider" id="fadeSpeedLabel">Linger Time</label>
+    <input type="range" id="fadeSpeedSlider" min="1" max="10" value="7" step="1">
+  </div>
+</div>
+
+  <div id="image-container">
+    <img class="fade-img" id="imgA" src="images/room2_1.png" />
+    <img class="fade-img" id="imgB" src="images/room2_2.png" />
+    <img id="pauseImg" class="fade-img" src="room2_pause_screen.png"/>
+    <div id="pauseOverlayText">you cannot pause</div>
+ 
+
+  </div>
+
+  <!-- Scripts -->
+<!-- Load JavaScript after body to ensure DOM is ready -->
+ <script src="room2_imageList.js"></script>
+  <script src="../shared/fader.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      startFader(room2images);  // uses the array defined in images.js
+    });
+  </script>
+</body>
+</html>
+

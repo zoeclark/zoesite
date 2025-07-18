@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="stylesheet" href="home.css">
+</head>
+<body>
+  <div id="background"></div> <!-- Correct element for background image -->
+  <div id="overlay">
+    <a href="room1/" class="room-link"><span>room 1</span></a>
+    <a href="room2/" class="room-link"><span>room 2</span></a>
+    <a href="room3/" class="room-link"><span>room 3</span></a>
+    <span class="room-link"><span>&nbsp;</span></span>
+    <!-- Add more links as needed -->
+  </div>
+
+  <script src="doorImages.js"></script>
+  <script>
+    const background = doorImages[Math.floor(Math.random() * doorImages.length)];
+    document.getElementById("background").style.backgroundImage = `url('${background}?v=${Date.now()}')`;
+  </script>
+</body>
+</html>

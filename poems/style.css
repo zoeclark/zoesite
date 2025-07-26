@@ -1,0 +1,113 @@
+body {
+  background: black;
+  color: white;
+  font-family: 'STIX Two Text', serif;
+  margin: 0;
+  padding: 2rem;
+}
+
+h1 {
+  text-align: center;
+  font-size: 2.5rem;
+}
+pre, pre.title {
+  font-family: 'STIX Two Text', serif;
+  font-size: 1.3rem; /* or whatever size you like */
+  color: white;
+  white-space: pre-wrap;
+  margin-bottom: 1rem;
+}
+
+pre.title {
+  font-size: 1.7rem;
+  font-weight: bold;
+}
+
+#poems { /* Container for poems */
+  max-width: 90vw;   /* take up 90% of the screen width */
+  margin: 2rem auto;
+  padding: 1rem;
+}
+
+.poem {
+  color: white;
+  font-family: 'STIX Two Text', serif;
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+/* Optional: Make h2 titles larger */
+.poem h2 {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+}
+.poem img {
+  display: block;
+  margin: 2rem auto;  /* centers the image horizontally */
+  max-width: 100%;     /* ensures it doesn't overflow */
+  height: auto;
+}
+
+.pulse-link:hover {
+  transform: scale(1.1);
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+.external-link {
+  color: white;
+  text-decoration: underline;
+}
+.external-link:hover {
+  color: #ccc;
+  text-decoration: underline;
+}
+a.external-link { color: white; }
+
+.title {
+  color: #EAE4FF;           
+  font-weight: bold;
+  font-size: 1.4rem;
+  margin-bottom: 1rem;
+}
+.highlighted-scroll-target {
+  animation: pulse-highlight 1s ease-in-out 2;
+}
+
+@keyframes pulse-highlight {
+  0% { background-color: rgba(255, 255, 200, 0.5); }
+  50% { background-color: rgba(255, 255, 100, 0.9); }
+  100% { background-color: rgba(255, 255, 200, 0.5); }
+}
+
+a.pulse-link {
+  color: white;
+  text-decoration: none;
+  position: relative;
+  overflow: hidden;
+}
+
+a.pulse-link {
+  color: white;
+  text-decoration: none;
+  animation: softPulse 2.5s ease-in-out infinite;
+  transition: transform 0.2s ease;
+}
+
+a.pulse-link:hover {
+  transform: scale(1.05);
+  text-shadow: 0 0 4px rgba(255, 255, 255, 0.4);
+}
+
+@keyframes softPulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.85; }
+}
+
+
+
+a.pulse-link:hover {
+  text-shadow: 0 0 6px rgba(255, 255, 255, 0.5);
+}

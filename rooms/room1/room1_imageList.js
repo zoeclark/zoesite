@@ -53,3 +53,4 @@ const room1images = [
   "images/room1_43.png",
   "images/room1_44.png"
 ];
+window.room1images = room1images;

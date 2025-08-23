@@ -29,7 +29,16 @@
     <img id="pauseImg" class="fade-img" src="room1_pause_screen.png"/>
     <div id="pauseOverlayText">you cannot pause</div>
 
+  <div id="hscroll" class="hscroll">
+  <div class="hpanel">1</div>
+  <div class="hpanel">2</div>
+  <div class="hpanel">3</div>
+  <div class="hpanel">4</div>
+</div>
+
   </div>
+
+
 
   <!-- Scripts -->
 <!-- Load JavaScript after body to ensure DOM is ready -->
@@ -40,6 +49,8 @@
       startFader(room1images);  // uses the array defined in images.js
     });
   </script>
+
+  <script src="room1_bind.js"></script>
 </body>
 </html>
 

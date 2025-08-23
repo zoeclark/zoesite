@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>room 4</title>
+  <link rel="stylesheet" href="../shared/style.css">
+</head>
+<body>
+
+
+  <div id="image-container">
+    <img class="fade-img" id="imgA" src="images/room4_1.png" />
+    <img class="fade-img" id="imgB" src="images/room4_2.png" />
+    <img id="pauseImg" class="fade-img" src="room4_pause_screen.png"/>
+    <div id="pauseOverlayText">you cannot pause</div>
+    <div id="hscroll" class="hscroll"></div>
+  <div class="hpanel">1</div>
+  <div class="hpanel">2</div>
+  <div class="hpanel">3</div>
+  </div>
+
+   <div id="controls" role="region" aria-label="Slideshow controls">
+    <!-- Row 1: transport (← ⏯ →) -->
+    <div class="cp-row cp-row-top">
+      <div id="prevBtnWrapper"><button id="prevBtn" aria-label="Previous image">←</button></div>
+      <div id="pauseBtnWrapper"><button id="pauseBtn" aria-label="Play / Pause">▶</button></div>
+      <div id="nextBtnWrapper"><button id="nextBtn" aria-label="Next image">→</button></div>
+    </div>
+
+    <!-- Row 2: big “speed” action (text for now). 
+         Your JS can toggle/show the slider below when clicked. -->
+    <div class="cp-row">
+      <button id="speedBtn" class="cp-big" aria-controls="fadeSpeedSlider">
+        img speed (s)
+      </button>
+    </div>
+
+    <!-- Row 3: big “carousel” action (text for now). -->
+    <div class="cp-row">
+  <button id="carouselBtn" class="cp-big">
+    <img src="../../shared_imgs/carousel.png" alt="" width="24" height="24" decoding="async">
+    <span class="sr-only">show / hide carousel</span>
+  </button>
+</div>
+
+
+    <!-- Keep the slider group in DOM (hidden) so JS can reveal it if needed -->
+    <div id="fadeSliderGroup" hidden>
+      <label for="fadeSpeedSlider" id="fadeSpeedLabel">image speed (s)</label>
+      <input type="range" id="fadeSpeedSlider" min="1" max="10" value="7" step="1" />
+    </div>
+  </div>
+
+  <!-- Scripts -->
+<!-- Load JavaScript after body to ensure DOM is ready -->
+<!-- Scripts -->
+<script src="room4_imageList.js"></script>
+<script src="../shared/fader.js"></script>
+<script src="../shared/carousel_bind.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const images = window.room4images;
+    if (!Array.isArray(images) || images.length === 0) {
+      console.error("[room4] images list missing/empty:", images);
+      return;
+    }
+
+    startFader(images);
+    window.room4Carousel = window.initCarousel({ images});
+  });
+</script>
+
+
+
+</body>
+</html>
+
+

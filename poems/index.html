@@ -3,18 +3,64 @@
 <head>
   <meta charset="UTF-8">
   <title>Poems</title>
-
-  <!-- STIX Font -->
+  <!-- Google Fonts Link for STIX Two Text -->
   <link href="https://fonts.googleapis.com/css2?family=STIX+Two+Text&display=swap" rel="stylesheet">
-
-  <!-- Link your local CSS file -->
-  <link rel="stylesheet" href="style.css">
+  <!--CSS stylesheet -->
+  <link rel="stylesheet" href="poem_style.css">
 </head>
 <body>
-  <h1>Up Late</h1>
-  <div id="poems"></div>
+<div class="center-page">
+<h1>
+  <a href="../index.html" class="multi-blink-7">
+  Up Late
+  </a>
+  </h1>
+  <br>
+<!-- 1,  Stop, Don't -->
+  <h2>
+  "<a href="stop_dontPOEM.html" class="multi-blink-1">Stop, Don't,</a>
+</h2>
+<!-- 2, Ex Liberis -->
+<h2>
+<a href="ex_librisPOEM.html" class="multi-blink-2">Ex Liberis Elizabeths</a>,
+</h2>
+<!-- 3 -->
+<h2>
+  <a href="all_coloredPOEM.html" class="multi-blink-3"></a>All Coloured</a>
+</h2>
+<!-- 4 -->
+<h2>
+<a href="march_painPOEM.html" class="multi-blink-4"></a>Marched Pained</a>,
+</h2>
+<!-- 5 -->
+ <h2>
+    <a href="happy_peoplePOEM.html" class="multi-blink-5">
+      <span id="swap-word">Scared</span> Happy People
+    </a>
+  </h2>
 
-  <!-- Link your loader script -->
-  <script src="poem_loader.js"></script>
-</body>
+<!-- 6 -->
+<h2>
+  <a href="harrietPOEM.html" class="multi-blink-6">Pasted in Harriot 'Pataphysics</a>,
+</h2>
+<!-- 7 -->
+<h2>
+  <a href="SHUTUP_POEM.html" class="multi-blink-7">Shut Up! </a>
+</h2>
+
+  </div>
+</body><script>
+  const backgrounds = ['#130211', '#121715'];
+  const randomIndex = Math.floor(Math.random() * backgrounds.length);
+  document.body.style.backgroundColor = backgrounds[randomIndex];
+
+  function updateWord() {
+    const roll = Math.floor(Math.random() * 7); // 0 to 6
+    const word = roll === 0 ? 'Sacred' : 'Scared';
+    document.getElementById('swap-word').textContent = word;
+  }
+
+  updateWord(); // initial call
+  setInterval(updateWord, 3000); // every 3 seconds
+</script>
 </html>

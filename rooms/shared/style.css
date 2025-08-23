@@ -1,159 +1,302 @@
+/* ===== FADER LAYER ===== */
 #image-container {
   position: relative;
   width: 100%;
   height: 100vh;
-  overflow: hidden;
+  overflow: hidden;            /* keep overlays inside the viewport */
   background-color: black;
 }
 
 .fade-img {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: contain;  /* preserve aspect ratio */
-  background-color: black;
-  transition: opacity 1s ease-in-out;
-  opacity: 0;
-  pointer-events: none;
-}
-
-#imgA {
-  z-index: 1;
-}
-
-#imgB {
-  z-index: 2;
-}
-
-
-
-#controls {
-  position: fixed;
-  bottom: 2rem;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  gap: 1.5rem;
-  z-index: 100;
-}
-
-#controls button {
-  background: rgba(255, 255, 255, 0.2);
-  border: none;
-  color: white;
-  font-size: 1.5rem;
-  padding: 0.6rem 1.2rem;
-  border-radius: 0.4rem;
-  cursor: pointer;
-  transition: background 0.3s ease;
-}
-
-#controls button:hover {
-  background: rgba(255, 255, 255, 0.4);
-}
-
-#fadeSliderGroup {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.4rem;
-  color: white;
-  font-size: 1rem;
-}
-
-#fadeSpeedSlider {
-  -webkit-appearance: none;
-  width: 150px;
-  height: 6px;
-  background: rgba(255, 255, 255, 0.2);
-  border-radius: 3px;
-  outline: none;
-  cursor: pointer;
-  transition: background 0.3s ease;
-}
-
-#fadeSpeedSlider:hover {
-  background: rgba(255, 255, 255, 0.4);
-}
-
-#fadeSpeedSlider::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  appearance: none;
-  width: 14px;
-  height: 14px;
-  border-radius: 50%;
-  background: white;
-  cursor: pointer;
-  box-shadow: 0 0 2px black;
-  transition: background 0.3s ease;
-}
-
-#fadeSpeedSlider::-moz-range-thumb {
-  width: 14px;
-  height: 14px;
-  border-radius: 50%;
-  background: white;
-  cursor: pointer;
-  box-shadow: 0 0 2px black;
-}
-#pauseImg {
-  position: absolute;
-  top: 0;
-  left: 0;
+  inset: 0;
   width: 100%;
   height: 100%;
   object-fit: contain;
-  z-index: 99; /* must be higher than imgA and img B */
-  background-color: rgb(0, 0, 0); /* fallback if image fails */
-
+  transition: opacity 1s ease-in-out;   /* your timing */
   opacity: 0;
   pointer-events: none;
+  background-color: black;
+}
+
+#imgA { z-index: 1; }
+#imgB { z-index: 2; }
+
+#pauseImg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  z-index: 99;                     /* above A/B */
+  background-color: #000;
+  opacity: 0;                      /* hidden until paused */
+  pointer-events: none;
   transition: none !important;
-  
-}
-
-
-/* Hide these during pause */
-/* Hide visually but retain layout */
-body.paused #pauseImg {
-  opacity: 1;
-  pointer-events: auto;
-}
-/* Hide other controls during pause */
-body.paused #prevBtn,
-body.paused #nextBtn,
-body.paused #fadeSliderGroup {
-  visibility: hidden;
-
-}
-body.paused #pauseBtn {
-  visibility: visible !important;
-}
-
-body.paused #pauseBtnWrapper {
-  display: block !important;
 }
 
 #pauseOverlayText {
   position: absolute;
-  top: 50%;
-  left: 50%;
+  top: 50%; left: 50%;
   transform: translate(-50%, -50%);
   font-size: 2rem;
   font-weight: bold;
-  color: white; 
+  color: #fff;
   text-shadow:
-    0 0 10px rgba(255, 0, 0, 0.8),
-    0 0 20px rgba(255, 0, 0, 0.6),
-    0 0 30px rgba(255, 0, 0, 0.4);
+    0 0 10px rgba(255,0,0,.8),
+    0 0 20px rgba(255,0,0,.6),
+    0 0 30px rgba(255,0,0,.4);
   opacity: 0;
-  transition: opacity 0.3s ease-in-out;
   pointer-events: none;
-  z-index: 101;
+  z-index: 101;                    /* above pause image */
+  transition: opacity .3s ease-in-out;
 }
 
-body.paused #pauseOverlayText {
-  opacity: 1;
+/* Pause state toggles */
+body.paused #pauseImg { opacity: 1; pointer-events: auto; }
+body.paused #pauseOverlayText { opacity: 1; }
+body.paused #prevBtn,
+body.paused #nextBtn,
+body.paused #fadeSliderGroup { visibility: hidden; }
+body.paused #pauseBtn { visibility: visible !important; }
+body.paused #pauseBtnWrapper { display: block !important; }
+
+
+
+/* ===== CONTROLS GLOBALS ===== */
+
+/* global font + sizing */
+:root{
+  --app-font: 'STIX Two Text', serif;
+
+  --panel-min-w: 128px;
+  --panel-max-w: 500px;
+
+  --panel-gap: 12px;
+  --panel-pad-y: 12px;
+  --panel-pad-x: 14px;
+  --hide-pill-space: 36px;   /* reserve for the Hide pill */
+
+
+  --btn-box: 42px;
+  --btn-radius: 12px;
+  --btn-font: 1.2rem;
+
+  /* opacity ladder */
+  --panel-alpha: 0.35;  /* most transparent */
+  --shelf-alpha: 0.45;
+  --btn-alpha:   0.82;  /* least transparent */
+
+  --border-w: 2px;      /* opaque white borders everywhere */
+}
+
+html, body { font-family: var(--app-font, system-ui, -apple-system, Segoe UI, Roboto, sans-serif) !important; }
+#controls, #controls * { font-family: inherit !important; }
+
+/* sizing hygiene */
+#controls, #controls * { box-sizing: border-box; }/* ===== CONTROL PANEL (stable, centered) ===== */
+#controls {
+  position: fixed;
+  z-index: 1000;
+  left: auto; right: 0;
+  top: calc(env(safe-area-inset-top) + 12px);
+  bottom: calc(env(safe-area-inset-bottom) + 12px);
+
+  display: flex;                 /* simpler than grid here */
+  flex-direction: column;
+  justify-content: center;       /* center the 3 shelves vertically */
+  align-items: center;           /* center shelves horizontally */
+  gap: var(--panel-gap);
+
+  padding: calc(var(--panel-pad-y) + var(--hide-pill-space, 0px))
+           var(--panel-pad-x)
+           var(--panel-pad-y);
+
+  background: rgba(255,255,255,var(--panel-alpha));
+  border: var(--border-w) solid #fff;
+  border-radius: 16px;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  box-shadow: 0 8px 22px rgba(0,0,0,.25);
+  color:#000;
+
+  overflow: hidden;   /* prevents stray horizontal scroll */
+  container-type: inline-size;
+}
+
+#controls::before{ /* optional shield */
+  content:""; position:absolute; inset:0; border-radius:16px;
+  background: rgba(255,255,255,.5); pointer-events:none; z-index:0;
+}
+#controls > *{ position:relative; z-index:1; }
+
+/* ===== Shelves (rows) ===== */
+.cp-row{
+  display:flex;
+  align-items:center;            /* vertical center of inner controls */
+  justify-content:center;        /* horizontal center */
+  gap:10px;
+
+  width: calc(100% - 20px);      /* equal L/R margins; no overflow */
+  background: rgba(255,255,255,var(--shelf-alpha));
+  border: var(--border-w) solid #fff;
+  border-radius: 12px;
+  padding: 10px;
+  min-height: 64px;
+}
+
+.cp-row.cp-row-top{
+  flex: 0 0 auto;                /* size to content only */
+  flex-wrap: nowrap;             /* keep trio on one line */
+}
+
+.cp-row:not(.cp-row-top){
+  flex: 1 1 auto;                /* rows 2 & 3 expand nicely but stay centered */
+}
+
+/* wrappers shouldn’t affect layout */
+#prevBtnWrapper, #pauseBtnWrapper, #nextBtnWrapper { display: contents; }
+
+/* Buttons */
+#controls button{
+  width: var(--btn-box);
+  height: var(--btn-box);
+  min-width: var(--btn-box);
+  min-height: var(--btn-box);
+  display:inline-flex; align-items:center; justify-content:center;
+  background: rgba(255,255,255,var(--btn-alpha));
+  border: var(--border-w) solid #fff; color:#000;
+  font-size: var(--btn-font); padding:0; border-radius: var(--btn-radius);
+  cursor:pointer; transition: transform .12s, box-shadow .15s, background .15s;
+}
+#controls button * { pointer-events:none; }   /* child nodes don’t eat clicks */
+#controls button:hover{ transform: translateY(-1px); background:#fff; box-shadow:0 2px 6px rgba(0,0,0,.2); }
+
+/* Big buttons fill their shelf */
+.cp-big{ width:100%; height:100%; font-size:.98rem; font-weight:600; letter-spacing:.01em; }
+
+/* Responsive sizing via container queries */
+@supports (container-type: inline-size){
+  #controls button{
+    width:  clamp(36px, 20cqw, 64px);
+    height: clamp(36px, 20cqw, 64px);
+    font-size: clamp(1rem, 2.6cqw, 1.35rem);
+  }
+  .cp-big{ font-size: clamp(.9rem, 2.2cqw, 1.05rem); }
+}
+
+
+/* ===== CONTROL PANEL (stable, centered) ===== */
+
+/* wrappers shouldn’t affect layout */
+/*#prevBtnWrapper, #pauseBtnWrapper, #nextBtnWrapper { display: contents; }
+
+
+
+/* (optional) readout styling if you show current speed value */
+#speedVal { display:inline-block; min-width:3ch; text-align:right; margin-left:.5rem; }
+
+
+/* ===== FIN CONTROLS) ===== */
+
+
+/* ===== CAROUSEL (THUMBNAILS) ===== */
+#hscroll.hscroll {
+  /* tuning knobs */
+  --card-w: 160px;
+  --card-h: 110px;
+  --gap: 10px;
+
+  display: flex;                   /* FORCE-SHOW for debugging */
+  align-items: center;
+  gap: var(--gap);
+
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-snap-type: x proximity;
+  scroll-behavior: smooth;
+
+  padding: 10px;
+  margin: 12px auto;
+  max-width: min(90vw, 900px);
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 12px;
+
+  position: relative;              /* stack above images when inside image-container */
+  z-index: 4;
+
+  scrollbar-width: none;           /* Firefox */
+}
+/* Hide the carousel until user interacts */
+/* Hide the carousel until user interacts */
+
+
+
+#hscroll.hscroll::-webkit-scrollbar { display: none; }
+
+/* NOTE: Hidden-by-default rule is DISABLED while you debug thumbnails.
+   When youâ€™re ready, uncomment this and remove the 'display:flex' above.
+   #hscroll.hscroll:not(.is-open) {
+     opacity: 0;
+     pointer-events: none;
+     height: 0;
+     padding: 0;
+     border-width: 0;
+     margin: 0 auto;
+   }
+*/
+
+.hpanel {
+  position: relative;
+  flex: 0 0 var(--card-w);
+  height: var(--card-h);
+  overflow: hidden;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,0.15);
+  background: #111;
+  scroll-snap-align: center;
+  padding: 0;
+  user-select: none;
+}
+.hpanel > img {
+  width: 100%; height: 100%; object-fit: cover; display: block;
+}
+.hpanel > .idx {
+  position: absolute; top: 6px; left: 8px;
+  padding: 2px 8px; border-radius: 10px;
+  font: 700 12px/1.2 system-ui, sans-serif;
+  color: #fff; background: rgba(0,0,0,0.45);
+}
+.hpanel:focus-visible { outline: 2px solid rgba(255,255,255,0.75); outline-offset: 2px; }
+.hpanel.active { outline: 2px solid rgba(255,255,255,0.6); box-shadow: 0 0 0 2px rgba(255,255,255,0.25) inset; }
+
+@media (max-width: 520px) {
+  #hscroll.hscroll { --card-w: 120px; --card-h: 84px; }
+}
+body:not(.show-carousel) #hscroll { display: none !important; }
+
+
+.scroll-container {
+  position: relative;
+  overflow-x: auto;
+  scrollbar-width: none; /* hide scrollbar on Firefox */
+}
+
+.scroll-container::before,
+.scroll-container::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  width: 40px;
+  height: 100%;
+  pointer-events: none;
+}
+.scroll-container::before {
+  left: 0;
+  background: linear-gradient(to right, black 40%, transparent);
+}
+.scroll-container::after {
+  right: 0;
+  background: linear-gradient(to left, black 40%, transparent);
 }

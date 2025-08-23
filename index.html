@@ -1,50 +1,117 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>A.L.P.INC</title>
-<style>
-  body {
-    background-color: black;
-    color: white;
-    text-align: center;
-    font-family: sans-serif;
-    margin: 0;
-    padding: 2rem;
-  }
+  <link href="https://fonts.googleapis.com/css2?family=STIX+Two+Text&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background-color: black;
+      color: white;
+      font-family: 'STIX Two Text', serif;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      height: 100vh;
+    }
 
-  #image-container img {
-    max-width: 90vw;
-    max-height: 80vh;
-    width: auto;
-    height: auto;
-    display: block;
-    margin: 2rem auto;
-    border: 1px solid #444;
-  }
+:root { --zoom: 1.08; }   /* 1 = no zoom; 1.05–1.20 = gentle blow-up */
 
-  a {
-    display: inline-block;
-    margin-top: 1rem;
-    color: white;
-    font-size: 1.2rem;
-    text-decoration: none;
-  }
+#background-image {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  height: calc(100vh * var(--zoom));  /* dial this with --zoom */
+  width: auto;                        /* keep aspect ratio */
+  transform: translate(-50%, -50%);   /* center it */
+  z-index: -1;
+  background: black;                  /* letterbox fill if you zoom < 1 */
+}
 
-  a:hover {
-    text-decoration: underline;
-  }
-</style>
+
+    .title-box {
+      position: absolute;
+      top: 1rem;
+      left: 1rem;
+      background-color: rgba(0, 0, 0, 0.6);
+      padding: 0.5rem 1rem;
+      border-radius: 0.5rem;
+      font-size: 0.9rem;
+      text-align: left;
+    }
+
+    .title-box h1 {
+      font-size: 1rem;
+      margin: 0;
+    }
+
+    .title-box h2 {
+      font-size: 0.8rem;
+      margin: 0;
+    }
+
+    .nav-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 2rem;
+      height: 80vh;
+    }
+
+    .nav-link {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 20vw;
+      height: 10vh;
+      min-width: 150px;
+      min-height: 75px;
+      font-size: 1.5rem;
+      color: white;
+      text-decoration: none;
+      border: 2px solid white;
+      border-radius: 0.5rem;
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      animation: pulseLink 2s infinite;
+    }
+
+    .nav-link:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 30px rgba(255, 255, 255, 0.6);
+      text-decoration: underline;
+    }
+
+    @keyframes pulseLink {
+      0% { box-shadow: 0 0 10px rgba(255, 255, 255, 0.3); }
+      50% { box-shadow: 0 0 25px rgba(255, 255, 255, 0.6); }
+      100% { box-shadow: 0 0 10px rgba(255, 255, 255, 0.3); }
+    }
+  </style>
 </head>
 <body>
-  <div style="text-align: center; margin-top: 2rem; margin-bottom: 2rem;">
-    <a href="rooms/" style="margin: 0 2rem;">rooms →</a>
-    <a href="poems/" style="margin: 0 2rem;">poems →</a>
+
+  <img id="background-image" src="fw_pg611.png" alt="Intro Image">
+
+  <div class="title-box">
+    <h1>ALP INC</h1>
+    <h2>a.liv.plurabell@gmail.com</h2>
   </div>
 
-  <div id="image-container">
-    <img src="fw_pg611.png" alt="Intro Image">
+  <div class="nav-container">
+    <a href="poems/" class="nav-link">poems →</a>
+    <a href="rooms/" class="nav-link">art →</a>
   </div>
+
+  <script>
+    const backgrounds = ['#130211', '#121715'];
+    const randomIndex = Math.floor(Math.random() * backgrounds.length);
+    const semiOpaqueBackground = backgrounds[randomIndex] + 'CC'; // CC = 80% opacity
+
+    document.querySelector('.nav-link:nth-child(1)').style.backgroundColor = semiOpaqueBackground;
+    document.querySelector('.nav-link:nth-child(2)').style.backgroundColor = semiOpaqueBackground;
+  </script>
+
 </body>
-
 </html>

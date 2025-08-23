@@ -32,6 +32,7 @@ for d in sorted(all_dirs):
     output_js = f"const {var_name} = [\n"
     output_js += ",\n".join(f'  "{path}"' for path in image_paths)
     output_js += "\n];\n"
+    output_js += f"window.{var_name} = {var_name};\n"
 
     output_path = os.path.join(full_path, f"{d}_imageList.js")
     with open(output_path, "w") as f:

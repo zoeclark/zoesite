@@ -12,3 +12,4 @@ const room999images = [
   "images/room999_12.png",
   "images/room999_14.png"
 ];
+window.room999images = room999images;

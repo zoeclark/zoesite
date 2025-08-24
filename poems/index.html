@@ -8,61 +8,56 @@
   <!--CSS stylesheet -->
   <link rel="stylesheet" href="/poems/poem_style.css?v=2025-08-23e">
 
-  <!-- <link rel="stylesheet" href="poem_style.css"> -->
+  <style>
+    body {
+      margin: 0;
+      padding: 2rem;
+      background: black;
+      color: white;
+      font-family: 'STIX Two Text', serif;
+      text-align: left;           /* left align */
+      font-size: clamp(18px, 2.5vw, 32px); /* scale text to screen */
+    }
+
+    h1 {
+      font-size: clamp(28px, 4vw, 60px); /* bigger, responsive */
+      margin-bottom: 1rem;
+    }
+
+    h2 {
+      margin: 0.5rem 0;
+    }
+
+    a {
+      color: white;
+      text-decoration: none;
+    }
+  </style>
 </head>
 <body>
-<div class="center-page">
-<h1>
-  <a href="../index.html" class="multi-blink-7">
-  Up Late
-  </a>
+  <h1>
+    <a href="../index.html" class="multi-blink-7">Up Late</a>
   </h1>
-  <br>
-<!-- 1,  Stop, Don't -->
-  <h2>
-  "<a href="1.stop_dontPOEM.html" class="multi-blink-1">Stop, Don't,</a>
-</h2>
-<!-- 2, Ex Liberis -->
-<h2>
-<a href="2.ex_librisPOEM.html" class="multi-blink-1">Ex Liberis</a>,
-</h2>
-<!-- 3 -->
-<h2>
-  <a href="all_coloredPOEM.html" class="multi-blink-3"></a>All Coloured</a>
-</h2>
-<!-- 4 -->
-<h2>
-<a href="4.march_painPOEM.html" class="multi-blink-4"></a>Marched Pained</a>,
-</h2>
-<!-- 5 -->
- <h2>
-    <a href="happy_peoplePOEM.html" class="multi-blink-5">
-      <span id="swap-word">Scared</span> Happy People
-    </a>
-  </h2>
 
-<!-- 6 -->
-<h2>
-  <a href="harrietPOEM.html" class="multi-blink-6">Pasted in Harriot 'Pataphysics</a>,
-</h2>
-<!-- 7 -->
-<h2>
-  <a href="SHUTUP_POEM.html" class="multi-blink-7">Shut Up! </a>
-</h2>
+  <h2><a href="1.stop_dontPOEM.html" class="multi-blink-1">Stop, Don't,</a></h2>
+  <h2><a href="2.ex_librisPOEM.html" class="multi-blink-2">Ex Liberis</a></h2>
+  <h2><a href="3.all_coloredPOEM.html" class="multi-blink-2">All Coloured</a></h2>
+  <h2><a href="4.march_painPOEM.html" class="multi-blink-2">Marched Pained</a></h2>
+  <h2><a href="happy_peoplePOEM.html" class="multi-blink-5"><span id="swap-word">Scared</span> Happy People</a></h2>
+  <h2><a href="harrietPOEM.html" class="multi-blink-6">Pasted in Harriot 'Pataphysics</a></h2>
+  <h2><a href="SHUTUP_POEM.html" class="multi-blink-7">Shut Up!</a></h2>
 
-  </div>
-</body><script>
-  const backgrounds = ['#130211', '#121715'];
-  const randomIndex = Math.floor(Math.random() * backgrounds.length);
-  document.body.style.backgroundColor = backgrounds[randomIndex];
+  <script>
+    const backgrounds = ['#130211', '#121715'];
+    document.body.style.backgroundColor = backgrounds[Math.floor(Math.random() * backgrounds.length)];
 
-  function updateWord() {
-    const roll = Math.floor(Math.random() * 7); // 0 to 6
-    const word = roll === 0 ? 'Sacred' : 'Scared';
-    document.getElementById('swap-word').textContent = word;
-  }
-
-  updateWord(); // initial call
-  setInterval(updateWord, 3000); // every 3 seconds
-</script>
+    function updateWord() {
+      const roll = Math.floor(Math.random() * 7); // 0 to 6
+      const word = roll === 0 ? 'Sacred' : 'Scared';
+      document.getElementById('swap-word').textContent = word;
+    }
+    updateWord();
+    setInterval(updateWord, 3000);
+  </script>
+</body>
 </html>

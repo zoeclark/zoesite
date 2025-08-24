@@ -130,3 +130,26 @@ h3 {
   font-size: 4 rem;  /* ~28px */
   line-height: 1;
 }
+
+
+/* === Home Arrow (Rooms landing only) === */
+.home-arrow {
+  position: fixed;
+  top: 50%;
+  left: 16px;   /* adjust if you want further in */
+  transform: translateY(-50%);
+  font-family: 'STIX Two Text', serif;
+  font-size: 1.5rem;
+  color: white;
+  text-decoration: none;
+  z-index: 9999;
+  transition: transform 0.2s ease-in-out, color 0.2s ease-in-out;
+}
+
+.home-arrow:hover {
+  transform: translateY(-50%) scale(1.1);
+  color: #f0f0f0;  /* slightly lighter hover */
+}
+
+
+

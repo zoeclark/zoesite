@@ -137,7 +137,7 @@
 
 // show/hide helpers (single global timer) — with logs
 window.__carousel = window.__carousel || {};
-const AUTO_HIDE_MS = 2000;
+const AUTO_HIDE_MS = 3000;
 
 function showCarousel() {
   const wasHidden = !document.body.classList.contains('show-carousel');

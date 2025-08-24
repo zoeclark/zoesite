@@ -6,14 +6,15 @@
   <link rel="stylesheet" href="../shared/style.css">
 </head>
 <body>
-   <!--  back button to /rooms -->
 <div class="back-cluster">
   <a href="../" class="back-button" aria-label="return to doors">
     <img src="../../shared_imgs/door_icon.jpg" alt="back" class="back-icon">
     <span class="back-arrow">←</span>
   </a>
 </div>
- <!--  WARNING: change room num alot here -->
+
+ <!-- CXANGE room # stuffer here 1234 -->
+
   <div id="image-container">
     <img class="fade-img" id="imgA" src="images/room1_1.png" />
     <img class="fade-img" id="imgB" src="images/room1_2.png" />
@@ -41,30 +42,26 @@
     type="range" 
     id="fadeSpeedSlider" 
     min="1" max="10" 
-    value="5" step="1" 
+    value="7" step="1" 
     orient="vertical" 
-    
   />
-  <span id="speedVal">8 s</span>
+  <span id="speedVal">7 s</span> <!-- CXANGE by room, varry default speed -->
   <div class="speed-label">image speed</div>
 </div>
 
-
 <!-- Row 3: big “carousel” action -->
 <div class="cp-row">
-  <div class="cp-row">
   <button id="carouselBtn" class="cp-big">on</button>
-</div>
-    <img src="../../shared_imgs/carousel.png" alt="" width="24" height="24" decoding="async">
-
+    <img src="../../shared_imgs/carousel.png" alt="" width="128" height="128" decoding="async">
   </button>
 </div>
 
   <!-- end of the control buttons -->
   </div>
 
-  <!-- Scripts -->
+  <!-- SCRIPTS -->
 <!-- Load JavaScript after body to ensure DOM is ready -->
+ <!-- CHXANGE ROOOM number stuff here 1234-->
 <!-- Scripts -->
 <script src="room1_imageList.js"></script>
 <script src="../shared/fader.js"></script>
@@ -73,18 +70,16 @@
   document.addEventListener("DOMContentLoaded", () => {
     const images = window.room1images;
     if (!Array.isArray(images) || images.length === 0) {
-      console.error("[room4] images list missing/empty:", images);
+      console.error("[room1] images list missing/empty:", images);
       return;
     }
 
     startFader(images);
-    window.room1Carousel = window.initCarousel({ images});
+    window.room4Carousel = window.initCarousel({ images});
   });
 </script>
-
-
 
 </body>
 </html>
 
-
+<!-- FIN -->

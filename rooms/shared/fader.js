@@ -209,8 +209,6 @@ if (carouselBtn && scrollerEl) {
     let lbl = carouselBtn.querySelector('#carouselLabel');
     if (!lbl) {
       carouselBtn.innerHTML = `
-        <img src="../../shared_imgs/carousel.png" alt="" width="24" height="24" decoding="async">
-        <span id="carouselLabel"></span>
       `;
       lbl = carouselBtn.querySelector('#carouselLabel');
     }

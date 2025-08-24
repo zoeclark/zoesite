@@ -12,12 +12,10 @@
     <span class="back-arrow">←</span>
   </a>
 </div>
-
-
-
+ <!-- start of the image container -->
   <div id="image-container">
-    <img class="fade-img" id="imgA" src="images/room4_1.png" />
-    <img class="fade-img" id="imgB" src="images/room4_2.png" />
+    <img class="fade-img" id="imgA" src="images/room3_1.png" />
+    <img class="fade-img" id="imgB" src="images/room2_2.png" />
     <img id="pauseImg" class="fade-img" src="room4_pause_screen.png"/>
     <div id="pauseOverlayText">you cannot pause</div>
     <div id="hscroll" class="hscroll"></div>
@@ -26,8 +24,9 @@
   <div class="hpanel">3</div>
   </div>
 
+ <!-- start  of the control buttons -->
    <div id="controls" role="region" aria-label="Slideshow controls">
-    <!-- Row 1: transport (← ⏯ →) -->
+    <!-- Row 1: big “carousel” action  (← ⏯ →) --  -->
     <div class="cp-row cp-row-top">
       <div id="prevBtnWrapper"><button id="prevBtn" aria-label="Previous image">←</button></div>
       <div id="pauseBtnWrapper"><button id="pauseBtn" aria-label="Play / Pause">▶</button></div>
@@ -36,8 +35,8 @@
     </div>
 
     <!-- JS can toggle/show the slider below when clicked. -->
-    <!-- Row 2: big “speed” action -->
 
+<!-- Row 2: big “speed” action -->
 <div id="fadeSliderGroup" hidden>
   <input 
     type="range" 
@@ -47,23 +46,17 @@
     orient="vertical" 
     
   />
-  <span id="speedVal">5 s</span>
+  <span id="speedVal">4 s</span>
   <div class="speed-label">image speed</div>
 </div>
 
 
 <!-- Row 3: big “carousel” action -->
-<div class="cp-row">
-  <div class="cp-row">
   <button id="carouselBtn" class="cp-big">on</button>
-</div>
-    <img src="../../shared_imgs/carousel.png" alt="" width="24" height="24" decoding="async">
-
+    <img src="../../shared_imgs/carousel.png" alt="" width="32" height="32" decoding="async">
   </button>
-</div>
-
-  <!-- end of the control buttons -->
-  </div>
+</div>  <!-- this div Ends he control buttons fin-->
+ 
 
   <!-- Scripts -->
 <!-- CXANGE ROOM STUFF HERE, MOSTLY Load JavaScript after body to ensure DOM is ready -->
@@ -73,7 +66,7 @@
 <script src="../shared/carousel_bind.js"></script>
 <script>
   document.addEventListener("DOMContentLoaded", () => {
-    const images = window.room3images;
+    const images = window.room2images;
     if (!Array.isArray(images) || images.length === 0) {
       console.error("[room3] images list missing/empty:", images);
       return;

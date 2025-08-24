@@ -40,29 +40,35 @@
   100% { box-shadow: 0 0 6px rgba(255, 255, 255, 0.2); }
 }
 
+@keyframes softPulse {
+  0%   { box-shadow: 0 0 4px rgba(255, 255, 255, 0.15); }
+  50%  { box-shadow: 0 0 12px rgba(255, 255, 255, 0.6); }
+  100% { box-shadow: 0 0 4px rgba(255, 255, 255, 0.15); }
+}
+
 /* === Main clickable link box === */
+/* === Base clickable link box === */
 .room-link {
-    /* shrink dimensions */
   min-width: 5rem;
   min-height: 2rem;
   padding: 0.6rem 1rem;
-
   position: relative;
+
   display: flex;
   align-items: center;
   justify-content: center;
-  /* min-width: 8rem;
-  min-height: 3rem;
-  padding: 1.2rem 2rem;
-  border-radius: 0.5rem; */
+
   background-color: rgba(255, 255, 255, 0.25);
   backdrop-filter: blur(6px);
+
   box-shadow: 0 0 6px rgba(255, 255, 255, 0.2);
   animation: strongPulse 2.5s infinite ease-in-out;
+
   transition: all 0.3s ease;
   overflow: hidden;
+
   text-decoration: none;
-  color: transparent; /* fallback; label is in span anyway */
+  color: transparent; /* fallback */
 }
 
 .room-link span {
@@ -72,7 +78,55 @@
   transition: color 0.3s ease;
 }
 
-.room-link:hover span {
+.room-link:hover span,
+.room-link:hover {
   color: white;
+  transform: scale(1.05);
 }
 
+/* === Active press === */
+.room-link:active {
+  background-color: rgba(255, 255, 255, 0.4);
+  box-shadow: 0 0 30px rgba(255, 255, 255, 0.9);
+  transform: scale(0.98);
+}
+
+/* === Variants (add these as extra classes in HTML) === */
+
+/* softer pulse glow */
+.room-link.alt-pulse {
+  animation: softPulse 3.5s infinite ease-in-out;
+}
+
+/* pill-shaped links */
+.room-link.rounded {
+  border-radius: 2rem;
+  padding: 0.6rem 1.5rem;
+}
+
+/* icon above text */
+.room-link.with-icon {
+  flex-direction: column;
+  gap: 0.4rem;
+}
+.room-link.with-icon img {
+  width: 24px;
+  height: 24px;
+  filter: invert(100%);
+}
+
+
+h1 {
+  font-size: 12rem;   /* ~48px */
+  line-height: 2.2;
+}
+
+h2 {
+  font-size: 6 rem;  /* ~36px */
+  line-height: 1.1;
+}
+
+h3 {
+  font-size: 4 rem;  /* ~28px */
+  line-height: 1;
+}

@@ -6,6 +6,13 @@
   <link rel="stylesheet" href="../shared/style.css">
 </head>
 <body>
+<div class="back-cluster">
+  <a href="../" class="back-button" aria-label="return to doors">
+    <img src="../../shared_imgs/door_icon.jpg" alt="back" class="back-icon">
+    <span class="back-arrow">←</span>
+  </a>
+</div>
+
 
 
   <div id="image-container">
@@ -29,26 +36,30 @@
 
     <!-- Row 2: big “speed” action (text for now). 
          Your JS can toggle/show the slider below when clicked. -->
-    <div class="cp-row">
-      <button id="speedBtn" class="cp-big" aria-controls="fadeSpeedSlider">
-        img speed (s)
-      </button>
-    </div>
+    <!-- Row 2: big “speed” action -->
 
-    <!-- Row 3: big “carousel” action (text for now). -->
-    <div class="cp-row">
+<div id="fadeSliderGroup" hidden>
+  <input 
+    type="range" 
+    id="fadeSpeedSlider" 
+    min="1" max="10" 
+    value="7" step="1" 
+    orient="vertical" 
+  />
+  <span id="speedVal">5 s</span>
+  <div class="speed-label">image speed</div>
+</div>
+
+
+<!-- Row 3: big “carousel” action -->
+<div class="cp-row">
   <button id="carouselBtn" class="cp-big">
     <img src="../../shared_imgs/carousel.png" alt="" width="24" height="24" decoding="async">
     <span class="sr-only">show / hide carousel</span>
   </button>
 </div>
 
-
-    <!-- Keep the slider group in DOM (hidden) so JS can reveal it if needed -->
-    <div id="fadeSliderGroup" hidden>
-      <label for="fadeSpeedSlider" id="fadeSpeedLabel">image speed (s)</label>
-      <input type="range" id="fadeSpeedSlider" min="1" max="10" value="7" step="1" />
-    </div>
+  <!-- end of the control buttons -->
   </div>
 
   <!-- Scripts -->

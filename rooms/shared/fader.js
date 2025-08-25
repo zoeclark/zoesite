@@ -200,20 +200,6 @@ if (carouselBtn && scrollerEl) {
   // let CSS control layout; we only use the .is-hidden class
   scrollerEl.style.display = '';
 
-  const setState = (hidden) => {
-    scrollerEl.classList.toggle('is-hidden', hidden);
-    scrollerEl.setAttribute('aria-hidden', String(hidden));
-    carouselBtn.setAttribute('aria-expanded', String(!hidden));
-
-    // ensure minimal label exists and update it
-    let lbl = carouselBtn.querySelector('#carouselLabel');
-    if (!lbl) {
-      carouselBtn.innerHTML = `
-      `;
-      lbl = carouselBtn.querySelector('#carouselLabel');
-    }
-    lbl.textContent = hidden ? 'off' : 'on';
-  };
 
   // init from DOM
   setState(scrollerEl.classList.contains('is-hidden'));
@@ -224,6 +210,21 @@ if (carouselBtn && scrollerEl) {
 }
 
 
+const setState = (hidden) => {
+  scrollerEl.classList.toggle('is-hidden', hidden);
+  scrollerEl.setAttribute('aria-hidden', String(hidden));
+  carouselBtn.setAttribute('aria-expanded', String(!hidden));
+
+  // ensure minimal label exists and update it
+  var lbl = carouselBtn.querySelector('#carouselLabel');
+  if (!lbl) {
+    lbl = document.createElement('span');
+    lbl.id = 'carouselLabel';
+    lbl.className = 'carousel-label'; // optional for styling
+    carouselBtn.appendChild(lbl);
+  }
+  lbl.textContent = hidden ? 'off' : 'on';
+};
 
     // Transport buttons
     prevBtn?.addEventListener("click", (e) => { e.stopPropagation(); console.log("🖱 ←"); manualShift(-1); hScrollBy?.(-STEP()); });
@@ -265,6 +266,50 @@ controlsEl?.addEventListener("click", (e) => {
         if (group) group.hidden = !group.hidden;
       });
     }
+    // pause button logic 
+(function () {
+  let isPaused = false;
+
+  function applyPause() {
+    if (isPaused) {
+      stopFader?.(); stopLoop?.();
+    } else {
+      startFader?.(); resumeLoop?.();
+    }
+  }
+
+  function updatePauseUI() {
+    const pauseBtn = document.getElementById('pauseBtn');
+    if (!pauseBtn) return;
+    pauseBtn.textContent = isPaused ? '▶' : '❚❚';
+    pauseBtn.title = isPaused ? 'Play' : 'Pause';
+  }
+
+  function togglePause() {
+    isPaused = !isPaused;
+    applyPause();
+    updatePauseUI();
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const row = document.getElementById('transportRow');
+    if (!row) return;
+
+    // Make the WHOLE ROW toggle pause
+    row.addEventListener('click', (e) => {
+      // If they click prev/next, let those still work
+      if (e.target.closest('#prevBtn')) { manualShift?.(-1); return; }
+      if (e.target.closest('#nextBtn')) { manualShift?.(1);  return; }
+
+      // Otherwise, anywhere in the row = pause toggle
+      togglePause();
+    });
+
+    updatePauseUI();
+  });
+})();
+
+    
 
     // --- Hide/Show panel UI (moved INSIDE this block per Option A) ---
     let hideBtn = document.getElementById("controlsHide");

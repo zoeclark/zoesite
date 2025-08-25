@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>A.L.P.INC</title>
+  <title>ALP INC</title>
   <link href="https://fonts.googleapis.com/css2?family=STIX+Two+Text&display=swap" rel="stylesheet">
   <style>
     body {
@@ -117,7 +117,7 @@ h3 {
   <div class="title-box">
     <h1>ALP INC</h1>
     <h2>a.liv.plurabell@gmail.com</h2>
-    <h2>Professional Finnegans Wake plagiarist </h2>
+    <h2 id="fw-tagline"></h2>
     <h2>Inquiries Always Encouraged</h2>
     <h2>
   <a href="https://venmo.com/u/Zo-Clark" target="_blank" rel="noopener noreferrer">
@@ -132,14 +132,35 @@ h3 {
     <a href="rooms/" class="nav-link">art →</a>
   </div>
 
-  <script>
-    const backgrounds = ['#130211', '#121715'];
-    const randomIndex = Math.floor(Math.random() * backgrounds.length);
-    const semiOpaqueBackground = backgrounds[randomIndex] + 'CC'; // CC = 80% opacity
+<script>
+  const backgrounds = ['#130211', '#121715'];
+  const randomIndex = Math.floor(Math.random() * backgrounds.length);
 
-    document.querySelector('.nav-link:nth-child(1)').style.backgroundColor = semiOpaqueBackground;
-    document.querySelector('.nav-link:nth-child(2)').style.backgroundColor = semiOpaqueBackground;
-  </script>
+  // chosen color for the nav-links
+  const semiOpaqueBackground = backgrounds[randomIndex] + 'CC';
+
+  // opposite color for the body background
+  const otherIndex = (randomIndex + 1) % backgrounds.length;
+  const pageBackground = backgrounds[otherIndex];
+
+  // apply styles
+  document.querySelector('.nav-link:nth-child(1)').style.backgroundColor = semiOpaqueBackground;
+  document.querySelector('.nav-link:nth-child(2)').style.backgroundColor = semiOpaqueBackground;
+  document.body.style.backgroundColor = pageBackground;
+</script>
+
+
+
+<script>
+  const options = [
+    "Aspiring Finnegans Wake Plagiarisms",
+    "Inspirational Finnegans Wake Plagiarisms"
+  ];
+  const choice = options[Math.floor(Math.random() * options.length)];
+  document.getElementById("fw-tagline").textContent = choice;
+</script>
+
+
 
 </body>
 </html>

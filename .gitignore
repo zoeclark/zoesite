@@ -1,4 +1,3 @@
 # Ignore compiled CSS
-*.css
 *.css.map
-
+!poems/single_poem.css

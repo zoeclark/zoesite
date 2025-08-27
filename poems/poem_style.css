@@ -489,6 +489,14 @@ a.multi-blink-2 {
   animation: blink 15s infinite, multiColorCycle2 15s infinite;
 }
 
+a.multi-blink-3 {
+  color: #d77063 !important;
+  text-decoration: none !important;
+  font-weight: bold !important;
+  transition: transform 0.5s ease !important;
+  animation: blink 15s infinite, multiColorCycle2 15s infinite;
+}
+
 a.multi-blink-2:hover {
   animation-play-state: paused !important;
   transform: scale(1.5) !important;

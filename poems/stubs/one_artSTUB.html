@@ -2,31 +2,37 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <!-- Load the STIX Two Text font -->
+  <!-- STIX Two Text font -->
   <link href="https://fonts.googleapis.com/css2?family=STIX+Two+Text&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="single_poem.css">
+  <!-- stub is in poems/stubs/, so stylesheet is one level up -->
+  <link rel="stylesheet" href="../single_poem.css">
 </head>
 <body>
 
   <!-- Banner -->
- <div class="poem-banner">
-  <a href="../index.html">home →</a>
-  <div class="spacer"></div>
-  <a href="index.html">← Table of Contents</a>
-</div>
+  <div class="poem-banner">
+    <a href="../../index.html">home →</a>
+    <div class="spacer"></div>
+    <a href="../index.html">← Table of Contents</a>
+  </div>
 
   <!-- POEM CONTAINER START -->
-<div class="poem-container">
-    <!-- title -->
+  <div class="poem-container">
+
+    <!-- Title (static, underlined link back to main poem) -->
     <h1 class="poem-title">
-    <a href="index.html">One Art</a>
+      <a href="../2.ex_librisPOEM.html" class="poem-link-static">
+        One Art (1976)
+      </a>
     </h1>
-     <h3 class="poem-title">
-    </h3>Elizabeth Bishop 
-    <h4>1976</h4>
-     <!-- poem body 
-      begins-->
-    <pre class="poem-body">
+
+    <!-- Author line (no "by") -->
+    <h4 class="poem-title" style="font-size:1.2rem;">
+      Elizabeth Bishop (1911 - 1979)
+    </h4>
+
+    <!-- Poem body -->
+    <pre>
 The art of losing isn't hard to master;
 so many things seem filled with the intent
 to be lost that their loss is no disaster.
@@ -35,7 +41,8 @@ Lose something every day. Accept the fluster
 of lost door keys, the hour badly spent.
 The art of losing isn't hard to master.
 
-Then practice losing farther, losing faster:
+Then practice losing farther, losing 
+<a href="../7.shut_upPOEM.html" class="poem-link">faster</a>:
 places, and names, and where it was you meant
 to travel. None of these will bring disaster.
 
@@ -52,6 +59,9 @@ I love) I shan't have lied. It's evident
 the art of losing's not too hard to master
 though it may look like (Write it!) like disaster.
     </pre>
+
   </div>
+  <!-- POEM CONTAINER END -->
+
 </body>
 </html>

@@ -15,8 +15,8 @@
  <!-- start of the image container -->
   <div id="image-container">
     <img class="fade-img" id="imgA" src="images/room3_1.png" />
-    <img class="fade-img" id="imgB" src="images/room2_2.png" />
-    <img id="pauseImg" class="fade-img" src="room4_pause_screen.png"/>
+    <img class="fade-img" id="imgB" src="images/room3_2.png" />
+    <img id="pauseImg" class="fade-img" src="room3_pause_screen.png"/>
     <div id="pauseOverlayText">you cannot pause</div>
     <div id="hscroll" class="hscroll"></div>
   <div class="hpanel">1</div>
@@ -46,15 +46,17 @@
     orient="vertical" 
     
   />
-  <span id="speedVal">4 s</span>
+  <span id="speedVal">5 s</span>
   <div class="speed-label">image speed</div>
 </div>
 
 
 <!-- Row 3: big “carousel” action -->
+ </div>
   <button id="carouselBtn" class="cp-big">on</button>
-    <img src="../../shared_imgs/carousel.png" alt="" width="32" height="32" decoding="async">
+    <img src="../../shared_imgs/carousel.png" alt="" width="64" height="64" decoding="async">
   </button>
+  </div>
 </div>  <!-- this div Ends he control buttons fin-->
  
 
@@ -66,7 +68,7 @@
 <script src="../shared/carousel_bind.js"></script>
 <script>
   document.addEventListener("DOMContentLoaded", () => {
-    const images = window.room2images;
+    const images = window.room3images;
     if (!Array.isArray(images) || images.length === 0) {
       console.error("[room3] images list missing/empty:", images);
       return;

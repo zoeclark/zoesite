@@ -471,6 +471,17 @@ a.multi-blink-2 {
     multiColorCycle2 $speed-slow infinite;
 }
 
+// 3 ===
+a.multi-blink-3 {
+  color: #{$warm-3} !important;
+  text-decoration: none !important;
+  font-weight: bold !important;
+  transition: transform 0.5s ease !important;
+  animation: 
+    blink $speed-slow infinite,
+    multiColorCycle2 $speed-slow infinite;
+}
+
 
 
 a.multi-blink-2:hover {

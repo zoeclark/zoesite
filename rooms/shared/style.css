@@ -62,67 +62,36 @@ body.paused #pauseBtn { visibility: visible !important; }
 body.paused #pauseBtnWrapper { display: block !important; }
 
 /*BACK BUTTON*/
-/* position the cluster */
-/* container stays fixed */
+/* Back link styled like a big control button */
+#backBtn {
+  display: inline-block;
+  font-size: 2rem;          /* BIG arrow + text */
+  font-weight: bold;
+  color: white;
+  text-decoration: none;
+  padding: 0.25em 0.75em;
+  border-radius: 12px;
+
+  /* match cp-big size/feel */
+  min-width: var(--btn-box, 60px);
+  text-align: center;
+  line-height: 1.2;
+
+  transition: all 0.2s ease;
+}
+
+#backBtn:hover,
+#backBtn:focus {
+  background: rgba(255,255,255,0.15);  /* soft glow background */
+  text-shadow: 0 0 8px rgba(255,255,255,0.6);
+}
+
+
+
+
+
 
 /* ===== CONTROLS GLOBALS ===== */
-/* BACK BUTTON */
-/* container */
-.back-cluster {
-  position: fixed;
-  top: 50%;
-  left: 16px;
-  transform: translateY(-50%);
-  z-index: 9999;
-}
-
-/* one unified button */
-.back-button {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 6px;
-  background: transparent;
-  border: none;
-  padding: 16px 10px;                /* bigger clickable zone */
-  cursor: pointer;
-
-  transform: scale(1.4);             /* much larger overall */
-  animation: shimmer 4s infinite ease-in-out;  /* slower, calmer */
-  transition: transform 0.25s ease-in-out;
-}
-
-.back-button:hover {
-  transform: scale(1.5);             /* gentle growth on hover */
-}
-
-/* icon (top) */
-.back-icon {
-  width: 72px;                       /* scaled up icon */
-  height: auto;
-  display: block;
-  filter: invert(100%);
-}
-
-/* arrow (bottom) */
-.back-arrow {
-  border: none !important;
-  background: transparent !important;
-  box-shadow: none !important;
-  font-size: 3rem;                   /* larger arrow */
-  line-height: 1;
-  color: #fff;
-  background: none;
-  border: none;
-  padding: 0;
-  margin: 0;
-}
-
-/* subtle shimmer glow around the whole button */
-@keyframes shimmer {
-  0%, 100% { filter: drop-shadow(0 0 6px rgba(255,255,255,0.25)); }
-  50%      { filter: drop-shadow(0 0 10px rgba(255,255,255,0.4)); }
-}
 
 /* global font + sizing */
 :root{
@@ -256,9 +225,9 @@ html, body { font-family: var(--app-font, system-ui, -apple-system, Segoe UI, Ro
 }
 
 
-
+/* --- slider numbers --- */
 #speedVal {
-  font-size: 2.7rem;          /* smaller, half the size */
+  font-size: 2.7rem;          
   font-weight: 600;
   color: #fff !important;     /* force white text */
   background: transparent;    /* no background box */
@@ -274,9 +243,6 @@ html, body { font-family: var(--app-font, system-ui, -apple-system, Segoe UI, Ro
 }
 
 
-
-/* --- vertical slider group --- */
-/* vertical slider container */
 /* --- vertical slider group dark style --- */
 #fadeSliderGroup {
   display: flex;
@@ -379,27 +345,9 @@ html, body { font-family: var(--app-font, system-ui, -apple-system, Segoe UI, Ro
 }
 
 /* Hide the carousel until user interacts */
-/* Hide the carousel until user interacts */
-
-
 
 #hscroll.hscroll::-webkit-scrollbar { display: none; }
 
-/* NOTE: Hidden-by-default rule is DISABLED while you debug thumbnails.
-   When youâ€™re ready, uncomment this and remove the 'display:flex' above.
-   #hscroll.hscroll:not(.is-open) {
-     opacity: 0;
-     pointer-events: none;
-     height: 0;
-     padding: 0;
-     border-width: 0;
-     margin: 0 auto;
-   }
-*/
-/* .hscroll {
-  overflow-x: scroll;
-  -webkit-overflow-scrolling: touch;
-} */
 
 .hpanel {
   position: relative;
@@ -437,39 +385,37 @@ body:not(.show-carousel) #hscroll { display: none !important; }
   scrollbar-width: none; /* hide scrollbar on Firefox */
 }
 
+.scroll-container::-webkit-scrollbar {
+  display: none; /* hide scrollbar on WebKit */
+}
+
 .scroll-container::before,
 .scroll-container::after {
-  content: "";
   position: absolute;
   top: 0;
   width: 40px;
   height: 100%;
-  pointer-events: none;
+  pointer-events: none; /* don’t block scroll */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;        /* arrow size */
+  font-weight: bold;
+  color: white;
+  text-shadow: 0 0 6px rgba(0,0,0,0.6);
+  z-index: 5;
 }
+
 .scroll-container::before {
+  content: "<";
   left: 0;
   background: linear-gradient(to right, black 40%, transparent);
 }
+
 .scroll-container::after {
+  content: ">";
   right: 0;
   background: linear-gradient(to left, black 40%, transparent);
-}
-
-/* Bigger carousel toggle button */
-#carouselBtn {
-  font-size: 1.4rem;     /* makes ON/OFF text bigger */
-  padding: 10px 14px;    /* larger click target */
-}
-
-#carouselBtn img {
-  width: 36px;           /* bigger icon */
-  height: 36px;
-  vertical-align: middle;
-  margin-right: 6px;
-}
-
-#carouselLabel {
-  font-size: 1.2em;      /* scale label relative to button font */
 }
 
 

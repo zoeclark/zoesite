@@ -48,14 +48,40 @@ body {
   line-height: 1.6;
 }
 
-/* title */
-.poem-title {
-  font-size: 1.8rem;
-  margin: 0 0 1.5rem 0;
-  font-weight: normal;
-  text-align: left; /* force left alignment */
-  font-family: 'STIX Two Text', serif; /* reinforce font */
+/* title + author container */
+.poem-header {
+  margin-bottom: 1.5rem;  /* space before poem body */
 }
+
+/* poem title */
+.poem-title {
+  font-size: 3rem;                     /* largest */
+  margin: 0 0 0.3rem 0;                /* small space below */
+  font-weight: normal;
+  text-align: left;
+  font-family: 'STIX Two Text', serif;
+}
+
+/* poem author */
+.poem-author {
+  font-size: 1.4rem;                   /* slightly smaller */
+  margin: 0;                           /* no extra margin */
+  font-weight: normal;
+  text-align: left;
+  font-family: 'STIX Two Text', serif; /* match title font */
+  color: rgba(255,255,255,0.85);       /* softer white for contrast */
+}
+
+/* dedication line under the title */
+.poem-dedication {
+  font-size: 1.2rem;                /* smaller than title */
+  font-style: italic;               /* italics for distinction */
+  margin: 0 0 1.5rem 0;             /* space below before body */
+  text-align: left;                 /* align with title */
+  font-family: 'STIX Two Text', serif;
+  color: rgba(255,255,255,0.85);    /* slightly softer white */
+}
+
 
 /* poem body */
 .poem-body {
@@ -231,6 +257,12 @@ html, body {
       0 0
   }
 }
+
+/* Multi-line title helper so each line sits on its own row */
+.title-lines .line { display: block; line-height: 1.15; }
+
+/* Make title links use your poem link styling emphatically */
+.title-lines a.poem-link { font-weight: 600; }
 
 
 

@@ -1,4 +1,3 @@
-@import url("./poem_style.css");  /* ===== WHAT DOES THIS DO?>> ===== */
 
 /* ===== ABSOLUTE ENVIRONMENT NUKES ===== */
 html, body, * {
@@ -28,7 +27,7 @@ a, a:visited, a:hover, a:active, a:focus {
 }
 
 /* ===== SINGLE POEM STYLE ===== */
-/* 🔥 Force STIX Two Text everywhere */
+/* Force STIX Two Text everywhere */
 html, body, * {
   font-family: 'STIX Two Text', serif !important;
 }
@@ -39,6 +38,10 @@ body {
   font-family: 'STIX Two Text', serif;
   margin: 0;
   padding: 2rem;
+}
+/* Make sure no parent kills the text */
+.poem-container, .poem-body, .poem-subtitle, .poem-text {
+  line-height: 1.6;
 }
 
 /* wrapper */
@@ -85,7 +88,7 @@ body {
 
 /* poem body */
 .poem-body {
-  font-size: 1rem;
+  font-size: 1.2rem;
   white-space: pre-wrap;
   margin: 0 0 1rem 0;
 }
@@ -153,7 +156,6 @@ html, body {
 
 /* Make sure no parent kills the text */
 .poem-container, .poem-body, .poem-title, .poem-subtitle, .poem-text {
-  font-size: inherit;
   line-height: 1.6;
 }
 
@@ -263,7 +265,46 @@ html, body {
 
 /* Make title links use your poem link styling emphatically */
 .title-lines a.poem-link { font-weight: 600; }
+/* Strong, responsive title size */
+.poem-title {
+  font-size: clamp(2.6rem, 5.5vw, 6rem);
+  line-height: 1.15;
+}
+
+/* Title links should look exactly like titles */
+.poem-title a {
+  font: inherit;
+  color: inherit !important;
+  text-decoration: none;
+}
+
+/* If you use .poem-link-static for a title, keep the underline but not the size */
+.poem-title .poem-link-static {
+  font-size: inherit;          /* stay the same size as the h1 */
+  text-decoration: underline;  /* keep its static underline look */
+}
+
+/* Strong, responsive title size */
+.poem-title {
+  font-size: clamp(1.3rem, 2.8vw, 2.7rem);
+  line-height: 1.15;
+}
+
+/* Title links should look exactly like titles */
+.poem-title a {
+  font: inherit;
+  color: inherit !important;
+  text-decoration: none;
+}
+
+/* If you use .poem-link-static for a title, keep the underline but not the size */
+.poem-title .poem-link-static {
+  font-size: inherit;          /* stay the same size as the h1 */
+  text-decoration: underline;  /* keep its static underline look */
+}
 
 
-
-
+/* Add breathing room between title(s) and poem body */
+.poem-title {
+  margin-bottom: 2rem;   /* adjust this number until it feels right */
+}

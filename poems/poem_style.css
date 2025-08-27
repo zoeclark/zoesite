@@ -1,1 +1,511 @@
-:root{--speed-five: 5s;--speed-ten: 10s;--speed-slow: 15s;--text-color: #fbfbee;--font-family: "STIX Two Text", serif;--warm-1: #faa672;--warm-2: #fa915b;--warm-3: #d77063;--warm-4: #fba9a0;--warm-5: #e0764b;--warm-6: #72b4b2;--warm-7: #1b3f6d;--warm-bg: #22031F;--cold-1: #e3f3f2;--cold-2: #DAE4E7;--cold-3: #929BA2;--cold-4: #5C6B73;--cold-5: #4B5960;--cold-6: #6f6d6c;--cold-7: #51504d;--cold-bg: #1A211F;--sz-xl: 2.5rem;--sz-l: 2.0rem;--sz-m: 1.5rem;--sz-s: 1.0rem}a{text-decoration:none;color:inherit;font-family:"STIX Two Text",serif;cursor:pointer}a{text-decoration:none;color:inherit;font-family:"STIX Two Text",serif;cursor:pointer}.multi-blink-1,.multi-blink-1:link,.multi-blink-1:visited,.multi-blink-1:active,.multi-blink-1:hover{color:#faa672 !important;text-decoration:none !important;font-weight:bold;transition:transform .5s ease;animation:blink 15s infinite,multiColorCycle1 15s infinite;animation-play-state:running !important}h1,h2,h3,h4,h5,h6{all:unset;display:block}h1,h2,h3,h4,h5,h6{font-family:"STIX Two Text",serif;color:#fbfbee}.center-page{text-align:center}.center-page h1{font-size:clamp(1.5rem,4vw,4rem);margin:0;padding:0;text-align:center}.table-of-c{margin-top:.25rem;margin-left:2rem;margin-right:2rem;background:#000;font-family:"STIX Two Text",serif;background-color:#000;text-align:left;padding:1rem;color:#fbfbee}.table-of-c h1{margin-top:.5rem;text-align:left;font-size:2.5rem;color:#fffbf0;margin-bottom:.5rem}.table-of-c h2{margin-top:.1rem;text-align:left;font-size:1.5rem;color:#fffbf0;margin-bottom:.1}@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}.fast_blink{animation:blink 5s infinite}.medium_blink{animation:blink 10s infinite}.slow_blink{animation:blink 15s infinite}@keyframes warmColorCycle{0%{color:#faa672}14%{color:#fa915b}28%{color:#d77063}42%{color:#fba9a0}57%{color:#e0764b}71%{color:#72b4b2}85%{color:#1b3f6d}100%{color:#faa672}}.warm-link:hover{transform:scale(1.2);text-shadow:0 0 10px #d77063}.warm-blink-slow{animation:blink 15s infinite,warmColorCycle 15s infinite}.warm-blink-medium{animation:blink 10s infinite,warmColorCycle 10s infinite}.wark-blink-fast{animation:blink 5s infinite,warmColorCycle 5s linear infinite}.warm-poem{background-color:#22031f;font-family:"STIX Two Text",serif;text-align:left;padding:1rem;color:#fbfbee}.warm-poem pre{font-family:inherit;white-space:pre-wrap}.warm-poem h2{font-size:2.5rem;margin-top:.5rem;margin-bottom:.5rem}.warm-poem h2 h3{font-size:2rem;margin-top:.5rem;margin-bottom:.5rem}.warm-poem h2 h4{font-size:1.5rem;margin-top:.25rem;margin-bottom:.25rem}.warm-poem h2 p{font-size:1rem;margin-top:.1 rem;margin-bottom:.1rem}@keyframes coldColorCycle{100%{color:#e3f3f2}7.14%{color:#dae4e7}14.28%{color:#929ba2}21.42%{color:#5c6b73}28.57%{color:#4b5960}35.71%{color:#6f6d6c}42.85%{color:#51504d}50.00%{color:#51504d}57.14%{color:#6f6d6c}64.28%{color:#4b5960}71.42%{color:#5c6b73}78.57%{color:#929ba2}85.71%{color:#dae4e7}92.85%{color:#e3f3f2}}.cold-link{text-decoration:none;font-weight:bold;transition:transform .5s ease}.cold-link:hover{transform:scale(1.2);text-shadow:0 0 10px #929ba2}.cold-blink-slow{animation:blink 15s infinite,coldColorCycle 15s infinite}.cold-blink-medium{animation:blink 10s infinite,coldColorCycle 10s infinite}.cold-blink-fast{animation:blink 5s infinite,coldColorCycle 5s linear infinite}.cold-poem{background-color:#1a211f;font-family:"STIX Two Text",serif;text-align:left;padding:1rem;color:#fbfbee}.cold-poem pre{font-family:inherit;white-space:pre-wrap}.cold-poem h2{font-size:2.5rem;margin-top:.5rem;margin-bottom:.5rem}.cold-poem h2 h3{font-size:2rem;margin-top:.5rem;margin-bottom:.5rem}.cold-poem h2 h4{font-size:1.5rem;margin-top:.25rem;margin-bottom:.25rem}.cold-poem h2 p{font-size:1rem;margin-top:.1 rem;margin-bottom:.1rem}@keyframes multiColorCycle1{0%{color:#faa672}7.14%{color:#fa915b}14.28%{color:#d77063}21.42%{color:#fba9a0}28.57%{color:#e0764b}35.71%{color:#72b4b2}42.85%{color:#1b3f6d}50.00%{color:#51504d}57.14%{color:#6f6d6c}64.28%{color:#4b5960}71.42%{color:#5c6b73}78.57%{color:#929ba2}85.71%{color:#dae4e7}92.85%{color:#e3f3f2}100%{color:#faa672}}@keyframes multiColorCycle2{0%{color:#fa915b}7.14%{color:#d77063}14.28%{color:#fba9a0}21.42%{color:#e0764b}28.57%{color:#72b4b2}35.71%{color:#1b3f6d}42.85%{color:#51504d}50.00%{color:#6f6d6c}57.14%{color:#4b5960}64.28%{color:#5c6b73}71.42%{color:#929ba2}78.57%{color:#dae4e7}85.71%{color:#e3f3f2}92.85%{color:#faa672}100%{color:#fa915b}}@keyframes multiColorCycle3{0.0%{color:#d77063}7.14%{color:#fba9a0}14.29%{color:#e0764b}21.43%{color:#72b4b2}28.57%{color:#1b3f6d}35.71%{color:#51504d}42.86%{color:#6f6d6c}50.0%{color:#4b5960}57.14%{color:#5c6b73}64.29%{color:#929ba2}71.43%{color:#dae4e7}78.57%{color:#e3f3f2}85.71%{color:#faa672}92.86%{color:#fa915b}100.0%{color:#d77063}}@keyframes blink{0%,100%{opacity:1}50%{opacity:.5}}.multi-blink-7{animation:blink 7s infinite,multiColorCycle1 7s linear infinite;animation-delay:-1s;animation-play-state:running;text-decoration:none;font-weight:bold;transition:transform .5s ease}a.multi-blink-2{color:#fa915b !important;text-decoration:none !important;font-weight:bold !important;transition:transform .5s ease !important;animation:blink 15s infinite,multiColorCycle2 15s infinite}a.multi-blink-1{color:#faa672 !important;text-decoration:none !important;font-weight:bold !important;transition:transform .5s ease !important;animation:blink 15s infinite,multiColorCycle1 15s infinite}a.multi-blink-1:hover{animation-play-state:paused !important;transform:scale(1.5) !important;text-shadow:0 0 10px #faa672 !important}a.multi-blink-2{color:#fa915b !important;text-decoration:none !important;font-weight:bold !important;transition:transform .5s ease !important;animation:blink 15s infinite,multiColorCycle2 15s infinite}a.multi-blink-2:hover{animation-play-state:paused !important;transform:scale(1.5) !important;text-shadow:0 0 10px #fa915b !important}.crackle::before{content:"A ";font-family:"STIX Two Text",serif;color:#fbfbee}.crackle{font-family:"Menlo",monospace;font-size:1.5rem;color:#fbfbee;letter-spacing:.04em}/*# sourceMappingURL=poem_style.css.map */
+@charset "UTF-8";
+:root {
+  /* Periods */
+  --speed-five: 5s;
+  --speed-ten: 10s;
+  --speed-slow: 15s;
+  /* Shared */
+  --text-color: #fbfbee;
+  --font-family: "STIX Two Text", serif;
+  /* Warm Palette */
+  --warm-1: #faa672;
+  --warm-2: #fa915b;
+  --warm-3: #d77063;
+  --warm-4: #fba9a0;
+  --warm-5: #e0764b;
+  --warm-6: #72b4b2;
+  --warm-7: #1b3f6d;
+  --warm-bg: #22031F;
+  /* Cold Palette */
+  --cold-1: #e3f3f2;
+  --cold-2: #DAE4E7;
+  --cold-3: #929BA2;
+  --cold-4: #5C6B73;
+  --cold-5: #4B5960;
+  --cold-6: #6f6d6c;
+  --cold-7: #51504d;
+  --cold-bg: #1A211F;
+  /* Sizes */
+  --sz-xl: 2.5rem;
+  --sz-l: 2.0rem;
+  --sz-m: 1.5rem;
+  --sz-s: 1.0rem;
+}
+
+/* UNIVERSALS AND RANDOM DIVS */
+a {
+  text-decoration: none;
+  color: inherit;
+  font-family: "STIX Two Text", serif;
+  cursor: pointer;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  font-family: "STIX Two Text", serif;
+  cursor: pointer;
+}
+
+.multi-blink-1,
+.multi-blink-1:link,
+.multi-blink-1:visited,
+.multi-blink-1:active,
+.multi-blink-1:hover {
+  color: #faa672 !important;
+  text-decoration: none !important;
+  font-weight: bold;
+  transition: transform 0.5s ease;
+  animation: blink 15s infinite, multiColorCycle1 15s infinite;
+  animation-play-state: running !important;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  all: unset;
+  display: block; /* You’ll probably want them as block elements still */
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "STIX Two Text", serif;
+  color: #fbfbee;
+}
+
+.center-page {
+  text-align: center;
+}
+
+.center-page h1 {
+  font-size: clamp(1.5rem, 4vw, 4rem); /* Responsive scaling */
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+.table-of-c {
+  margin-top: 0.25rem;
+  margin-left: 2rem;
+  margin-right: 2rem;
+  background: #000000;
+  font-family: "STIX Two Text", serif;
+  background-color: #000000;
+  text-align: left;
+  padding: 1rem;
+  color: #fbfbee;
+}
+.table-of-c h1 {
+  margin-top: 0.5rem;
+  text-align: left;
+  font-size: 2.5rem;
+  color: #FFFBF0;
+  margin-bottom: 0.5rem;
+}
+.table-of-c h2 {
+  margin-top: 0.1rem;
+  text-align: left;
+  font-size: 1.5rem;
+  color: #FFFBF0;
+  margin-bottom: 0.1;
+}
+
+@keyframes blink {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.3;
+  }
+}
+.fast_blink {
+  animation: blink 5s infinite;
+}
+
+.medium_blink {
+  animation: blink 10s infinite;
+}
+
+.slow_blink {
+  animation: blink 15s infinite;
+}
+
+@keyframes warmColorCycle {
+  0% {
+    color: #faa672;
+  }
+  14% {
+    color: #fa915b;
+  }
+  28% {
+    color: #d77063;
+  }
+  42% {
+    color: #fba9a0;
+  }
+  57% {
+    color: #e0764b;
+  }
+  71% {
+    color: #72b4b2;
+  }
+  85% {
+    color: #1b3f6d;
+  }
+  100% {
+    color: #faa672;
+  }
+}
+.warm-link:hover {
+  transform: scale(1.2);
+  text-shadow: 0 0 10px #d77063;
+}
+
+.warm-blink-slow {
+  animation: blink 15s infinite, warmColorCycle 15s infinite;
+}
+
+.warm-blink-medium {
+  animation: blink 10s infinite, warmColorCycle 10s infinite;
+}
+
+.wark-blink-fast {
+  animation: blink 5s infinite, warmColorCycle 5s linear infinite;
+}
+
+.warm-poem {
+  background-color: #22031F;
+  font-family: "STIX Two Text", serif;
+  text-align: left;
+  padding: 1rem;
+  color: #fbfbee;
+}
+.warm-poem pre {
+  font-family: inherit;
+  white-space: pre-wrap;
+}
+.warm-poem h2 {
+  font-size: 2.5rem;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+.warm-poem h2 h3 {
+  font-size: 2rem;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+.warm-poem h2 h4 {
+  font-size: 1.5rem;
+  margin-top: 0.25rem;
+  margin-bottom: 0.25rem;
+}
+.warm-poem h2 p {
+  font-size: 1rem;
+  margin-top: 0.1 rem;
+  margin-bottom: 0.1rem;
+}
+
+@keyframes coldColorCycle {
+  100% {
+    color: #e3f3f2;
+  }
+  7.14% {
+    color: #DAE4E7;
+  }
+  14.28% {
+    color: #929BA2;
+  }
+  21.42% {
+    color: #5C6B73;
+  }
+  28.57% {
+    color: #4B5960;
+  }
+  35.71% {
+    color: #6f6d6c;
+  }
+  42.85% {
+    color: #51504d;
+  }
+  50.00% {
+    color: #51504d;
+  }
+  57.14% {
+    color: #6f6d6c;
+  }
+  64.28% {
+    color: #4B5960;
+  }
+  71.42% {
+    color: #5C6B73;
+  }
+  78.57% {
+    color: #929BA2;
+  }
+  85.71% {
+    color: #DAE4E7;
+  }
+  92.85% {
+    color: #e3f3f2;
+  }
+}
+.cold-link {
+  text-decoration: none;
+  font-weight: bold;
+  transition: transform 0.5s ease;
+}
+
+.cold-link:hover {
+  transform: scale(1.2);
+  text-shadow: 0 0 10px #929BA2;
+}
+
+.cold-blink-slow {
+  animation: blink 15s infinite, coldColorCycle 15s infinite;
+}
+
+.cold-blink-medium {
+  animation: blink 10s infinite, coldColorCycle 10s infinite;
+}
+
+.cold-blink-fast {
+  animation: blink 5s infinite, coldColorCycle 5s linear infinite;
+}
+
+.cold-poem {
+  background-color: #1A211F;
+  font-family: "STIX Two Text", serif;
+  text-align: left;
+  padding: 1rem;
+  color: #fbfbee;
+}
+.cold-poem pre {
+  font-family: inherit;
+  white-space: pre-wrap;
+}
+.cold-poem h2 {
+  font-size: 2.5rem;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+.cold-poem h2 h3 {
+  font-size: 2rem;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+.cold-poem h2 h4 {
+  font-size: 1.5rem;
+  margin-top: 0.25rem;
+  margin-bottom: 0.25rem;
+}
+.cold-poem h2 p {
+  font-size: 1rem;
+  margin-top: 0.1 rem;
+  margin-bottom: 0.1rem;
+}
+
+@keyframes multiColorCycle1 {
+  0% {
+    color: #faa672;
+  }
+  7.14% {
+    color: #fa915b;
+  }
+  14.28% {
+    color: #d77063;
+  }
+  21.42% {
+    color: #fba9a0;
+  }
+  28.57% {
+    color: #e0764b;
+  }
+  35.71% {
+    color: #72b4b2;
+  }
+  42.85% {
+    color: #1b3f6d;
+  }
+  50.00% {
+    color: #51504d;
+  }
+  57.14% {
+    color: #6f6d6c;
+  }
+  64.28% {
+    color: #4B5960;
+  }
+  71.42% {
+    color: #5C6B73;
+  }
+  78.57% {
+    color: #929BA2;
+  }
+  85.71% {
+    color: #DAE4E7;
+  }
+  92.85% {
+    color: #e3f3f2;
+  }
+  100% {
+    color: #faa672;
+  }
+}
+@keyframes multiColorCycle2 {
+  0% {
+    color: #fa915b;
+  }
+  7.14% {
+    color: #d77063;
+  }
+  14.28% {
+    color: #fba9a0;
+  }
+  21.42% {
+    color: #e0764b;
+  }
+  28.57% {
+    color: #72b4b2;
+  }
+  35.71% {
+    color: #1b3f6d;
+  }
+  42.85% {
+    color: #51504d;
+  }
+  50.00% {
+    color: #6f6d6c;
+  }
+  57.14% {
+    color: #4B5960;
+  }
+  64.28% {
+    color: #5C6B73;
+  }
+  71.42% {
+    color: #929BA2;
+  }
+  78.57% {
+    color: #DAE4E7;
+  }
+  85.71% {
+    color: #e3f3f2;
+  }
+  92.85% {
+    color: #faa672;
+  }
+  100% {
+    color: #fa915b;
+  }
+}
+@keyframes multiColorCycle3 {
+  0.0% {
+    color: #d77063;
+  }
+  7.14% {
+    color: #fba9a0;
+  }
+  14.29% {
+    color: #e0764b;
+  }
+  21.43% {
+    color: #72b4b2;
+  }
+  28.57% {
+    color: #1b3f6d;
+  }
+  35.71% {
+    color: #51504d;
+  }
+  42.86% {
+    color: #6f6d6c;
+  }
+  50.0% {
+    color: #4B5960;
+  }
+  57.14% {
+    color: #5C6B73;
+  }
+  64.29% {
+    color: #929BA2;
+  }
+  71.43% {
+    color: #DAE4E7;
+  }
+  78.57% {
+    color: #e3f3f2;
+  }
+  85.71% {
+    color: #faa672;
+  }
+  92.86% {
+    color: #fa915b;
+  }
+  100.0% {
+    color: #d77063;
+  }
+}
+@keyframes blink {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+.multi-blink-7 {
+  animation: blink 7s infinite, multiColorCycle1 7s linear infinite;
+  animation-delay: -1s;
+  animation-play-state: running;
+  text-decoration: none;
+  font-weight: bold;
+  transition: transform 0.5s ease;
+}
+
+a.multi-blink-2 {
+  color: #fa915b !important;
+  text-decoration: none !important;
+  font-weight: bold !important;
+  transition: transform 0.5s ease !important;
+  animation: blink 15s infinite, multiColorCycle2 15s infinite;
+}
+
+a.multi-blink-1 {
+  color: #faa672 !important;
+  text-decoration: none !important;
+  font-weight: bold !important;
+  transition: transform 0.5s ease !important;
+  animation: blink 15s infinite, multiColorCycle1 15s infinite;
+}
+
+a.multi-blink-1:hover {
+  animation-play-state: paused !important;
+  transform: scale(1.5) !important;
+  text-shadow: 0 0 10px #faa672 !important;
+}
+
+a.multi-blink-2 {
+  color: #fa915b !important;
+  text-decoration: none !important;
+  font-weight: bold !important;
+  transition: transform 0.5s ease !important;
+  animation: blink 15s infinite, multiColorCycle2 15s infinite;
+}
+
+a.multi-blink-2:hover {
+  animation-play-state: paused !important;
+  transform: scale(1.5) !important;
+  text-shadow: 0 0 10px #fa915b !important;
+}
+
+.crackle::before {
+  content: "A ";
+  font-family: "STIX Two Text", serif;
+  color: #fbfbee;
+}
+
+.crackle {
+  font-family: "Menlo", monospace;
+  font-size: 1.5rem;
+  color: #fbfbee;
+  letter-spacing: 0.04em;
+}
+
+/*# sourceMappingURL=poem_style.css.map */

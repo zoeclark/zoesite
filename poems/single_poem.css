@@ -1,4 +1,4 @@
-@import url("./poem_style.css");
+@import url("./poem_style.css");  /* ===== WHAT DOES THIS DO?>> ===== */
 
 /* ===== ABSOLUTE ENVIRONMENT NUKES ===== */
 html, body, * {
@@ -114,6 +114,8 @@ body {
 }
 
 /* ===== GLOBAL NUKES ===== */
+
+
 /* Force STIX Two Text absolutely everywhere */
 /* === inline poem link === */
 /* ===== GLOBAL POEM SAFETIES (late in CSS) ===== */
@@ -129,12 +131,53 @@ html, body {
   line-height: 1.6;
 }
 
-/* ===== LINK CLASS UNDER TEST ===== */
+/* ===== BASIC LINK CLASS ===== */
+/* ===== STRONGER, COLDER LINK CLASS ===== */
 .poem-link {
+  display: inline;
+  font-size: 1.2em;                         /* bigger text */
+  font-weight: 700;                         /* bold for emphasis */
+  color: var(--cold-1) !important;          /* pale icy text */
+  -webkit-text-fill-color: currentColor !important;
+  text-decoration: none !important;
+  -webkit-tap-highlight-color: transparent;
+  font-family: 'STIX Two Text', serif !important;
+
+  /* static icy halo */
+  text-shadow:
+    0 0 0.15em rgba(227, 243, 242, 0.9),   /* cold-1 */
+    0 0 0.45em rgba(218, 228, 231, 0.7),   /* cold-2 */
+    0 0 0.85em rgba(146, 155, 162, 0.45);  /* cold-3 */
+}
+
+.poem-link:hover,
+.poem-link:focus {
+  color: var(--cold-2) !important;          /* brighter cold highlight */
+  text-shadow:
+    0 0 0.2em rgba(227, 243, 242, 1),      /* cold-1 strong */
+    0 0 0.6em rgba(218, 228, 231, 0.9),    /* cold-2 heavier */
+    0 0 1.2em rgba(146, 155, 162, 0.8);    /* cold-3 heavy glow */
+}
+
+.poem-link:visited {
+  color: var(--cold-1) !important;          /* no purple */
+}
+
+.poem-link:active {
+  color: #ffffff !important;
+  text-shadow:
+    0 0 0.25em rgba(227, 243, 242, 1),     /* cold-1 brightest */
+    0 0 0.8em rgba(218, 228, 231, 0.95),   /* cold-2 pressed */
+    0 0 1.5em rgba(146, 155, 162, 0.9);    /* cold-3 deepest */
+}
+
+
+/* ===== STATIC UNDERLINE LINK CLASS ===== */
+.poem-link-static {
   display: inline;                         /* avoid overflow clipping */
   color: inherit !important;               /* stay white from parent */
   -webkit-text-fill-color: currentColor !important;
-  text-decoration: none !important;
+  text-decoration: underline !important;   /* always underlined */
   -webkit-tap-highlight-color: transparent;
   font-family: 'STIX Two Text', serif !important;
 
@@ -143,34 +186,50 @@ html, body {
     0 0 0.02em rgba(255,255,255,0.28),
     0 0 0.35em rgba(255,255,255,0.10);
 
-  /* reactive underline (safe: 1px height, no text cover) */
-  background-image: linear-gradient(currentColor, currentColor);
-  background-repeat: no-repeat;
-  background-position: 0 100%;
-  background-size: 0% 1px;
-
-  transition:
-    background-size 180ms ease,
-    text-shadow 180ms ease,
-    transform 60ms ease;
+  /* kill purple visited */
+  &:visited {
+    color: inherit !important;
+  }
 }
 
-.poem-link:hover,
-.poem-link:focus {
-  background-size: 100% 1px;   /* animate underline in */
-  text-shadow:
-    0 0 0.08em rgba(255,255,255,0.65),
-    0 0 0.45em rgba(255,255,255,0.35);
-  transform: scale(1.02);      /* tiny lift to avoid layout wobble */
+/* ===== INVISIBLE BLUR LINK CLASS ===== */
+.poem-link-invis {
+  display: inline-block;
+  min-width: 1.5em;                  /* takes up a little space */
+  min-height: 1em;
+  content: "";
+  color: transparent !important;     /* hide accidental text */
+  text-decoration: none !important;
+  background: rgba(255,255,255,0.08); /* faint white mist */
+  filter: blur(2px);                 
+  border-radius: 0.25em;             /* soft corners */
+  cursor: pointer;
+  transition: all 0.25s ease;
 }
 
-.poem-link:visited {
-  color: inherit !important;   /* disable purple */
+/* kill purple visited */
+.poem-link-invis:visited {
+  color: transparent !important;
+  background: rgba(255,255,255,0.08);
 }
 
-/* Respect motion settings */
-@media (prefers-reduced-motion: reduce) {
-  .poem-link { transition: none; }
+/* STRONG PULSING HOVER EFFECT */
+.poem-link-invis:hover,
+.poem-link-invis:focus {
+  background: rgba(255,255,255,0.7);
+  filter: blur(4px);
+  box-shadow:
+    0 0 8px rgba(255,255,255,0.9),
+    0 0 16px rgba(255,255,255,0.7),
+    0 0 24px rgba(255,255,255,0.5);
+  animation: pulseGlow 1.2s infinite ease-in-out;
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    box-shadow:
+      0 0
+  }
 }
 
 

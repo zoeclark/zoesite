@@ -209,7 +209,6 @@ if (carouselBtn && scrollerEl) {
     setState(!scrollerEl.classList.contains('is-hidden'));
 }
 
-
 const setState = (hidden) => {
   scrollerEl.classList.toggle('is-hidden', hidden);
   scrollerEl.setAttribute('aria-hidden', String(hidden));

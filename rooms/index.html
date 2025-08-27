@@ -5,23 +5,28 @@
   <link rel="stylesheet" href="home.css">
 </head>
 <body>
-  <!-- Home Arrow (only for /rooms landing page) -->
-<a href="../index.html" class="home-arrow">
-  ← home
-</a>
-
   <div id="background"></div> 
+
+  <!-- Overlay grid -->
   <div id="overlay">
-    <a href="room1/" class="room-link"><span>room 1</span></a>
-    <a href="room2/" class="room-link"><span>room 2</span></a>
-    <a href="room3/" class="room-link"><span>room 3</span></a>
-    <a href="room4/" class="room-link"><span>room 4</span></a>
+    <a href="faq.html" class="room-link faq-link"><span>FAQ</span></a>
+
+    <a href="room1/" class="room-link r1"><span>room 1</span></a>
+    <a href="room2/" class="room-link r2"><span>room 2</span></a>
+    <a href="room3/" class="room-link r3"><span>room 3</span></a>
+    <a href="room4/" class="room-link r4"><span>room 4</span></a>
+  </div>
+
+  <!-- Home arrow at bottom center -->
+  <div class="home-arrow-wrapper">
+    <a href="/index.html" class="home-arrow">← home</a>
   </div>
 
   <script src="doorImages.js"></script>
   <script>
     const background = doorImages[Math.floor(Math.random() * doorImages.length)];
-    document.getElementById("background").style.backgroundImage = `url('${background}?v=${Date.now()}')`;
+    document.getElementById("background").style.backgroundImage =
+      `url('${background}?v=${Date.now()}')`;
   </script>
 </body>
 </html>

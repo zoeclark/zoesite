@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>F.A.Q</title>
+  <link href="https://fonts.googleapis.com/css2?family=STIX+Two+Text&display=swap" rel="stylesheet">
+  <style>
+    /* hard enforce your poem/site vibe */
+    html, body, * { font-family: 'STIX Two Text', serif !important; }
+    html, body { margin: 0; padding: 0; background: #000; color: #fff; }
+
+    .wrap {
+      min-height: 100svh;
+      display: grid;
+      grid-template-rows: auto 1fr auto;
+      padding: 6vh 6vw;
+      gap: 4vh;
+    }
+
+    /* smaller title */
+    h1 {
+      margin: 0;
+      font-size: clamp(1.6rem, 4vw, 2.5rem); /* reduced size */
+      font-weight: 400;
+      letter-spacing: 0.06em;
+    }
+
+    /* left arrow back to /rooms */
+    .back {
+      display: inline-flex;
+      align-items: center;
+      gap: .6rem;
+      text-decoration: none;
+      color: #fff;
+      font-size: clamp(1.2rem, 3vw, 1.5rem); /* bigger text */
+      text-shadow:
+        0 0 0.02em rgba(255,255,255,0.28),
+        0 0 0.35em rgba(255,255,255,0.10);
+    }
+    .back::before {
+      content: "←";
+      font-size: 2.4em; /* larger arrow */
+      line-height: 1;
+    }
+    .back:hover { text-decoration: underline; }
+
+    /* body text */
+    .faq {
+      max-width: 900px;
+      line-height: 1.7;
+      font-size: clamp(1rem, 2vw, 1.1rem);
+      display: grid;
+      gap: 1.2rem;
+    }
+
+    .sources {
+      margin-top: .5rem;
+      padding-left: 1.2rem;
+    }
+    .sources li { margin: .2rem 0; }
+    .sources a {
+      color: #fff; text-decoration: none;
+      border-bottom: 1px solid rgba(255,255,255,0.35);
+    }
+    .sources a:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <a class="back" href="/rooms">rooms</a>
+    </header>
+
+    <main>
+      <h1>F.A.Q</h1>
+
+      <div class="faq" role="doc-introduction" aria-label="FAQ">
+        <p>These four galleries present digital works created with open-source tools and the platform Midjourney. Midjourney is a diffusion-based model: it generates images by gradually refining random noise into patterns guided by text prompts.</p>
+
+        <p>The 'rooms' were made in chronological order in the summer of 2025. Moving in sequence — Gallery 1 first, then 2, 3, and 4 — each room is more complex than the last.</p>
+
+        <p>No copyrighted material was used in their creation. They are dedicated to all the curators whose work made it possible for me to access such rich reference material for this art.</p>
+
+        <p>Some digital collections used include:</p>
+        <ul class="sources">
+          <li><a href="https://wellcomecollection.org/search/works">Wellcome Collection</a></li>
+          <li><a href="https://www.visittrinity.ie/book-of-kells-experience/">The Book of Kells Experience (Trinity College Dublin)</a></li>
+          <li><a href="https://www.okeeffemuseum.org/">Georgia O’Keeffe Museum</a></li>
+          <li><a href="https://digitalcollections.nypl.org">New York Public Library Digital Collections</a></li>
+        </ul>
+      </div>
+    </main>
+
+    <footer></footer>
+  </div>
+</body>
+</html>

@@ -29,42 +29,30 @@
   background: black;                  /* letterbox fill if you zoom < 1 */
 }
 
-
-    .title-box {
-      position: absolute;
-      top: 1rem;
-      left: 1rem;
-      background-color: rgba(0, 0, 0, 0.6);
-      padding: 0.5rem 1rem;
-      border-radius: 0.5rem;
-      font-size: 0.9rem;
-      text-align: left;
-    }
-
-    .title-box h1 {
-      font-size: 1rem;
-      margin: 0;
-    }
-
-    .title-box h2 {
-      font-size: 0.8rem;
-      margin: 0;
-    }
-
-    h1 {
-  font-size: 6rem;   /* ~48px */
-  line-height: 1.2;
+.title-box {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  background-color: rgba(0, 0, 0, 0.6);
+  padding: 1rem 2rem;           /* doubled padding */
+  border-radius: 0.5rem;
+  font-size: 1.8rem;            /* doubled base font-size */
+  text-align: left;
+  transform: scale(1.01);          /* scale entire box visually */
+  transform-origin: top left;   /* so it grows outward from corner */
 }
 
-h2 {
-  font-size: 3.25rem;  /* ~36px */
-  line-height: 1.3;
+/* remove the tiny overrides */
+.title-box h1 {
+  font-size: inherit;   /* follow container scaling */
+  margin: 0;
 }
 
-h3 {
-  font-size: 2.75rem;  /* ~28px */
-  line-height: 1.4;
+.title-box h2 {
+  font-size: 0.8em;     /* relative to container’s font-size */
+  margin: 0;
 }
+
 
 
   .nav-container {
@@ -121,7 +109,7 @@ h3 {
     <h2>Inquiries Always Encouraged</h2>
     <h2>
   <a href="https://venmo.com/u/Zo-Clark" target="_blank" rel="noopener noreferrer">
-    $upport Art
+    $upport Artists
   </a>
 </h2>
 

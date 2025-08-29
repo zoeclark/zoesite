@@ -121,20 +121,7 @@ h2 {margin-top: 0.1rem;
 
 }
 
-// multi-blink: full warm cycle  (no cold) 
 
-.multi-blink-1,
-.multi-blink-1:link,
-.multi-blink-1:visited,
-.multi-blink-1:active,
-.multi-blink-1:hover {
-  color: $warm-1 !important;
-  text-decoration: none !important;
-  font-weight: bold;
-  transition: transform 0.5s ease;
-  animation: blink $speed-slow infinite, multiColorCycle1 $speed-slow infinite;
-  animation-play-state: running !important;
-}
 
 h1, h2, h3, h4, h5, h6 {
   all: unset;
@@ -300,23 +287,54 @@ h1, h2, h3, h4, h5, h6 {
   21.42% { color: $warm-5; }
   28.57% { color: $warm-6; }
   35.71% { color: $warm-7; }
-  42.85% { color: $cold-7; }
-  50.00% { color: $cold-6; }
-  57.14% { color: $cold-5; }
-  64.28% { color: $cold-4; }
-  71.42% { color: $cold-3; }
-  78.57% { color: $cold-2; }
-  85.71% { color: $cold-1; }
-  92.85% { color: $warm-1; }
+  42.85% { color: $warm-6; }
+  50.00% { color: $warm-5; }
+  57.14% { color: $warm-4; }
+  64.28% { color: $warm-3; }
+  71.42% { color: $warm-2; }
+  78.57% { color: $warm-1; }
+  85.71% { color: $warm-2; }
   100%   { color: $warm-2; }
 }
-
 @keyframes multiColorCycle3 {
-  0.0% { color: $warm-3; }
+  0%    { color: $warm-3; }
   7.14% { color: $warm-4; }
-  14.29% { color: $warm-5; }
-  21.43% { color: $warm-6; }
+  14.28% { color: $warm-5; }
+  21.42% { color: $warm-5; }
   28.57% { color: $warm-7; }
+  35.71% { color: $warm-6 }
+  42.85% { color: $warm-5; }
+  50.00% { color: $warm-4; }
+  57.14% { color: $warm-3; }
+  64.28% { color: $warm-2; }
+  71.42% { color: $warm-1; }
+  78.57% { color: $warm-2; }
+  85.71% { color: $warm-3; }
+  100%   { color: $warm-3; }
+}
+
+@keyframes multiColorCycle4 {
+  0%    { color: $warm-4; }
+  7.14% { color: $warm-5; }
+  14.28% { color: $warm-6; }
+  21.42% { color: $warm-7; }
+  28.57% { color: $warm-6; }
+  35.71% { color: $warm-5 }
+  42.85% { color: $warm-4; }
+  50.00% { color: $warm-3; }
+  57.14% { color: $warm-2; }
+  64.28% { color: $warm-1; }
+  71.42% { color: $warm-2; }
+  78.57% { color: $warm-3; }
+  85.71% { color: $warm-4; }
+  100%   { color: $warm-4; }
+}
+@keyframes multiColorCycle5 {
+  0.0% { color: $warm-4; }
+  7.14% { color: $warm-5; }
+  14.29% { color: $warm-6; }
+  21.43% { color: $warm-7; }
+  28.57% { color: $warm-6; }
   35.71% { color: $cold-7; }
   42.86% { color: $cold-6; }
   50.0% { color: $cold-5; }
@@ -328,6 +346,9 @@ h1, h2, h3, h4, h5, h6 {
   92.86% { color: $warm-2; }
   100.0% { color: $warm-3; }
 }
+
+
+
 
 
 @keyframes blink {
@@ -350,18 +371,24 @@ h1, h2, h3, h4, h5, h6 {
   @include blink-cycle(multiColorCycle1, 7s, -1s);
 }
 
-a.multi-blink-2 {
-  color: #{$warm-2} !important;
+
+// 1 ===
+// multi-blink: full warm cycle  (no cold) 
+
+.multi-blink-1,
+.multi-blink-1:link,
+.multi-blink-1:visited,
+.multi-blink-1:active,
+.multi-blink-1:hover {
+  color: $warm-1 ;
   text-decoration: none !important;
-  font-weight: bold !important;
-  transition: transform 0.5s ease !important;
-  animation: 
-    blink $speed-slow infinite,
-    multiColorCycle2 $speed-slow infinite;
+  font-weight: bold;
+  transition: transform 0.5s ease;
+  animation: blink $speed-slow infinite, multiColorCycle1 $speed-slow infinite;
+  animation-play-state: running !important;
 }
 
 
-// 1 ===
 a.multi-blink-1 {
   color: #{$warm-1} !important;
   text-decoration: none !important;
@@ -383,6 +410,20 @@ a.multi-blink-1:hover {
 
 
 // 2 ===
+
+.multi-blink-2,
+.multi-blink-2:link,
+.multi-blink-2:visited,
+.multi-blink-2:active,
+.multi-blink-2:hover {
+  color: $warm-2 !important;
+  text-decoration: none !important;
+  font-weight: bold;
+  transition: transform 0.5s ease;
+  animation: blink $speed-slow infinite, multiColorCycle2 $speed-xl-slow infinite;
+  animation-play-state: running !important;
+}
+
 a.multi-blink-2 {
   color: #{$warm-2} !important;
   text-decoration: none !important;
@@ -392,6 +433,48 @@ a.multi-blink-2 {
     blink $speed-slow infinite,
     multiColorCycle2 $speed-slow infinite;
 }
+a.multi-blink-2:hover {
+  animation-play-state: paused !important;  // <-- Force it
+  transform: scale(1.5) !important;
+  text-shadow: 0 0 10px $warm-1 !important;
+}
+
+
+
+// 3 ===
+a.multi-blink-3 {
+  color: #{$warm-2} !important;
+  text-decoration: none !important;
+  font-weight: bold !important;
+  transition: transform 0.5s ease !important;
+  animation: 
+    blink $speed-slow infinite,
+    multiColorCycle3 $speed-slow infinite;
+}
+
+a.multi-blink-3:hover {
+  animation-play-state: paused !important;  // <-- Force it
+  transform: scale(1.5) !important;
+  text-shadow: 0 0 10px $warm-1 !important;
+}
+
+// 3 ===
+a.multi-blink-4 {
+  color: #{$warm-2} !important;
+  text-decoration: none !important;
+  font-weight: bold !important;
+  transition: transform 0.5s ease !important;
+  animation: 
+    blink $speed-slow infinite,
+    multiColorCycle3 $speed-slow infinite;
+}
+
+a.multi-blink-4:hover {
+  animation-play-state: paused !important;  // <-- Force it
+  transform: scale(1.5) !important;
+  text-shadow: 0 0 10px $warm-1 !important;
+}
+
 
 
 

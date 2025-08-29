@@ -5,9 +5,21 @@
   <!-- Load the STIX Two Text font -->
   <link href="https://fonts.googleapis.com/css2?family=STIX+Two+Text&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="single_poem.css">
+  <style>
+    /* Center and size the plates */
+    .plate-img {
+      display: block;
+      margin: 2rem auto;          /* centers relative to poem text */
+      max-width: 80%;            /* not too wide */
+      height: auto;
+    }
+
+    .foot-plate {
+      max-width: 90%;            /* foot plate takes up most of the screen */
+    }
+  </style>
 </head>
 <body>
-
   <!-- Banner -->
  <div class="poem-banner">
   <a href="../index.html">home →</a>
@@ -17,13 +29,20 @@
 
   <!-- POEM CONTAINER START -->
 <div class="poem-container">
+
+    <!-- HEAD PLATE -->
+    <a href="images/head_plate.png">
+      <img src="images/head_plate.png" alt="Head Plate" class="plate-img">
+    </a>
+
     <!-- title -->
     <h1 class="poem-title">
-    <a href="index.html">Ex Libris</a>
+      <a href="index.html">Ex Libris</a>
     </h1>
     <h4 class="poem-title" style="font-size:1.2rem;">
-  For Elizabeth B., and the love she inspires
-</h4>
+      <em>For Elizabeth B., and the love she inspires</em>
+    </h4>
+
 
      <!-- poem body begins-->
     <pre class="poem-body">
@@ -94,8 +113,12 @@ Rouse the rabble, storm the state,
 let the wild rumpus out.
     </pre>
   </div>
- <div class="poem_picture">
-  <img src="images/betsy_footplate.png" alt="pic">
+  <img src="images/foot_plate.png" alt="Foot Plate" class="plate-img foot-plate">
+
+  </div>
+
+</body>
+</html>
 </div>
 
 

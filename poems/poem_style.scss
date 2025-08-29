@@ -36,9 +36,9 @@ $sz_l: 2.0rem;
 $sz_m: 1.5rem;   
 $sz_s: 1.0rem;
 
-
-
 //END OF GLONAL VARS
+
+//SET ROOT VARIABLES FOR CSS this is where the magic happens folks 
 
 :root {
   /* Periods */
@@ -92,8 +92,36 @@ a {
   font-family: 'STIX Two Text', serif;
   cursor: pointer;
 }
+// === TOC table of content style ===
 
-// 🔥 Fix for animated blinking links (this is new)
+
+.table-of-c{
+margin-top: 0.25rem;
+margin-left: 2rem; 
+margin-right: 2rem; 
+  background:#000000;
+  font-family: 'STIX Two Text', serif;
+   background-color:#000000;;
+    text-align:left;
+    padding: 1rem;
+    color: $text_color;
+
+h1 {margin-top: 0.5rem;
+  text-align:left; 
+  font-size: 2.5rem;
+  color: #FFFBF0;
+  margin-bottom: 0.5rem;
+}
+h2 {margin-top: 0.1rem;    
+  text-align:left; ;
+  font-size: 1.5rem;
+  color: #FFFBF0;
+  margin-bottom: 0.1;
+}
+
+}
+
+// multi-blink: full warm cycle  (no cold) 
 
 .multi-blink-1,
 .multi-blink-1:link,
@@ -128,35 +156,6 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 
-// === TOC table of content style ===
-
-
-.table-of-c{
-margin-top: 0.25rem;
-margin-left: 2rem; 
-margin-right: 2rem; 
-  background:#000000;
-  font-family: 'STIX Two Text', serif;
-   background-color:#000000;;
-    text-align:left;
-    padding: 1rem;
-    color: $text_color;
-
-h1 {margin-top: 0.5rem;
-  text-align:left; 
-  font-size: 2.5rem;
-  color: #FFFBF0;
-  margin-bottom: 0.5rem;
-}
-h2 {margin-top: 0.1rem;    
-  text-align:left; ;
-  font-size: 1.5rem;
-  color: #FFFBF0;
-  margin-bottom: 0.1;
-}
-
-
-}
 
 
 // === Blinking Animation ===
@@ -220,43 +219,6 @@ h2 {margin-top: 0.1rem;
 }
 
 
-.warm-poem{
-    background-color:$warm-bg;
-    font-family:$font;
-    text-align:left;
-    padding: 1rem;
-    color: $text_color;
-
-    pre {
-    font-family: inherit;
-    white-space: pre-wrap;  // Optional: wrap long lines
-  }
-
-    h2 {
-    font-size: $sz_xl;
-    margin-top: 0.5rem;
-    margin-bottom: 0.5rem; //SUS
-  
-
-  h3 {
-    font-size: $sz_l;
-    margin-top: 0.5rem;
-    margin-bottom: 0.5rem; //SUS
-  }
-
-  h4 {
-    font-size: $sz_m;
-    margin-top: 0.25rem;
-    margin-bottom: 0.25rem;
-  }
-
-  p {
-    font-size: $sz_s;
-    margin-top: 0.1 rem;
-    margin-bottom: 0.1rem;
-  }
-}
-}
 
 
 // === C      O         L           D        s t u f f.  c.     oo    C O L D.      CODL C.     COLD ===
@@ -309,68 +271,28 @@ h2 {margin-top: 0.1rem;
 }
 
 
-.cold-poem{
-    background-color:$cold-bg;
-    font-family:$font;
-    text-align:left;
-    padding: 1rem;
-    color: $text_color;
-
-    pre {
-    font-family: inherit;
-    white-space: pre-wrap;  // Optional: wrap long lines
-  }
-
-    h2 {
-    font-size: $sz_xl;
-    margin-top: 0.5rem;
-    margin-bottom: 0.5rem; //SUS
-  
-
-  h3 {
-    font-size: $sz_l;
-    margin-top: 0.5rem;
-    margin-bottom: 0.5rem; //SUS
-  }
-
-  h4 {
-    font-size: $sz_m;
-    margin-top: 0.25rem;
-    margin-bottom: 0.25rem;
-  }
-
-  p {
-    font-size: $sz_s;
-    margin-top: 0.1 rem;
-    margin-bottom: 0.1rem;
-  }
-
-}
-}
-
 
 // === MULTI COLOR LINK STUFF MULTI MULTI MULTI ===
 
 
 
-// ===multi Color Cycles ===
 @keyframes multiColorCycle1 {
-  0%    { color: $warm-1; }
-  7.14% { color: $warm-2; }
-  14.28% { color: $warm-3; }
-  21.42% { color: $warm-4; }
-  28.57% { color: $warm-5; }
-  35.71% { color: $warm-6; }
-  42.85% { color: $warm-7; }
-  50.00% { color: $cold-7; }
-  57.14% { color: $cold-6; }
-  64.28% { color: $cold-5; }
-  71.42% { color: $cold-4; }
-  78.57% { color: $cold-3; }
-  85.71% { color: $cold-2; }
-  92.85% { color: $cold-1; }
-  100%   { color: $warm-1; }
+  0%      { color: $warm-1; }
+  7.14%   { color: $warm-2; }
+  14.29%  { color: $warm-3; }
+  21.43%  { color: $warm-4; }
+  28.57%  { color: $warm-5; }
+  35.71%  { color: $warm-6; }
+  42.86%  { color: $warm-7; }
+  50.00%  { color: $warm-6; }
+  57.14%  { color: $warm-5; }
+  64.29%  { color: $warm-4; }
+  71.43%  { color: $warm-3; }
+  78.57%  { color: $warm-2; }
+  85.71%  { color: $warm-1; }
+  100%    { color: $warm-1; }
 }
+
 @keyframes multiColorCycle2 {
   0%    { color: $warm-2; }
   7.14% { color: $warm-3; }
@@ -471,24 +393,6 @@ a.multi-blink-2 {
     multiColorCycle2 $speed-slow infinite;
 }
 
-// 3 ===
-a.multi-blink-3 {
-  color: #{$warm-3} !important;
-  text-decoration: none !important;
-  font-weight: bold !important;
-  transition: transform 0.5s ease !important;
-  animation: 
-    blink $speed-slow infinite,
-    multiColorCycle2 $speed-slow infinite;
-}
-
-
-
-a.multi-blink-2:hover {
-  animation-play-state: paused !important;  // <-- Force it
-  transform: scale(1.5) !important;
-  text-shadow: 0 0 10px $warm-2 !important;
-}
 
 
 
@@ -498,19 +402,4 @@ a.multi-blink-2:hover {
 
 
 
-
-//FONT GAMES
-
-.crackle::before {
-  content: "A ";
-  font-family: 'STIX Two Text', serif; // Your regular font
-  color: $text_color;
-}
-
-.crackle {
-  font-family: 'Menlo', monospace;
-  font-size: $sz_m;
-  color: $text_color;
-  letter-spacing: 0.04em;
-}
 

@@ -56,6 +56,9 @@ body {
   margin-bottom: 1.5rem;  /* space before poem body */
 }
 
+
+/* TODO: CONSOLIDATE */
+
 /* poem title */
 .poem-title {
   font-size: 3rem;                     /* largest */
@@ -94,7 +97,7 @@ body {
 }
 
 
-/* ===== Poem Banner ===== */
+/* ===== BANNER ===== */
 .poem-banner {
   max-width: 900px;       /* match poem width, tweak if needed */
   margin: 0 auto;         /* center the banner */
@@ -160,7 +163,6 @@ html, body {
 }
 
 /* ===== BASIC LINK CLASS ===== */
-/* ===== STRONGER, COLDER LINK CLASS ===== */
 .poem-link {
   display: inline;
   font-size: 1.2em;                         /* bigger text */
@@ -260,6 +262,9 @@ html, body {
   }
 }
 
+/* ===== POEM TITLE STYLES ===== */
+
+
 /* Multi-line title helper so each line sits on its own row */
 .title-lines .line { display: block; line-height: 1.15; }
 
@@ -307,4 +312,107 @@ html, body {
 /* Add breathing room between title(s) and poem body */
 .poem-title {
   margin-bottom: 2rem;   /* adjust this number until it feels right */
+}
+
+
+/* ===== BOOKPLATE OVERLAY ===== */
+.bookplate-container {
+  position: relative;        /* needed so overlay stays within image box */
+  display: inline-block;
+  max-width: 60%;            /* smaller than your poem width */
+  margin: 2rem auto;
+}
+
+.bookplate-container img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* overlay text */
+.bookplate-text {
+  position: absolute;
+  inset: 0; /* stretch to all edges of the container */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 1rem;
+
+  /* === Tunable colors === */
+  --bg-opacity: 0.5;         /* change between 0.0 and 1.0 */
+  --fg-color: black;         /* switch black ↔ white depending on bg */
+  --bg-color: white;         /* switch white ↔ black depending on fg */
+
+  background-color: rgba(255, 255, 255, var(--bg-opacity));
+  color: var(--fg-color);
+
+  font-family: 'STIX Two Text', serif;
+  line-height: 1.4;
+}
+
+.bookplate-text em {
+  font-style: italic;
+}
+
+.bookplate-text .ex-libris {
+  font-size: 1.6em;   /* bigger for Ex Libris */
+  font-weight: bold;
+  margin-top: 1rem;
+}
+
+/* Wrap image + overlay */
+.bookplate-container {
+  position: relative;        /* <-- makes .bookplate-text anchor to this */
+  display: block;
+  width: fit-content;        /* shrink-wrap to image width */
+  margin: 2rem auto;         /* center the whole plate on the page */
+}
+
+/* Image inside the container */
+.plate-img {
+  display: block;
+  max-width: 75%;            /* head plate size */
+  height: auto;
+}
+
+/* Optional: a "foot" plate can be wider */
+.plate-img.foot-plate {
+  max-width: 90%;
+}
+
+/* Keep overlay above the image */
+.bookplate-text {
+  position: absolute;
+  inset: 0;                  /* fill the container (same box as the image) */
+  z-index: 1;                /* ensure it sits on top */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 1rem;
+
+  /* Tunable colors */
+  --bg-opacity: 0.3;
+  --fg-color: black;
+  --bg-color: white;
+
+  background-color: rgba(255, 255, 255, var(--bg-opacity));
+  color: var(--fg-color);
+
+  font-family: 'STIX Two Text', serif;
+  line-height: 1.4;
+
+  /* Optional: let clicks pass through to links beneath */
+  /* pointer-events: none; */
+}
+
+.bookplate-text em { font-style: italic; }
+
+.bookplate-text .ex-libris {
+  font-size: 1.6em;
+  font-weight: bold;
+  margin-top: 1rem;
 }

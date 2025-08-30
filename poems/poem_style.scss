@@ -15,7 +15,7 @@ $warm-1: #faa672;
 $warm-2: #fa915b;
 $warm-3: #d77063;
 $warm-4: #fba9a0;
-$warm-5: #e0764b;
+$warm-5: #e0764b; 
 $warm-6: #72b4b2;
 $warm-7: #1b3f6d;
 $warm-bg: #22031F;
@@ -396,7 +396,7 @@ a.multi-blink-1 {
   transition: transform 0.5s ease !important;
   animation: 
     blink $speed-slow infinite,
-    multiColorCycle1 $speed-slow infinite;
+    multiColorCycle1 $speed-five infinite;
 }
 
 
@@ -443,7 +443,7 @@ a.multi-blink-2:hover {
 
 // 3 ===
 a.multi-blink-3 {
-  color: #{$warm-2} !important;
+  color: #{$warm-3} !important;
   text-decoration: none !important;
   font-weight: bold !important;
   transition: transform 0.5s ease !important;
@@ -458,15 +458,15 @@ a.multi-blink-3:hover {
   text-shadow: 0 0 10px $warm-1 !important;
 }
 
-// 3 ===
+// 4 ===
 a.multi-blink-4 {
-  color: #{$warm-2} !important;
+  color: #{$warm-4} !important;
   text-decoration: none !important;
   font-weight: bold !important;
   transition: transform 0.5s ease !important;
   animation: 
     blink $speed-slow infinite,
-    multiColorCycle3 $speed-slow infinite;
+    multiColorCycle4 $speed-slow infinite;
 }
 
 a.multi-blink-4:hover {
@@ -474,6 +474,100 @@ a.multi-blink-4:hover {
   transform: scale(1.5) !important;
   text-shadow: 0 0 10px $warm-1 !important;
 }
+
+// 5 ===
+
+.multi-blink-5,
+.multi-blink-5:link,
+.multi-blink-5:visited,
+.multi-blink-5:active,
+.multi-blink-5:hover {
+  color:  #{$warm-5}  !important;
+  text-decoration: none !important;
+  font-weight: bold;
+  transition: transform 0.5s ease;
+  animation: blink $speed-slow infinite, multiColorCycle2 $speed-xl-slow infinite;
+  animation-play-state: running !important;
+}
+
+a.multi-blink-5 {
+  color: #{$warm-5} !important;
+  text-decoration: none !important;
+  font-weight: bold !important;
+  transition: transform 0.5s ease !important;
+  animation: 
+    blink $speed-slow infinite,
+    multiColorCycle2 $speed-xl-slow infinite;
+}
+a.multi-blink-5:hover {
+  animation-play-state: paused !important;  // <-- Force it
+  transform: scale(1.5) !important;
+  text-shadow: 0 0 10px $warm-2 !important;
+}
+
+// 6 ===
+
+.multi-blink-6,
+.multi-blink-6:link,
+.multi-blink-6:visited,
+.multi-blink-6:active,
+.multi-blink-6:hover {
+  color:  #{$warm-6}  !important;
+  text-decoration: none !important;
+  font-weight: bold;
+  transition: transform 1.5s ease;
+  animation: blink $speed-slow infinite, multiColorCycle2 $speed-five infinite;
+  animation-play-state: running !important;
+}
+
+a.multi-blink-6 {
+  color: #{$warm-6} !important;
+  text-decoration: none !important;
+  font-weight: bold !important;
+  transition: transform 1.5s ease !important;
+  animation: 
+    blink $speed-slow infinite,
+    multiColorCycle2 $speed-xl-slow infinite;
+}
+a.multi-blink-5:hover {
+  animation-play-state: paused !important;  // <-- Force it
+  transform: scale(1.5) !important;
+  text-shadow: 0 0 10px $warm-7 !important;
+}
+
+
+
+// 7 ===
+
+.multi-blink-0,
+.multi-blink-0:link,
+.multi-blink-0:visited,
+.multi-blink-0:active,
+.multi-blink-0:hover {
+  color:  #{$warm-7}  !important;
+  text-decoration: none !important;
+  font-weight: bold;
+  transition: transform 0.25s ease;
+  animation: blink $speed-slow infinite, multiColorCycle2 $speed-xl-slow infinite;
+  animation-play-state: running !important;
+}
+
+a.multi-blink-0 {
+  color: #{$warm-7} !important;
+  text-decoration: none !important;
+  font-weight: bold !important;
+  transition: transform 0.25s ease !important;
+  animation: 
+    blink $speed-slow infinite,
+    multiColorCycle2 $speed-xl-slow infinite;
+}
+a.multi-blink-0:hover {
+  animation-play-state: paused !important;  // <-- Force it
+  transform: scale(1.5) !important;
+  text-shadow: 0 0 10px $warm-6 !important;
+}
+
+
 
 
 

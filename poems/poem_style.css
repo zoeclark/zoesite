@@ -482,7 +482,7 @@ a.multi-blink-1 {
   text-decoration: none !important;
   font-weight: bold !important;
   transition: transform 0.5s ease !important;
-  animation: blink 15s infinite, multiColorCycle1 15s infinite;
+  animation: blink 15s infinite, multiColorCycle1 5s infinite;
 }
 
 a.multi-blink-1:hover {
@@ -519,7 +519,7 @@ a.multi-blink-2:hover {
 }
 
 a.multi-blink-3 {
-  color: #fa915b !important;
+  color: #d77063 !important;
   text-decoration: none !important;
   font-weight: bold !important;
   transition: transform 0.5s ease !important;
@@ -533,17 +533,98 @@ a.multi-blink-3:hover {
 }
 
 a.multi-blink-4 {
-  color: #fa915b !important;
+  color: #fba9a0 !important;
   text-decoration: none !important;
   font-weight: bold !important;
   transition: transform 0.5s ease !important;
-  animation: blink 15s infinite, multiColorCycle3 15s infinite;
+  animation: blink 15s infinite, multiColorCycle4 15s infinite;
 }
 
 a.multi-blink-4:hover {
   animation-play-state: paused !important;
   transform: scale(1.5) !important;
   text-shadow: 0 0 10px #faa672 !important;
+}
+
+.multi-blink-5,
+.multi-blink-5:link,
+.multi-blink-5:visited,
+.multi-blink-5:active,
+.multi-blink-5:hover {
+  color: #e0764b !important;
+  text-decoration: none !important;
+  font-weight: bold;
+  transition: transform 0.5s ease;
+  animation: blink 15s infinite, multiColorCycle2 25s infinite;
+  animation-play-state: running !important;
+}
+
+a.multi-blink-5 {
+  color: #e0764b !important;
+  text-decoration: none !important;
+  font-weight: bold !important;
+  transition: transform 0.5s ease !important;
+  animation: blink 15s infinite, multiColorCycle2 25s infinite;
+}
+
+a.multi-blink-5:hover {
+  animation-play-state: paused !important;
+  transform: scale(1.5) !important;
+  text-shadow: 0 0 10px #fa915b !important;
+}
+
+.multi-blink-6,
+.multi-blink-6:link,
+.multi-blink-6:visited,
+.multi-blink-6:active,
+.multi-blink-6:hover {
+  color: #72b4b2 !important;
+  text-decoration: none !important;
+  font-weight: bold;
+  transition: transform 1.5s ease;
+  animation: blink 15s infinite, multiColorCycle2 5s infinite;
+  animation-play-state: running !important;
+}
+
+a.multi-blink-6 {
+  color: #72b4b2 !important;
+  text-decoration: none !important;
+  font-weight: bold !important;
+  transition: transform 1.5s ease !important;
+  animation: blink 15s infinite, multiColorCycle2 25s infinite;
+}
+
+a.multi-blink-5:hover {
+  animation-play-state: paused !important;
+  transform: scale(1.5) !important;
+  text-shadow: 0 0 10px #1b3f6d !important;
+}
+
+.multi-blink-0,
+.multi-blink-0:link,
+.multi-blink-0:visited,
+.multi-blink-0:active,
+.multi-blink-0:hover {
+  color: #1b3f6d !important;
+  text-decoration: none !important;
+  font-weight: bold;
+  transition: transform 0.25s ease;
+  animation: blink 15s infinite, multiColorCycle2 25s infinite;
+  animation-play-state: running !important;
+}
+
+a.multi-blink-0 {
+  color: #1b3f6d !important;
+  text-decoration: none !important;
+  font-weight: bold !important;
+  transition: transform 0.25s ease !important;
+  animation: blink 15s infinite, multiColorCycle2 25s infinite;
+}
+
+a.multi-blink-0:hover {
+  animation-play-state: paused !important;
+  transform: scale(1.5) !important;
+  text-shadow: 0 0 10px #72b4b2 !important;
 }
 
 /*# sourceMappingURL=poem_style.css.map */

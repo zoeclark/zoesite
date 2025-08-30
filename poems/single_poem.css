@@ -440,3 +440,24 @@ html, body {
   backdrop-filter: none !important;
   -webkit-backdrop-filter: none !important;
 }
+
+/* 1) Foot plate = 75% of poem column */
+.bookplate--foot75 {
+  --img-width: 75%;
+}
+
+/* 2) Foot plate = “little under a screen” (centered viewport width) */
+.bookplate--screenish {
+  /* width driven by viewport, not the poem column */
+  --img-width: 92vw;                 /* ~a bit under full screen */
+  width: var(--img-width);
+  max-width: 92vw;
+  margin-left: 50%;
+  transform: translateX(-50%);       /* center in viewport */
+}
+
+/* Ensure the image fits the container in the screenish mode */
+.bookplate--screenish .plate-img.foot-plate {
+  width: 100% !important;
+  max-width: none !important;
+}

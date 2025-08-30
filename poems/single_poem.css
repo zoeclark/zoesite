@@ -315,104 +315,128 @@ html, body {
 }
 
 
-/* ===== BOOKPLATE OVERLAY ===== */
+/* ===== BOOKPLATE (clean) ===== */
+
+/* Container sits inside .poem-container so it aligns with poem column */
 .bookplate-container {
-  position: relative;        /* needed so overlay stays within image box */
-  display: inline-block;
-  max-width: 60%;            /* smaller than your poem width */
-  margin: 2rem auto;
+  position: relative;
+  margin: 1.5rem 0;            /* vertical spacing only */
+
+  /* knobs */
+  --img-width: 75%;            /* image width as % of poem column */
+  --overlay-frac: 0.5;         /* overlay is 50% of image width */
+  --band-opacity: 0.6;         /* semi-opaque band behind panel (0–1) */
+  --panel-opacity: 0.88;       /* solid panel behind text (0–1) */
+  --fg-color: black;           /* text color; switch to white if needed */
+  --panel-text: #111;          /* text color on the panel */
 }
 
-.bookplate-container img {
-  width: 100%;
-  height: auto;
+/* Plate image: centered within the poem column */
+.bookplate-container .plate-img {
   display: block;
+  width: var(--img-width);
+  max-width: 100%;
+  height: auto;
+  margin: 0 auto;              /* centers image */
 }
 
-/* overlay text */
-.bookplate-text {
+/* Overlay band: centered, HALF the image width by default */
+.bookplate-container .bookplate-text {
   position: absolute;
-  inset: 0; /* stretch to all edges of the container */
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: calc(var(--img-width) * var(--overlay-frac));
+  transform: translateX(-50%);
+  z-index: 1;
+
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
+
   padding: 1rem;
-
-  /* === Tunable colors === */
-  --bg-opacity: 0.5;         /* change between 0.0 and 1.0 */
-  --fg-color: black;         /* switch black ↔ white depending on bg */
-  --bg-color: white;         /* switch white ↔ black depending on fg */
-
-  background-color: rgba(255, 255, 255, var(--bg-opacity));
+  background: rgba(255, 255, 255, var(--band-opacity)) !important; /* survive global resets */
   color: var(--fg-color);
-
-  font-family: 'STIX Two Text', serif;
   line-height: 1.4;
+  font-family: 'STIX Two Text', serif;
+
+  /* Optional nice-to-haves */
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+  border-radius: 8px;
+  box-shadow: 0 0 12px rgba(0,0,0,0.25);
 }
 
-.bookplate-text em {
-  font-style: italic;
-}
-
-.bookplate-text .ex-libris {
-  font-size: 1.6em;   /* bigger for Ex Libris */
-  font-weight: bold;
-  margin-top: 1rem;
-}
-
-/* Wrap image + overlay */
-.bookplate-container {
-  position: relative;        /* <-- makes .bookplate-text anchor to this */
-  display: block;
-  width: fit-content;        /* shrink-wrap to image width */
-  margin: 2rem auto;         /* center the whole plate on the page */
-}
-
-/* Image inside the container */
-.plate-img {
-  display: block;
-  max-width: 75%;            /* head plate size */
-  height: auto;
-}
-
-/* Optional: a "foot" plate can be wider */
-.plate-img.foot-plate {
-  max-width: 90%;
-}
-
-/* Keep overlay above the image */
-.bookplate-text {
+/* Text panel: higher opacity behind the words */
+/* Overlay: HALF the image width AND HALF the image height, centered */
+.bookplate-container .bookplate-text {
   position: absolute;
-  inset: 0;                  /* fill the container (same box as the image) */
-  z-index: 1;                /* ensure it sits on top */
-  display: flex;
-  flex-direction: column;
+  left: 50%;
+  top: 50%;
+  width: calc(var(--img-width) * var(--overlay-frac));     /* ← half the image width */
+  height: calc(100% * var(--overlay-vfrac));               /* ← half the image height */
+  transform: translate(-50%, -50%);                        /* center both axes */
+  z-index: 1;
+
   justify-content: center;
   align-items: center;
   text-align: center;
+
   padding: 1rem;
-
-  /* Tunable colors */
-  --bg-opacity: 0.3;
-  --fg-color: black;
-  --bg-color: white;
-
-  background-color: rgba(255, 255, 255, var(--bg-opacity));
+  background: rgba(255, 255, 255, var(--band-opacity)) !important;
   color: var(--fg-color);
-
-  font-family: 'STIX Two Text', serif;
   line-height: 1.4;
+  font-family: 'STIX Two Text', serif;
 
-  /* Optional: let clicks pass through to links beneath */
-  /* pointer-events: none; */
+
+  border-radius: 8px;
+  box-shadow: 0 0 12px rgba(0,0,0,0.25);
+
+  /* if your text is long, consider overflow:auto; or bump --overlay-vfrac */
+  /* overflow: auto; */
 }
 
+/* Emphasis + Ex Libris sizing */
 .bookplate-text em { font-style: italic; }
+.bookplate-text .ex-libris { font-size: 1.6em; font-weight: 700; margin-top: 1rem; }
 
-.bookplate-text .ex-libris {
-  font-size: 1.6em;
-  font-weight: bold;
-  margin-top: 1rem;
+/* Optional: foot-plate variant (bigger image) */
+.bookplate-container .plate-img.foot-plate { width: 85%; }
+
+/* ===== Minimal color controls ===== */
+.bookplate-container {
+  /* your existing sizing knobs */
+  --img-width: 90%;
+  --overlay-frac: 0.5;    /* width fraction of image */
+  --overlay-vfrac: 0.5;   /* height fraction of image */
+
+  /* ONLY these two color controls */
+  --bg-opacity: 0.9;      /* 0–1 */
+  --use-black: 0.3;         /* 1 = black bg, 0 = transparent/off */
+}
+
+/* Overlay band (uses ONLY the two knobs above) */
+.bookplate-container .bookplate-text {
+  background: rgba(0,0,0, calc(var(--use-black) * var(--bg-opacity))) !important;
+  color: #fff;
+}
+
+/* Optional text panel behind the words (same two knobs) */
+.bookplate-container .bookplate-text .bookplate-panel {
+  /* Slightly stronger than the band; keep bg-opacity ≤ 0.8 to avoid >1 alpha */
+  background: rgba(0,0,0, calc(var(--use-black) * (var(--bg-opacity) + 0.2))) !important;
+  color: #fff;
+}
+
+/* Kill blur on the overlay band */
+.bookplate-container .bookplate-text {
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+/* If you added a panel inside, kill its blur too */
+.bookplate-container .bookplate-text .bookplate-panel {
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
 }

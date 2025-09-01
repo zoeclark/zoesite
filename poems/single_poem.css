@@ -402,7 +402,7 @@ html, body {
 .bookplate-text .ex-libris { font-size: 1.6em; font-weight: 700; margin-top: 1rem; }
 
 /* Optional: foot-plate variant (bigger image) */
-.bookplate-container .plate-img.foot-plate { width: 85%; }
+.bookplate-container .plate-img.foot-plate { width: 65%; }
 
 /* ===== Minimal color controls ===== */
 .bookplate-container {
@@ -442,7 +442,7 @@ html, body {
 }
 
 /* 1) Foot plate = 75% of poem column */
-.bookplate--foot75 {
+.bookplate--foot {
   --img-width: 75%;
 }
 

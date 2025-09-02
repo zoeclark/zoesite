@@ -71,17 +71,18 @@
   color: transparent; /* fallback */
 }
 
+/* === Always show room titles === */
 .room-link span {
-  color: transparent;
+  color: white;   /* was transparent */
   font-size: 0.8rem;
   font-weight: bold;
   transition: color 0.3s ease;
 }
 
+
 .room-link:hover span,
 .room-link:hover {
-  color: white;
-  transform: scale(1.05);
+  transform: scale(1.08);
 }
 
 /* === Active press === */

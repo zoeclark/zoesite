@@ -182,7 +182,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 // === POEM 1 color cycle ===
-@keyframes ColorCycle_poem1 {
+@keyframes poem1_cycle {
  0%      { color: $warm-1; }
   14.29%  { color: $warm-2; }
   28.57%  { color: $warm-3; }
@@ -232,6 +232,38 @@ h1, h2, h3, h4, h5, h6 {
   100%    { color: $cold-2; }
 }
 
+// === POEM 4 color cycle ===
+
+@keyframes poem4_cycle {
+ 0%      { color: $warm-5; }
+  14.29%  { color: $warm-4; }
+  28.57%  { color: $warm-4; }
+  42.86%  { color: $warm-5; }
+  50.00%  { color: $warm-5; }
+  64.29%  { color: $warm-3; }
+  78.57%  { color: $warm-1; }
+  100%    { color: $cold-2; }
+}
+
+
+@keyframes poem5_cycle {
+  0%      { color: $cold-1; }
+  7.14%   { color: $cold-2; }
+  14.29%  { color: $cold-3; }
+  21.43%  { color: $cold-4; }
+  28.57%  { color: $cold-5; }
+  35.71%  { color: $cold-6; }
+  42.86%  { color: $cold-7; }
+  50.00%  { color: $cold-bg; }
+  57.14%  { color: $cold-7; }
+  64.29%  { color: $cold-6; }
+  71.43%  { color: $cold-5; }
+  78.57%  { color: $cold-4; }
+  85.71%  { color: $cold-3; }
+  100%    { color: $cold-2; }
+}
+
+
 // === Warm Palette ===
 
 $warm-1: #faa672;
@@ -258,23 +290,6 @@ $warm-bg: #22031F;
 
 
 
-
-@keyframes poem1_cycle {
-  0%      { color: $warm-1; }
-  7.14%   { color: $warm-2; }
-  14.29%  { color: $warm-3; }
-  21.43%  { color: $warm-4; }
-  28.57%  { color: $warm-5; }
-  35.71%  { color: $warm-6; }
-  42.86%  { color: $warm-7; }
-  50.00%  { color: $warm-bg; }
-  57.14%  { color: $warm-7; }
-  64.29%  { color: $warm-6; }
-  71.43%  { color: $warm-5; }
-  78.57%  { color: $warm-3; }
-  85.71%  { color: $warm-3; }
-  100%    { color: $warm-2; }
-}
 
 
 
@@ -321,47 +336,42 @@ $warm-bg: #22031F;
 }
 // === POEM 1 blink link  class STARAT ===
 .poem_1_blink {
-  @include blink-cycle(ColorCycle_poem1 7s, -1s);
+  @include blink-cycle(poem1_cycle 7s, -1s);
   text-shadow:
     0 0 0.25em currentColor,
     0 0 0.6em  #72b4b2,
     0 0 1.1em  currentColor;
 }
-/* poem 1 hover effect */
-.poem_1_blink:hover,
-.poem_1_blink:focus-visible {
-  transform: scale(1.2); /* slight glrow */
-  text-shadow:
-    0 0 0.4em  currentColor,
-    0 0 1.2em  #faa672,
-    0 0 2.2em  #72b4b2; /* strong glow */
-  outline: #DAE4E7
-}
-// === POEM 1 blink FIN===
+// === POEM 1 blink END ===
 
 
-// === POEM 2 blink START===
+// === POEM 2 blink START ===
 .poem_2_blink {
   @include blink-cycle(poem2_cycle 28s, -1s);
   text-shadow:
     0 0 0.25em #fa915b,
     0 0 0.6em currentColor,
-    0 0 1.1em  currentColor;
+    0 0 1.1em currentColor;
 }
-/* poem 1 hover effect */
+// === POEM 2 blink END ===
+
+
+/* === Minimal hover/focus: only enlarge text (applies to both) === */
+.poem-title:hover span,
+.poem-title a:hover,
+a.poem-link:hover,
 .poem_1_blink:hover,
-.poem_1_blink:focus-visible {
-  transform: scale(1.2); /* slight glrow */
-  text-shadow:
-    0 0 0.4em  currentColor,
-    0 0 1.2em  #faa672,
-    0 0 2.2em  #72b4b2; /* strong glow */
-  outline: #DAE4E7
+.poem_2_blink:hover,
+.poem-title:focus-visible span,
+.poem-title a:focus-visible,
+a.poem-link:focus-visible,
+.poem_1_blink:focus-visible,
+.poem_2_blink:focus-visible {
+  font-size: 120%;
 }
 
 
-
-// 1 ===
+// 1 ===TO DO DELETE
 // multi-blink: full warm cycle  (no cold) 
 
 .multi-blink-1,

@@ -182,7 +182,7 @@ h1, h2, h3, h4, h5, h6 {
     color: #DAE4E7;
   }
 }
-@keyframes ColorCycle_poem1 {
+@keyframes poem1_cycle {
   0% {
     color: #faa672;
   }
@@ -296,51 +296,77 @@ h1, h2, h3, h4, h5, h6 {
     color: #DAE4E7;
   }
 }
-/* Cold Palette */
-@keyframes poem1_cycle {
+@keyframes poem4_cycle {
   0% {
-    color: #faa672;
-  }
-  7.14% {
-    color: #fa915b;
+    color: #fba9a0;
   }
   14.29% {
-    color: #e0764b;
-  }
-  21.43% {
     color: #d77063;
   }
   28.57% {
-    color: #fba9a0;
-  }
-  35.71% {
-    color: #72b4b2;
+    color: #d77063;
   }
   42.86% {
-    color: #1b3f6d;
-  }
-  50.00% {
-    color: #22031F;
-  }
-  57.14% {
-    color: #1b3f6d;
-  }
-  64.29% {
-    color: #72b4b2;
-  }
-  71.43% {
     color: #fba9a0;
   }
-  78.57% {
+  50.00% {
+    color: #fba9a0;
+  }
+  64.29% {
     color: #e0764b;
   }
-  85.71% {
-    color: #e0764b;
+  78.57% {
+    color: #faa672;
   }
   100% {
-    color: #fa915b;
+    color: #DAE4E7;
   }
 }
+@keyframes poem5_cycle {
+  0% {
+    color: #e3f3f2;
+  }
+  7.14% {
+    color: #DAE4E7;
+  }
+  14.29% {
+    color: #929BA2;
+  }
+  21.43% {
+    color: #5C6B73;
+  }
+  28.57% {
+    color: #4B5960;
+  }
+  35.71% {
+    color: #6f6d6c;
+  }
+  42.86% {
+    color: #51504d;
+  }
+  50.00% {
+    color: #1A211F;
+  }
+  57.14% {
+    color: #51504d;
+  }
+  64.29% {
+    color: #6f6d6c;
+  }
+  71.43% {
+    color: #4B5960;
+  }
+  78.57% {
+    color: #5C6B73;
+  }
+  85.71% {
+    color: #929BA2;
+  }
+  100% {
+    color: #DAE4E7;
+  }
+}
+/* Cold Palette */
 @keyframes blink {
   0%, 100% {
     opacity: 1;
@@ -377,21 +403,13 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .poem_1_blink {
-  animation: blink -1s infinite, ColorCycle_poem1 7s -1s linear infinite;
+  animation: blink -1s infinite, poem1_cycle 7s -1s linear infinite;
   animation-delay: 0s;
   animation-play-state: running;
   text-decoration: none;
   font-weight: bold;
   transition: transform 0.7s ease;
   text-shadow: 0 0 0.25em currentColor, 0 0 0.6em #72b4b2, 0 0 1.1em currentColor;
-}
-
-/* poem 1 hover effect */
-.poem_1_blink:hover,
-.poem_1_blink:focus-visible {
-  transform: scale(1.2); /* slight glrow */
-  text-shadow: 0 0 0.4em currentColor, 0 0 1.2em #faa672, 0 0 2.2em #72b4b2; /* strong glow */
-  outline: #DAE4E7;
 }
 
 .poem_2_blink {
@@ -404,12 +422,18 @@ h1, h2, h3, h4, h5, h6 {
   text-shadow: 0 0 0.25em #fa915b, 0 0 0.6em currentColor, 0 0 1.1em currentColor;
 }
 
-/* poem 1 hover effect */
+/* === Minimal hover/focus: only enlarge text (applies to both) === */
+.poem-title:hover span,
+.poem-title a:hover,
+a.poem-link:hover,
 .poem_1_blink:hover,
-.poem_1_blink:focus-visible {
-  transform: scale(1.2); /* slight glrow */
-  text-shadow: 0 0 0.4em currentColor, 0 0 1.2em #faa672, 0 0 2.2em #72b4b2; /* strong glow */
-  outline: #DAE4E7;
+.poem_2_blink:hover,
+.poem-title:focus-visible span,
+.poem-title a:focus-visible,
+a.poem-link:focus-visible,
+.poem_1_blink:focus-visible,
+.poem_2_blink:focus-visible {
+  font-size: 120%;
 }
 
 .multi-blink-1,

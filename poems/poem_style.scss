@@ -97,8 +97,8 @@ a {
 
 
 .table-of-c{
-margin-top: 0.25rem;
-margin-left: 2rem; 
+margin-top: 0.21rem;
+margin-left: 2.1rem; 
 margin-right: 2rem; 
   background:#000000;
   font-family: 'STIX Two Text', serif;
@@ -106,12 +106,14 @@ margin-right: 2rem;
     text-align:left;
     padding: 1rem;
     color: $text_color;
+    line-height: 2.1;
 
-h1 {margin-top: 0.5rem;
+h1 {margin-top: 0.7rem;
   text-align:left; 
-  font-size: 2.5rem;
+  font-size: 2.8rem;
   color: #FFFBF0;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.7rem;
+  line-height:2.1 ;
 }
 h2 {margin-top: 0.1rem;    
   text-align:left; ;
@@ -219,17 +221,17 @@ h1, h2, h3, h4, h5, h6 {
   100%    { color: $warm-2; }
 }
 
-// === POEM 4 color cycle ===
+// === POEM 3 color cycle ===
 
-@keyframes poem4_cycle {
- 0%      { color: $warm-5; }
-  14.29%  { color: $warm-4; }
-  28.57%  { color: $warm-4; }
-  42.86%  { color: $warm-5; }
-  50.00%  { color: $warm-5; }
+@keyframes poem3_cycle {
+ 0%      { color: $warm-3; }
+  14.29%  { color: $warm-3; }
+  28.57%  { color: $warm-3; }
+  42.86%  { color: $warm-3; }
+  50.00%  { color: $warm-3; }
   64.29%  { color: $warm-3; }
-  78.57%  { color: $warm-1; }
-  100%    { color: $cold-2; }
+  78.57%  { color: $warm-3; }
+  100%    { color: $cold-3; }
 }
 
 // === POEM 4 color cycle ===
@@ -239,12 +241,14 @@ h1, h2, h3, h4, h5, h6 {
   14.29%  { color: $warm-4; }
   28.57%  { color: $warm-4; }
   42.86%  { color: $warm-5; }
-  50.00%  { color: $warm-5; }
+  50.00%  { color: $warm-bg; }
   64.29%  { color: $warm-3; }
   78.57%  { color: $warm-1; }
   100%    { color: $cold-2; }
 }
 
+
+// === POEM 5 color cycle ===
 
 @keyframes poem5_cycle {
   0%      { color: $cold-1; }
@@ -264,33 +268,30 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 
-// === Warm Palette ===
+// === POEM 2 color cycle ===
 
-$warm-1: #faa672;
-$warm-2: #fa915b;
-$warm-3: #e0764b; ;
-$warm-4: #d77063;
-$warm-5: #fba9a0; 
-$warm-6: #72b4b2;
-$warm-7: #1b3f6d;
-$warm-bg: #22031F;
-
-  /* Cold Palette */
-  $cold-1: #e3f3f2;
-  $cold-2: #DAE4E7;
-  $cold-3: #929BA2;
-  $cold-4: #5C6B73;
-  $cold-5: #4B5960;
-  $cold-6: #6f6d6c;
-  $cold-7: #51504d;
-  $cold-bg: #1A211F;
-
-
-
-
-
-
-
+@keyframes poem2_cycle {
+   0%      { color: $warm-2; }
+   0%      { color: $warm-2; }
+  7.14%   { color: $warm-3; }
+  7.14%   { color: $warm-3; }
+  14.29%  { color: $warm-4; }
+  14.29%  { color: $warm-4; }
+  21.43%  { color: $warm-5; }
+  21.43%  { color: $warm-5; }
+  28.57%  { color: $warm-5; }
+  28.57%  { color: $warm-5; }
+  35.71%  { color: $warm-6; }
+  35.71%  { color: $warm-6; }
+  42.86%  { color: $cold-1; }
+  50.00%  { color: $cold-1; }
+  57.14%  { color: $cold-2; }
+  64.29%  { color: $cold-2; }
+  71.43%  { color: $cold-5; }
+  78.57%  { color: $cold-7; }
+  85.71%  { color: $warm-1; }
+  100%    { color: $warm-2; }
+}
 
 
 // === BLINK ANIMATION/ LINK CLASSES ===
@@ -344,7 +345,6 @@ $warm-bg: #22031F;
 }
 // === POEM 1 blink END ===
 
-
 // === POEM 2 blink START ===
 .poem_2_blink {
   @include blink-cycle(poem2_cycle 28s, -1s);
@@ -354,6 +354,49 @@ $warm-bg: #22031F;
     0 0 1.1em currentColor;
 }
 // === POEM 2 blink END ===
+
+// === POEM 3 FAQ link — static, underlined, steady glow ===
+.poem_3_blink {
+  animation: none !important;   /* kill blink */
+  transition: none !important;
+  display: inline-block;        /* allow scale */
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 0.15em;
+  text-decoration-color: rgba(255,255,255,0.95);
+  text-shadow:
+    0 0 0.25em #e0764b,
+    0 0 0.6em  #e0764b,
+    0 0 1.1em  #e0764b;
+}
+
+/* instant enlarge on hover/focus */
+.poem_3_blink:hover,
+.poem_3_blink:focus-visible {
+  transform: scale(1.4) !important;
+}
+// === POEM 3 blink END ===
+
+// === POEM 4 blink link  class STARAT ===
+.poem_4_blink {
+  @include blink-cycle(poem4_cycle 7s, -1s);
+  text-shadow:
+    0 0 0.25em currentColor,
+    0 0 0.6em  #d77063,
+    0 0 1.1em  #4B5960;
+}
+// === POEM 4 blink END ===
+
+// === POEM 5 blink link  class STARAT ===
+.poem_5_blink {
+  @include blink-cycle(poem5_cycle 7s, -1s);
+  text-shadow:
+    0 0 0.25em #fba9a0,
+    0 0 0.6em  currentColor,
+    0 0 1.1em  #fba9a0;
+}
+// === POEM 5 blink END ===
+
 
 
 /* === Minimal hover/focus: only enlarge text (applies to both) === */
@@ -369,6 +412,9 @@ a.poem-link:focus-visible,
 .poem_2_blink:focus-visible {
   font-size: 120%;
 }
+
+
+
 
 
 // 1 ===TO DO DELETE

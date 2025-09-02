@@ -101,9 +101,14 @@ body {
 .poem-banner {
   max-width: 900px;       /* match poem width, tweak if needed */
   margin: 0 auto;         /* center the banner */
-  background: rgba(255, 255, 255, 0.85);
-  color: #000;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+    /* add color + faint white border without touching other props */
+  background: #22031F;        /* deep background */
+  color: #fff;                /* readable on dark bg */
+  border-top: 1px solid rgba(255,255,255,0.10);
+  border-right: 1px solid rgba(255,255,255,0.10);
+  border-left: 1px solid rgba(255,255,255,0.10);
+  /* keeps your existing border-bottom as-is */
+
 
   display: flex;
   align-items: center;
@@ -144,6 +149,8 @@ body {
   height: auto;
   border: 1px solid black;  /* minimal sleek border */
 }
+
+.poem-banner { margin-bottom: 2.25rem; }
 
 /* ===== GLOBAL NUKES ===== */
 

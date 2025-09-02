@@ -10,9 +10,9 @@
   /* Warm Palette */
   --warm-1: #faa672;
   --warm-2: #fa915b;
-  --warm-3: #e0764b;
-  --warm-4: #d77063;
-  --warm-5: #fba9a0;
+  --warm-3: #d77063;
+  --warm-4: #fba9a0;
+  --warm-5: #e0764b;
   --warm-6: #72b4b2;
   --warm-7: #1b3f6d;
   --warm-bg: #22031F;
@@ -94,6 +94,136 @@ h1, h2, h3, h4, h5, h6 {
   text-align: center;
 }
 
+@keyframes blink {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.3;
+  }
+}
+.fast_blink {
+  animation: blink 5s infinite;
+}
+
+.medium_blink {
+  animation: blink 10s infinite;
+}
+
+.slow_blink {
+  animation: blink 15s infinite;
+}
+
+@keyframes warmColorCycle {
+  0% {
+    color: #faa672;
+  }
+  14% {
+    color: #fa915b;
+  }
+  28% {
+    color: #d77063;
+  }
+  42% {
+    color: #fba9a0;
+  }
+  57% {
+    color: #e0764b;
+  }
+  71% {
+    color: #72b4b2;
+  }
+  85% {
+    color: #1b3f6d;
+  }
+  100% {
+    color: #faa672;
+  }
+}
+.warm-link:hover {
+  transform: scale(1.2);
+  text-shadow: 0 0 10px #d77063;
+}
+
+.warm-blink-slow {
+  animation: blink 15s infinite, warmColorCycle 15s infinite;
+}
+
+.warm-blink-medium {
+  animation: blink 10s infinite, warmColorCycle 10s infinite;
+}
+
+.wark-blink-fast {
+  animation: blink 5s infinite, warmColorCycle 5s linear infinite;
+}
+
+@keyframes coldColorCycle {
+  100% {
+    color: #e3f3f2;
+  }
+  7.14% {
+    color: #DAE4E7;
+  }
+  14.28% {
+    color: #929BA2;
+  }
+  21.42% {
+    color: #5C6B73;
+  }
+  28.57% {
+    color: #4B5960;
+  }
+  35.71% {
+    color: #6f6d6c;
+  }
+  42.85% {
+    color: #51504d;
+  }
+  50.00% {
+    color: #51504d;
+  }
+  57.14% {
+    color: #6f6d6c;
+  }
+  64.28% {
+    color: #4B5960;
+  }
+  71.42% {
+    color: #5C6B73;
+  }
+  78.57% {
+    color: #929BA2;
+  }
+  85.71% {
+    color: #DAE4E7;
+  }
+  92.85% {
+    color: #e3f3f2;
+  }
+}
+.cold-link {
+  text-decoration: none;
+  font-weight: bold;
+  transition: transform 0.5s ease;
+}
+
+.cold-link:hover {
+  transform: scale(1.2);
+  text-shadow: 0 0 10px #929BA2;
+}
+
+.cold-blink-slow {
+  animation: blink 15s infinite, coldColorCycle 15s infinite;
+}
+
+.cold-blink-medium {
+  animation: blink 10s infinite, coldColorCycle 10s infinite;
+}
+
+.cold-blink-fast {
+  animation: blink 5s infinite, coldColorCycle 5s linear infinite;
+}
+
 @keyframes multiColorCycle1 {
   0% {
     color: #faa672;
@@ -102,13 +232,13 @@ h1, h2, h3, h4, h5, h6 {
     color: #fa915b;
   }
   14.29% {
-    color: #e0764b;
-  }
-  21.43% {
     color: #d77063;
   }
-  28.57% {
+  21.43% {
     color: #fba9a0;
+  }
+  28.57% {
+    color: #e0764b;
   }
   35.71% {
     color: #72b4b2;
@@ -117,228 +247,204 @@ h1, h2, h3, h4, h5, h6 {
     color: #1b3f6d;
   }
   50.00% {
-    color: #22031F;
-  }
-  57.14% {
-    color: #1b3f6d;
-  }
-  64.29% {
     color: #72b4b2;
   }
-  71.43% {
+  57.14% {
+    color: #e0764b;
+  }
+  64.29% {
     color: #fba9a0;
   }
+  71.43% {
+    color: #d77063;
+  }
   78.57% {
-    color: #e0764b;
+    color: #fa915b;
   }
   85.71% {
+    color: #faa672;
+  }
+  100% {
+    color: #faa672;
+  }
+}
+@keyframes multiColorCycle2 {
+  0% {
+    color: #fa915b;
+  }
+  7.14% {
+    color: #d77063;
+  }
+  14.28% {
+    color: #fba9a0;
+  }
+  21.42% {
     color: #e0764b;
+  }
+  28.57% {
+    color: #72b4b2;
+  }
+  35.71% {
+    color: #1b3f6d;
+  }
+  42.85% {
+    color: #72b4b2;
+  }
+  50.00% {
+    color: #e0764b;
+  }
+  57.14% {
+    color: #fba9a0;
+  }
+  64.28% {
+    color: #d77063;
+  }
+  71.42% {
+    color: #fa915b;
+  }
+  78.57% {
+    color: #faa672;
+  }
+  85.71% {
+    color: #fa915b;
   }
   100% {
     color: #fa915b;
   }
 }
-@keyframes multiColorCycle2_COLD {
+@keyframes multiColorCycle3 {
   0% {
-    color: #e3f3f2;
+    color: #d77063;
   }
   7.14% {
-    color: #DAE4E7;
+    color: #fba9a0;
   }
-  14.29% {
-    color: #929BA2;
+  14.28% {
+    color: #e0764b;
   }
-  21.43% {
-    color: #5C6B73;
+  21.42% {
+    color: #e0764b;
   }
   28.57% {
-    color: #4B5960;
+    color: #1b3f6d;
   }
   35.71% {
+    color: #72b4b2;
+  }
+  42.85% {
+    color: #e0764b;
+  }
+  50.00% {
+    color: #fba9a0;
+  }
+  57.14% {
+    color: #d77063;
+  }
+  64.28% {
+    color: #fa915b;
+  }
+  71.42% {
+    color: #faa672;
+  }
+  78.57% {
+    color: #fa915b;
+  }
+  85.71% {
+    color: #d77063;
+  }
+  100% {
+    color: #d77063;
+  }
+}
+@keyframes multiColorCycle4 {
+  0% {
+    color: #fba9a0;
+  }
+  7.14% {
+    color: #e0764b;
+  }
+  14.28% {
+    color: #72b4b2;
+  }
+  21.42% {
+    color: #1b3f6d;
+  }
+  28.57% {
+    color: #72b4b2;
+  }
+  35.71% {
+    color: #e0764b;
+  }
+  42.85% {
+    color: #fba9a0;
+  }
+  50.00% {
+    color: #d77063;
+  }
+  57.14% {
+    color: #fa915b;
+  }
+  64.28% {
+    color: #faa672;
+  }
+  71.42% {
+    color: #fa915b;
+  }
+  78.57% {
+    color: #d77063;
+  }
+  85.71% {
+    color: #fba9a0;
+  }
+  100% {
+    color: #fba9a0;
+  }
+}
+@keyframes multiColorCycle5 {
+  0.0% {
+    color: #fba9a0;
+  }
+  7.14% {
+    color: #e0764b;
+  }
+  14.29% {
+    color: #72b4b2;
+  }
+  21.43% {
+    color: #1b3f6d;
+  }
+  28.57% {
+    color: #72b4b2;
+  }
+  35.71% {
+    color: #51504d;
+  }
+  42.86% {
     color: #6f6d6c;
   }
-  42.86% {
-    color: #51504d;
-  }
-  50.00% {
-    color: #1A211F;
-  }
-  57.14% {
-    color: #51504d;
-  }
-  64.29% {
-    color: #6f6d6c;
-  }
-  71.43% {
+  50.0% {
     color: #4B5960;
   }
-  78.57% {
+  57.14% {
     color: #5C6B73;
   }
-  85.71% {
+  64.29% {
     color: #929BA2;
   }
-  100% {
-    color: #DAE4E7;
-  }
-}
-@keyframes ColorCycle_poem1 {
-  0% {
-    color: #faa672;
-  }
-  14.29% {
-    color: #fa915b;
-  }
-  28.57% {
-    color: #e0764b;
-  }
-  42.86% {
-    color: #d77063;
-  }
-  50.00% {
-    color: #fba9a0;
-  }
-  64.29% {
-    color: #72b4b2;
-  }
-  78.57% {
-    color: #fba9a0;
-  }
-  100% {
-    color: #d77063;
-  }
-}
-@keyframes poem2_cycle {
-  0% {
-    color: #fa915b;
-  }
-  0% {
-    color: #fa915b;
-  }
-  7.14% {
-    color: #e0764b;
-  }
-  7.14% {
-    color: #e0764b;
-  }
-  14.29% {
-    color: #d77063;
-  }
-  14.29% {
-    color: #d77063;
-  }
-  21.43% {
-    color: #fba9a0;
-  }
-  21.43% {
-    color: #fba9a0;
-  }
-  28.57% {
-    color: #fba9a0;
-  }
-  28.57% {
-    color: #fba9a0;
-  }
-  35.71% {
-    color: #72b4b2;
-  }
-  35.71% {
-    color: #72b4b2;
-  }
-  42.86% {
-    color: #e3f3f2;
-  }
-  50.00% {
-    color: #e3f3f2;
-  }
-  57.14% {
-    color: #DAE4E7;
-  }
-  64.29% {
-    color: #DAE4E7;
-  }
   71.43% {
-    color: #4B5960;
+    color: #DAE4E7;
   }
   78.57% {
-    color: #51504d;
+    color: #e3f3f2;
   }
   85.71% {
     color: #faa672;
   }
-  100% {
+  92.86% {
     color: #fa915b;
   }
-}
-@keyframes poem4_cycle {
-  0% {
-    color: #fba9a0;
-  }
-  14.29% {
+  100.0% {
     color: #d77063;
-  }
-  28.57% {
-    color: #d77063;
-  }
-  42.86% {
-    color: #fba9a0;
-  }
-  50.00% {
-    color: #fba9a0;
-  }
-  64.29% {
-    color: #e0764b;
-  }
-  78.57% {
-    color: #faa672;
-  }
-  100% {
-    color: #DAE4E7;
-  }
-}
-/* Cold Palette */
-@keyframes poem1_cycle {
-  0% {
-    color: #faa672;
-  }
-  7.14% {
-    color: #fa915b;
-  }
-  14.29% {
-    color: #e0764b;
-  }
-  21.43% {
-    color: #d77063;
-  }
-  28.57% {
-    color: #fba9a0;
-  }
-  35.71% {
-    color: #72b4b2;
-  }
-  42.86% {
-    color: #1b3f6d;
-  }
-  50.00% {
-    color: #22031F;
-  }
-  57.14% {
-    color: #1b3f6d;
-  }
-  64.29% {
-    color: #72b4b2;
-  }
-  71.43% {
-    color: #fba9a0;
-  }
-  78.57% {
-    color: #e0764b;
-  }
-  85.71% {
-    color: #e0764b;
-  }
-  100% {
-    color: #fa915b;
   }
 }
 @keyframes blink {
@@ -346,7 +452,7 @@ h1, h2, h3, h4, h5, h6 {
     opacity: 1;
   }
   50% {
-    opacity: 0.75;
+    opacity: 0.5;
   }
 }
 .multi-blink-7 {
@@ -355,61 +461,7 @@ h1, h2, h3, h4, h5, h6 {
   animation-play-state: running;
   text-decoration: none;
   font-weight: bold;
-  transition: transform 0.7s ease;
-}
-
-.multi-blink-7_COLD {
-  animation: blink 14s infinite, multiColorCycle2_COLD 14s linear infinite;
-  animation-delay: -1s;
-  animation-play-state: running;
-  text-decoration: none;
-  font-weight: bold;
-  transition: transform 0.7s ease;
-  text-shadow: 0 0 0.25em currentColor, 0 0 0.6em #DAE4E7, 0 0 1.1em #929BA2;
-}
-
-/* 'home hover effects */
-.multi-blink-7_COLD:hover,
-.multi-blink-7_COLD:focus-visible {
-  transform: scale(1.1); /* slight grow */
-  text-shadow: 0 0 0.4em currentColor, 0 0 1.2em #DAE4E7, 0 0 2.2em #4B5960; /* beefier glow */
-  outline: #6f6d6c;
-}
-
-.poem_1_blink {
-  animation: blink -1s infinite, ColorCycle_poem1 7s -1s linear infinite;
-  animation-delay: 0s;
-  animation-play-state: running;
-  text-decoration: none;
-  font-weight: bold;
-  transition: transform 0.7s ease;
-  text-shadow: 0 0 0.25em currentColor, 0 0 0.6em #72b4b2, 0 0 1.1em currentColor;
-}
-
-/* poem 1 hover effect */
-.poem_1_blink:hover,
-.poem_1_blink:focus-visible {
-  transform: scale(1.2); /* slight glrow */
-  text-shadow: 0 0 0.4em currentColor, 0 0 1.2em #faa672, 0 0 2.2em #72b4b2; /* strong glow */
-  outline: #DAE4E7;
-}
-
-.poem_2_blink {
-  animation: blink -1s infinite, poem2_cycle 28s -1s linear infinite;
-  animation-delay: 0s;
-  animation-play-state: running;
-  text-decoration: none;
-  font-weight: bold;
-  transition: transform 0.7s ease;
-  text-shadow: 0 0 0.25em #fa915b, 0 0 0.6em currentColor, 0 0 1.1em currentColor;
-}
-
-/* poem 1 hover effect */
-.poem_1_blink:hover,
-.poem_1_blink:focus-visible {
-  transform: scale(1.2); /* slight glrow */
-  text-shadow: 0 0 0.4em currentColor, 0 0 1.2em #faa672, 0 0 2.2em #72b4b2; /* strong glow */
-  outline: #DAE4E7;
+  transition: transform 0.5s ease;
 }
 
 .multi-blink-1,
@@ -467,7 +519,7 @@ a.multi-blink-2:hover {
 }
 
 a.multi-blink-3 {
-  color: #e0764b !important;
+  color: #d77063 !important;
   text-decoration: none !important;
   font-weight: bold !important;
   transition: transform 0.5s ease !important;
@@ -481,7 +533,7 @@ a.multi-blink-3:hover {
 }
 
 a.multi-blink-4 {
-  color: #d77063 !important;
+  color: #fba9a0 !important;
   text-decoration: none !important;
   font-weight: bold !important;
   transition: transform 0.5s ease !important;
@@ -499,7 +551,7 @@ a.multi-blink-4:hover {
 .multi-blink-5:visited,
 .multi-blink-5:active,
 .multi-blink-5:hover {
-  color: #fba9a0 !important;
+  color: #e0764b !important;
   text-decoration: none !important;
   font-weight: bold;
   transition: transform 0.5s ease;
@@ -508,7 +560,7 @@ a.multi-blink-4:hover {
 }
 
 a.multi-blink-5 {
-  color: #fba9a0 !important;
+  color: #e0764b !important;
   text-decoration: none !important;
   font-weight: bold !important;
   transition: transform 0.5s ease !important;

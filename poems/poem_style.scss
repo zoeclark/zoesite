@@ -13,12 +13,13 @@ $font: 'STIX Two Text', serif;
 
 $warm-1: #faa672;
 $warm-2: #fa915b;
-$warm-3: #d77063;
-$warm-4: #fba9a0;
-$warm-5: #e0764b; 
+$warm-3: #e0764b; ;
+$warm-4: #d77063;
+$warm-5: #fba9a0; 
 $warm-6: #72b4b2;
 $warm-7: #1b3f6d;
 $warm-bg: #22031F;
+
 
 // === Cold Palette ===
 $cold-1: #e3f3f2;
@@ -53,9 +54,9 @@ $sz_s: 1.0rem;
   /* Warm Palette */
   --warm-1: #faa672;
   --warm-2: #fa915b;
-  --warm-3: #d77063;
-  --warm-4: #fba9a0;
-  --warm-5: #e0764b;
+  --warm-3: #e0764b;
+  --warm-4: #d77063;
+  --warm-5: #fba9a0;
   --warm-6: #72b4b2;
   --warm-7: #1b3f6d;
   --warm-bg: #22031F;
@@ -121,8 +122,6 @@ h2 {margin-top: 0.1rem;
 
 }
 
-
-
 h1, h2, h3, h4, h5, h6 {
   all: unset;
   display: block;  /* You’ll probably want them as block elements still */
@@ -145,123 +144,7 @@ h1, h2, h3, h4, h5, h6 {
 
 
 
-// === Blinking Animation ===
-@keyframes blink {
-  0%, 100% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0.3;
-  }
-}
-
-.fast_blink {
-  animation: blink $speed-five infinite;
-}
-
-
-.medium_blink {
-  animation: blink $speed-ten infinite;
-}
-
-
-.slow_blink {
-  animation: blink $speed-slow infinite;
-}
-
-//WWARMMWARMWARN                      warm                 w ARM.   WARM WARM WAMR WAMR AWMRA // 
-
-// === Warm links===
-@keyframes warmColorCycle {
-  0%   { color: $warm-1; }
-  14%  { color: $warm-2; }
-  28%  { color: $warm-3; }
-  42%  { color: $warm-4; }
-  57%  { color: $warm-5; }
-  71%  { color: $warm-6; }
-  85%  { color: $warm-7; }
-  100% { color: $warm-1; }
-}
-
-.warm-link:hover {
-  transform: scale(1.2);
-  text-shadow: 0 0 10px $warm-3;
-}
-
-.warm-blink-slow {
-  animation: 
-    blink $speed-slow infinite, 
-    warmColorCycle $speed-slow infinite;
-}
-
-.warm-blink-medium {
-  animation: 
-    blink $speed-ten infinite, 
-    warmColorCycle $speed-ten infinite;
-}
-.wark-blink-fast {
-  animation: 
-    blink $speed-five infinite,
-    warmColorCycle $speed-five linear infinite;
-}
-
-
-
-
-// === C      O         L           D        s t u f f.  c.     oo    C O L D.      CODL C.     COLD ===
-
-
-@keyframes coldColorCycle {
-  100%    { color: $cold-1; }
-  7.14% { color: $cold-2; }
-  14.28% { color: $cold-3; }
-  21.42% { color: $cold-4; }
-  28.57% { color: $cold-5; }
-  35.71% { color: $cold-6; }
-  42.85% { color: $cold-7; }
-  50.00% { color: $cold-7; }
-  57.14% { color: $cold-6; }
-  64.28% { color: $cold-5; }
-  71.42% { color: $cold-4; }
-  78.57% { color: $cold-3; }
-  85.71% { color: $cold-2; }
-  92.85% { color: $cold-1; }
-}
-
-
-.cold-link {
-  text-decoration: none;
-  font-weight: bold;
-  transition: transform 0.5s ease;
-}
-
-.cold-link:hover {
-  transform: scale(1.2);
-  text-shadow: 0 0 10px $cold-3;
-}
-
-.cold-blink-slow {
-  animation: 
-    blink $speed-slow infinite, 
-    coldColorCycle $speed-slow infinite;
-}
-
-.cold-blink-medium {
-  animation: 
-    blink $speed-ten infinite, 
-    coldColorCycle $speed-ten infinite;
-}
-.cold-blink-fast {
-  animation: 
-    blink $speed-five infinite,
-    coldColorCycle $speed-five linear infinite;
-}
-
-
-
-// === MULTI COLOR LINK STUFF MULTI MULTI MULTI ===
-
-
+// === multi color cycle 1, the main warm color link for the title in the TOC ===
 
 @keyframes multiColorCycle1 {
   0%      { color: $warm-1; }
@@ -271,105 +154,211 @@ h1, h2, h3, h4, h5, h6 {
   28.57%  { color: $warm-5; }
   35.71%  { color: $warm-6; }
   42.86%  { color: $warm-7; }
-  50.00%  { color: $warm-6; }
-  57.14%  { color: $warm-5; }
-  64.29%  { color: $warm-4; }
-  71.43%  { color: $warm-3; }
-  78.57%  { color: $warm-2; }
+  50.00%  { color: $warm-bg; }
+  57.14%  { color: $warm-7; }
+  64.29%  { color: $warm-6; }
+  71.43%  { color: $warm-5; }
+  78.57%  { color: $warm-3; }
+  85.71%  { color: $warm-3; }
+  100%    { color: $warm-2; }
+}
+
+// === multi color cycle 2, the main COLD color link for the title <-home in the TOC ===
+@keyframes multiColorCycle2_COLD {
+  0%      { color: $cold-1; }
+  7.14%   { color: $cold-2; }
+  14.29%  { color: $cold-3; }
+  21.43%  { color: $cold-4; }
+  28.57%  { color: $cold-5; }
+  35.71%  { color: $cold-6; }
+  42.86%  { color: $cold-7; }
+  50.00%  { color: $cold-bg; }
+  57.14%  { color: $cold-7; }
+  64.29%  { color: $cold-6; }
+  71.43%  { color: $cold-5; }
+  78.57%  { color: $cold-4; }
+  85.71%  { color: $cold-3; }
+  100%    { color: $cold-2; }
+}
+
+// === POEM 1 color cycle ===
+@keyframes ColorCycle_poem1 {
+ 0%      { color: $warm-1; }
+  14.29%  { color: $warm-2; }
+  28.57%  { color: $warm-3; }
+  42.86%  { color: $warm-4; }
+  50.00%  { color: $warm-5; }
+  64.29%  { color: $warm-6; }
+  78.57%  { color: $warm-5; }
+  100%    { color: $warm-4; }
+}
+
+
+// === POEM 2 color cycle ===
+
+@keyframes poem2_cycle {
+   0%      { color: $warm-2; }
+   0%      { color: $warm-2; }
+  7.14%   { color: $warm-3; }
+  7.14%   { color: $warm-3; }
+  14.29%  { color: $warm-4; }
+  14.29%  { color: $warm-4; }
+  21.43%  { color: $warm-5; }
+  21.43%  { color: $warm-5; }
+  28.57%  { color: $warm-5; }
+  28.57%  { color: $warm-5; }
+  35.71%  { color: $warm-6; }
+  35.71%  { color: $warm-6; }
+  42.86%  { color: $cold-1; }
+  50.00%  { color: $cold-1; }
+  57.14%  { color: $cold-2; }
+  64.29%  { color: $cold-2; }
+  71.43%  { color: $cold-5; }
+  78.57%  { color: $cold-7; }
   85.71%  { color: $warm-1; }
-  100%    { color: $warm-1; }
+  100%    { color: $warm-2; }
 }
 
-@keyframes multiColorCycle2 {
-  0%    { color: $warm-2; }
-  7.14% { color: $warm-3; }
-  14.28% { color: $warm-4; }
-  21.42% { color: $warm-5; }
-  28.57% { color: $warm-6; }
-  35.71% { color: $warm-7; }
-  42.85% { color: $warm-6; }
-  50.00% { color: $warm-5; }
-  57.14% { color: $warm-4; }
-  64.28% { color: $warm-3; }
-  71.42% { color: $warm-2; }
-  78.57% { color: $warm-1; }
-  85.71% { color: $warm-2; }
-  100%   { color: $warm-2; }
-}
-@keyframes multiColorCycle3 {
-  0%    { color: $warm-3; }
-  7.14% { color: $warm-4; }
-  14.28% { color: $warm-5; }
-  21.42% { color: $warm-5; }
-  28.57% { color: $warm-7; }
-  35.71% { color: $warm-6 }
-  42.85% { color: $warm-5; }
-  50.00% { color: $warm-4; }
-  57.14% { color: $warm-3; }
-  64.28% { color: $warm-2; }
-  71.42% { color: $warm-1; }
-  78.57% { color: $warm-2; }
-  85.71% { color: $warm-3; }
-  100%   { color: $warm-3; }
+// === POEM 4 color cycle ===
+
+@keyframes poem4_cycle {
+ 0%      { color: $warm-5; }
+  14.29%  { color: $warm-4; }
+  28.57%  { color: $warm-4; }
+  42.86%  { color: $warm-5; }
+  50.00%  { color: $warm-5; }
+  64.29%  { color: $warm-3; }
+  78.57%  { color: $warm-1; }
+  100%    { color: $cold-2; }
 }
 
-@keyframes multiColorCycle4 {
-  0%    { color: $warm-4; }
-  7.14% { color: $warm-5; }
-  14.28% { color: $warm-6; }
-  21.42% { color: $warm-7; }
-  28.57% { color: $warm-6; }
-  35.71% { color: $warm-5 }
-  42.85% { color: $warm-4; }
-  50.00% { color: $warm-3; }
-  57.14% { color: $warm-2; }
-  64.28% { color: $warm-1; }
-  71.42% { color: $warm-2; }
-  78.57% { color: $warm-3; }
-  85.71% { color: $warm-4; }
-  100%   { color: $warm-4; }
-}
-@keyframes multiColorCycle5 {
-  0.0% { color: $warm-4; }
-  7.14% { color: $warm-5; }
-  14.29% { color: $warm-6; }
-  21.43% { color: $warm-7; }
-  28.57% { color: $warm-6; }
-  35.71% { color: $cold-7; }
-  42.86% { color: $cold-6; }
-  50.0% { color: $cold-5; }
-  57.14% { color: $cold-4; }
-  64.29% { color: $cold-3; }
-  71.43% { color: $cold-2; }
-  78.57% { color: $cold-1; }
-  85.71% { color: $warm-1; }
-  92.86% { color: $warm-2; }
-  100.0% { color: $warm-3; }
+// === Warm Palette ===
+
+$warm-1: #faa672;
+$warm-2: #fa915b;
+$warm-3: #e0764b; ;
+$warm-4: #d77063;
+$warm-5: #fba9a0; 
+$warm-6: #72b4b2;
+$warm-7: #1b3f6d;
+$warm-bg: #22031F;
+
+  /* Cold Palette */
+  $cold-1: #e3f3f2;
+  $cold-2: #DAE4E7;
+  $cold-3: #929BA2;
+  $cold-4: #5C6B73;
+  $cold-5: #4B5960;
+  $cold-6: #6f6d6c;
+  $cold-7: #51504d;
+  $cold-bg: #1A211F;
+
+
+
+
+
+
+
+@keyframes poem1_cycle {
+  0%      { color: $warm-1; }
+  7.14%   { color: $warm-2; }
+  14.29%  { color: $warm-3; }
+  21.43%  { color: $warm-4; }
+  28.57%  { color: $warm-5; }
+  35.71%  { color: $warm-6; }
+  42.86%  { color: $warm-7; }
+  50.00%  { color: $warm-bg; }
+  57.14%  { color: $warm-7; }
+  64.29%  { color: $warm-6; }
+  71.43%  { color: $warm-5; }
+  78.57%  { color: $warm-3; }
+  85.71%  { color: $warm-3; }
+  100%    { color: $warm-2; }
 }
 
 
 
-
+// === BLINK ANIMATION/ LINK CLASSES ===
 
 @keyframes blink {
   0%, 100% { opacity: 1; }
-  50%      { opacity: 0.5; }
+  50%      { opacity: 0.75; }
 }
 
-
-@mixin blink-cycle($cycle-name, $duration, $delay: 0s) {
-  animation: 
+@mixin blink-cycle($cycle-name, $duration, $delay: 0s, $transition: 0.7s) {
+  animation:
     blink $duration infinite,
     #{$cycle-name} $duration linear infinite;
   animation-delay: $delay;
   animation-play-state: running;
   text-decoration: none;
   font-weight: bold;
-  transition: transform 0.5s ease;
+  transition: transform $transition ease;
 }
+
+// === "UP LATE" title class ===
 .multi-blink-7 {
   @include blink-cycle(multiColorCycle1, 7s, -1s);
 }
+
+// === <- HOME class ===
+.multi-blink-7_COLD {
+  @include blink-cycle(multiColorCycle2_COLD, 14s, -1s);
+  text-shadow:
+    0 0 0.25em currentColor,
+    0 0 0.6em   #DAE4E7,
+    0 0 1.1em  #929BA2;
+}
+/* 'home hover effects */
+.multi-blink-7_COLD:hover,
+.multi-blink-7_COLD:focus-visible {
+  transform: scale(1.1); /* slight grow */
+  text-shadow:
+    0 0 0.4em  currentColor,
+    0 0 1.2em  #DAE4E7,
+    0 0 2.2em  #4B5960; /* beefier glow */
+  outline: #6f6d6c
+}
+// === POEM 1 blink link  class STARAT ===
+.poem_1_blink {
+  @include blink-cycle(ColorCycle_poem1 7s, -1s);
+  text-shadow:
+    0 0 0.25em currentColor,
+    0 0 0.6em  #72b4b2,
+    0 0 1.1em  currentColor;
+}
+/* poem 1 hover effect */
+.poem_1_blink:hover,
+.poem_1_blink:focus-visible {
+  transform: scale(1.2); /* slight glrow */
+  text-shadow:
+    0 0 0.4em  currentColor,
+    0 0 1.2em  #faa672,
+    0 0 2.2em  #72b4b2; /* strong glow */
+  outline: #DAE4E7
+}
+// === POEM 1 blink FIN===
+
+
+// === POEM 2 blink START===
+.poem_2_blink {
+  @include blink-cycle(poem2_cycle 28s, -1s);
+  text-shadow:
+    0 0 0.25em #fa915b,
+    0 0 0.6em currentColor,
+    0 0 1.1em  currentColor;
+}
+/* poem 1 hover effect */
+.poem_1_blink:hover,
+.poem_1_blink:focus-visible {
+  transform: scale(1.2); /* slight glrow */
+  text-shadow:
+    0 0 0.4em  currentColor,
+    0 0 1.2em  #faa672,
+    0 0 2.2em  #72b4b2; /* strong glow */
+  outline: #DAE4E7
+}
+
 
 
 // 1 ===

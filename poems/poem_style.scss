@@ -1,147 +1,91 @@
-//GLOBAL VARS ///////
-// === Periods ===
+// ===== GLOBAL VARS =====
 $speed-five: 5s;
-$speed-ten:10s;
-$speed-slow:15s;
-$speed-xl-slow:25s;
+$speed-ten: 10s;
+$speed-slow: 15s;
+$speed-xl-slow: 25s;
 
-// === Shared ===
 $text_color: #fbfbee;
-$font: 'STIX Two Text', serif; 
+$font: 'STIX Two Text', serif;
 
-// === Warm Palette ===
+$warm-1: #faa672; $warm-2: #fa915b; $warm-3: #e0764b; $warm-4: #d77063;
+$warm-5: #fba9a0; $warm-6: #72b4b2; $warm-7: #1b3f6d; $warm-bg: #22031F;
 
-$warm-1: #faa672;
-$warm-2: #fa915b;
-$warm-3: #e0764b; ;
-$warm-4: #d77063;
-$warm-5: #fba9a0; 
-$warm-6: #72b4b2;
-$warm-7: #1b3f6d;
-$warm-bg: #22031F;
+$cold-1: #e3f3f2; $cold-2: #DAE4E7; $cold-3: #929BA2; $cold-4: #5C6B73;
+$cold-5: #4B5960; $cold-6: #6f6d6c; $cold-7: #51504d; $cold-bg: #1A211F;
 
+$sz_xl: 2.5rem; $sz_l: 2.0rem; $sz_m: 1.5rem; $sz_s: 1.0rem;
 
-// === Cold Palette ===
-$cold-1: #e3f3f2;
-$cold-2: #DAE4E7;
-$cold-3: #929BA2;
-$cold-4: #5C6B73;
-$cold-5: #4B5960;
-$cold-6:  #6f6d6c;
-$cold-7: #51504d; 
-$cold-bg: #1A211F;
-
-// === sizes===
-$sz_xl: 2.5rem;   
-$sz_l: 2.0rem; 
-$sz_m: 1.5rem;   
-$sz_s: 1.0rem;
-
-//END OF GLONAL VARS
-
-//SET ROOT VARIABLES FOR CSS this is where the magic happens folks 
-
+// ===== CSS CUSTOM PROPS (for runtime use) =====
 :root {
-  /* Periods */
   --speed-five: 5s;
   --speed-ten: 10s;
   --speed-slow: 15s;
 
-  /* Shared */
-  --text-color: #fbfbee;
-  --font-family: 'STIX Two Text', serif;
+  --ink: #{$text_color};
+  --font-family: #{$font};
 
-  /* Warm Palette */
-  --warm-1: #faa672;
-  --warm-2: #fa915b;
-  --warm-3: #e0764b;
-  --warm-4: #d77063;
-  --warm-5: #fba9a0;
-  --warm-6: #72b4b2;
-  --warm-7: #1b3f6d;
-  --warm-bg: #22031F;
+  --warm-1: #{$warm-1}; --warm-2: #{$warm-2}; --warm-3: #{$warm-3};
+  --warm-4: #{$warm-4}; --warm-5: #{$warm-5}; --warm-6: #{$warm-6};
+  --warm-7: #{$warm-7}; --warm-bg: #{$warm-bg};
 
-  /* Cold Palette */
-  --cold-1: #e3f3f2;
-  --cold-2: #DAE4E7;
-  --cold-3: #929BA2;
-  --cold-4: #5C6B73;
-  --cold-5: #4B5960;
-  --cold-6: #6f6d6c;
-  --cold-7: #51504d;
-  --cold-bg: #1A211F;
-
-  /* Sizes */
-  --sz-xl: 2.5rem;
-  --sz-l: 2.0rem;
-  --sz-m: 1.5rem;
-  --sz-s: 1.0rem;
+  --cold-1: #{$cold-1}; --cold-2: #{$cold-2}; --cold-3: #{$cold-3};
+  --cold-4: #{$cold-4}; --cold-5: #{$cold-5}; --cold-6: #{$cold-6};
+  --cold-7: #{$cold-7}; --cold-bg: #{$cold-bg};
 }
 
-  /* UNIVERSALS AND RANDOM DIVS */
+// ===== LINKS =====
+a { text-decoration: none; color: inherit; font-family: $font; cursor: pointer; }
 
-a {
-  text-decoration: none;
-  color: inherit;
-  font-family: 'STIX Two Text', serif;
-  cursor: pointer;
-}
-// Global link reset (keep this)
-a {
-  text-decoration: none;
-  color: inherit;
-  font-family: 'STIX Two Text', serif;
-  cursor: pointer;
-}
-// === TOC table of content style ===
+// ===== HEADINGS (shared defaults) =====
+h1, h2, h3, h4, h5, h6 { font-family: $font; color: var(--ink); }
 
-
-.table-of-c{
-margin-top: 0.21rem;
-margin-left: 2.1rem; 
-margin-right: 2rem; 
-  background:#000000;
-  font-family: 'STIX Two Text', serif;
-   background-color:#000000;;
-    text-align:left;
-    padding: 1rem;
-    color: $text_color;
-    line-height: 2.1;
-
-h1 {margin-top: 0.7rem;
-  text-align:left; 
-  font-size: 2.8rem;
-  color: #FFFBF0;
-  margin-bottom: 0.7rem;
-  line-height:2.1 ;
-}
-h2 {margin-top: 0.1rem;    
-  text-align:left; ;
-  font-size: 1.5rem;
-  color: #FFFBF0;
-  margin-bottom: 0.1;
+// ===== PAGE TITLE + ANY TOP-LEVEL H1 =====
+// Scales in lockstep with TOC items (same vw breakpoint logic)
+h1.page-title,
+body > h1:first-of-type {
+  font-size: clamp(56px, 8vw, 96px); // 72pt max
+  line-height: 1.05;
+  margin: 0 0 2rem 0;
+  font-weight: 600;
+  color: var(--ink);
 }
 
+// ===== TABLE OF CONTENTS =====
+.table-of-c {
+  margin-top: 0.21rem;
+  margin-left: 2.1rem;
+  margin-right: 2rem;
+  background: #000;
+  font-family: $font;
+  text-align: left;
+  padding: 1.1rem;
+  color: var(--ink);
+  line-height: 2.1;
+
+  // Optional H1 label inside TOC, kept in sync with the main title
+  h1 {
+    margin: 0.7rem 0;
+    text-align: left;
+    font-size: clamp(56px, 8vw, 96px);
+    line-height: 1.1;
+  }
+
+  // TOC items: ~56pt max; same breakpoint as title so they track together
+  h2 {
+    margin-top: 0.1rem;
+    text-align: left;
+    font-size: clamp(44px, 6.25vw, 75px);
+    line-height: 1.1;
+    margin-bottom: 1.8rem;
+  }
+
+  a { color: inherit; text-decoration: none; }
+  a:hover, a:focus { text-decoration: underline; }
 }
 
-h1, h2, h3, h4, h5, h6 {
-  all: unset;
-  display: block;  /* You’ll probably want them as block elements still */
-}
-
-h1, h2, h3, h4, h5, h6 {
-  font-family: 'STIX Two Text', serif;
-  color: $text_color;
-}
-.center-page {
-  text-align: center;
-}
-.center-page h1 {
-  font-size: clamp(1.5rem, 4vw, 4rem); /* Responsive scaling */
-  margin: 0;
-  padding: 0;
-  text-align: center;
-}
+// ===== OPTIONAL CENTERED TITLE VARIANT =====
+.center-page { text-align: center; }
+.center-page h1 { font-size: clamp(56px, 8vw, 96px); margin: 0; }
 
 
 
@@ -183,30 +127,43 @@ h1, h2, h3, h4, h5, h6 {
   100%    { color: $cold-2; }
 }
 
-// === POEM 1 color cycle ===
+// === POEM 1 Shut Up color cycle ===
 @keyframes poem1_cycle {
- 0%      { color: $warm-1; }
-  14.29%  { color: $warm-2; }
-  28.57%  { color: $warm-3; }
-  42.86%  { color: $warm-4; }
-  50.00%  { color: $warm-5; }
-  64.29%  { color: $warm-6; }
-  78.57%  { color: $warm-5; }
-  100%    { color: $warm-4; }
+   0%      { color: $warm-bg; }
+  7.14%   { color: $warm-6; }
+  7.14%   { color: $warm-7; }
+  14.29%  { color: $warm-4; }
+  14.29%  { color: $warm-4; }
+  21.43%  { color: $warm-5; }
+  21.43%  { color: $warm-6; }
+
+  28.57%  { color: $cold-5; }
+  28.57%  { color: $cold-3; }
+  35.71%  { color: $cold-1; }
+  35.71%  { color: $warm-1; }
+  42.86%  { color: $cold-7; }
+  50.00%  { color: $cold-4; } 
+  57.14%  { color: $cold-2; }
+
+  64.29%  { color: $cold-1; }
+  71.43%  { color: $warm-6; }
+  78.57%  { color: $cold-3; }
+  85.71%  { color: $warm-7; }
+  100%    { color: $cold-bg; }
 }
 
 
-// === POEM 2 color cycle ===
+// === POEM 2  Ex Libris color cycle ===
 
 @keyframes poem2_cycle {
    0%      { color: $warm-2; }
-   0%      { color: $warm-2; }
   7.14%   { color: $warm-3; }
   7.14%   { color: $warm-3; }
   14.29%  { color: $warm-4; }
   14.29%  { color: $warm-4; }
   21.43%  { color: $warm-5; }
   21.43%  { color: $warm-5; }
+
   28.57%  { color: $warm-5; }
   28.57%  { color: $warm-5; }
   35.71%  { color: $warm-6; }
@@ -214,9 +171,10 @@ h1, h2, h3, h4, h5, h6 {
   42.86%  { color: $cold-1; }
   50.00%  { color: $cold-1; }
   57.14%  { color: $cold-2; }
+
   64.29%  { color: $cold-2; }
   71.43%  { color: $cold-5; }
-  78.57%  { color: $cold-7; }
+  78.57%  { color: $cold-5; }
   85.71%  { color: $warm-1; }
   100%    { color: $warm-2; }
 }
@@ -234,64 +192,94 @@ h1, h2, h3, h4, h5, h6 {
   100%    { color: $cold-3; }
 }
 
-// === POEM 4 color cycle ===
+// === POEM 4 (march pained) color cycle ===
 
 @keyframes poem4_cycle {
- 0%      { color: $warm-5; }
+ 0%      { color: $warm-3; }
   14.29%  { color: $warm-4; }
   28.57%  { color: $warm-4; }
   42.86%  { color: $warm-5; }
-  50.00%  { color: $warm-bg; }
-  64.29%  { color: $warm-3; }
-  78.57%  { color: $warm-1; }
-  100%    { color: $cold-2; }
-}
-
-
-// === POEM 5 color cycle ===
-
-@keyframes poem5_cycle {
-  0%      { color: $cold-1; }
-  7.14%   { color: $cold-2; }
-  14.29%  { color: $cold-3; }
-  21.43%  { color: $cold-4; }
-  28.57%  { color: $cold-5; }
-  35.71%  { color: $cold-6; }
-  42.86%  { color: $cold-7; }
-  50.00%  { color: $cold-bg; }
-  57.14%  { color: $cold-7; }
-  64.29%  { color: $cold-6; }
-  71.43%  { color: $cold-5; }
-  78.57%  { color: $cold-4; }
-  85.71%  { color: $cold-3; }
-  100%    { color: $cold-2; }
-}
-
-
-// === POEM 2 color cycle ===
-
-@keyframes poem2_cycle {
-   0%      { color: $warm-2; }
-   0%      { color: $warm-2; }
-  7.14%   { color: $warm-3; }
-  7.14%   { color: $warm-3; }
-  14.29%  { color: $warm-4; }
-  14.29%  { color: $warm-4; }
-  21.43%  { color: $warm-5; }
-  21.43%  { color: $warm-5; }
-  28.57%  { color: $warm-5; }
-  28.57%  { color: $warm-5; }
-  35.71%  { color: $warm-6; }
-  35.71%  { color: $warm-6; }
-  42.86%  { color: $cold-1; }
-  50.00%  { color: $cold-1; }
-  57.14%  { color: $cold-2; }
-  64.29%  { color: $cold-2; }
-  71.43%  { color: $cold-5; }
-  78.57%  { color: $cold-7; }
+  50.00%  { color: $cold-4; }
+  64.29%  { color: $cold-5; }
+  78.57%  { color: $warm-bg; }
   85.71%  { color: $warm-1; }
   100%    { color: $warm-2; }
 }
+
+
+// === POEM 6 color cycle ===
+
+@keyframes poem5_cycle {
+   0%      { color: $cold-1; }
+  14.14%   { color: $cold-1; }
+  21.43%  { color: $cold-1; }
+  28.57%  { color: $cold-1; }
+  35.71%  { color: $cold-2; }
+  42.86%  { color: $cold-3; }
+  50.00%  { color: $cold-4; }
+
+  56.94%  { color: $cold-5; }
+  63.99%  { color: $cold-6; }
+  70.93%  { color: $cold-7; }
+  77.97%  { color: $warm-7; }
+  85.71%  { color: $warm-1; }
+  100%    { color: $warm-5; }
+  85.71%  { color: $warm-4; }
+
+  77.97%  { color: $cold-5; }
+  70.93%  { color: $cold-5; }
+  63.99%  { color: $cold-4; }
+  56.94%  { color: $cold-3; }
+  50.00%  { color: $cold-2; }
+  42.86%  { color: $cold-2; }
+  35.71%  { color: $warm-6; }
+  0%      { color: $cold-1; }
+  
+}
+
+// === POEM 7 color cycle ===
+
+// === POEM 1 Shut Up color cycle ===
+@keyframes poem6_cycle {
+ 0%      { color: $warm-bg; }
+  14.29%  { color: $cold-bg; }
+  28.57%  { color: $warm-bg; }
+  42.86%  { color: $cold-bg; }
+  50.00%  { color: $warm-bg; }
+  64.29%  { color: $cold-bg; }
+  78.57%  { color: $cold-1; }
+
+  100%    { color: $cold-bg; }
+}
+
+
+// === POEM 7 (pasted Harriots) color cycle ===
+
+@keyframes poem7_cycle {
+ 0%      { color: $cold-4; }
+  14.29%  { color: $cold-3; }
+  28.57%  { color: $cold-2; }
+  42.86%  { color: $warm-6; }
+  50.00%  { color: $warm-6; }
+  64.29%  { color: $cold-2; }
+  78.57%  { color: $cold-3; }
+  100%    { color: $cold-5; }
+}
+
+
+// === POEM 8 ('shut up' draft 2) color cycle ===
+
+@keyframes poem8_cycle {
+ 0%      { color: $warm-1; }
+  14.29%  { color: $warm-2; }
+  28.57%  { color: $warm-3; }
+  42.86%  { color: $warm-bg; }
+  50.00%  { color: $warm-1; }
+  64.29%  { color: $warm-2; }
+  78.57%  { color: $warm-3; }
+  100%    { color: $cold-bg; }
+}
+
 
 
 // === BLINK ANIMATION/ LINK CLASSES ===
@@ -321,27 +309,28 @@ h1, h2, h3, h4, h5, h6 {
 .multi-blink-7_COLD {
   @include blink-cycle(multiColorCycle2_COLD, 14s, -1s);
   text-shadow:
-    0 0 0.25em currentColor,
-    0 0 0.6em   #DAE4E7,
-    0 0 1.1em  #929BA2;
+    0 0 0.7em #6f6d6c,
+    0 0 1.4em   #fba9a0,
+    0 0 2.8em #fba9a0;
 }
-/* 'home hover effects */
-.multi-blink-7_COLD:hover,
-.multi-blink-7_COLD:focus-visible {
-  transform: scale(1.1); /* slight grow */
-  text-shadow:
-    0 0 0.4em  currentColor,
-    0 0 1.2em  #DAE4E7,
-    0 0 2.2em  #4B5960; /* beefier glow */
-  outline: #6f6d6c
-}
-// === POEM 1 blink link  class STARAT ===
+// /* 'home hover effects */
+// .multi-blink-7_COLD:hover,
+// .multi-blink-7_COLD:focus-visible {
+//   transform: scale(1.1); /* slight grow */
+//   text-shadow:
+//     0 0 0.7em  #faa672,
+//     0 0 1.2em  #faa672,
+//     0 0 2.8em  #faa672; /* glow */
+//   outline: #
+// }
+// === POEM 1 stop dont blink link  class STARAT ===
 .poem_1_blink {
   @include blink-cycle(poem1_cycle 7s, -1s);
   text-shadow:
-    0 0 0.25em currentColor,
-    0 0 0.6em  #72b4b2,
-    0 0 1.1em  currentColor;
+    0 0 0.7em #e3e3e3,
+    0 0 1.4em  #e3e3e3,
+    0 0 1.4em  #faa672;
+    outline: #6f6d6c
 }
 // === POEM 1 blink END ===
 
@@ -349,9 +338,9 @@ h1, h2, h3, h4, h5, h6 {
 .poem_2_blink {
   @include blink-cycle(poem2_cycle 28s, -1s);
   text-shadow:
-    0 0 0.25em #fa915b,
-    0 0 0.6em currentColor,
-    0 0 1.1em currentColor;
+    0 0 0.7em #fa915b,
+    0 0 1.4em #faa672,
+    0 0 2.8em #faa672;
 }
 // === POEM 2 blink END ===
 
@@ -365,9 +354,9 @@ h1, h2, h3, h4, h5, h6 {
   text-underline-offset: 0.15em;
   text-decoration-color: rgba(255,255,255,0.95);
   text-shadow:
-    0 0 0.25em #e0764b,
-    0 0 0.6em  #e0764b,
-    0 0 1.1em  #e0764b;
+    0 0 0.25em #d77063,
+    0 0 0.6em  #d77063,
+    0 0 1.1em  #d77063;
 }
 
 /* instant enlarge on hover/focus */
@@ -377,13 +366,40 @@ h1, h2, h3, h4, h5, h6 {
 }
 // === POEM 3 blink END ===
 
-// === POEM 4 blink link  class STARAT ===
+// === POEM home arrow link — static, underlined, steady glow ===
+.poem_home_blink {
+  animation: none !important;   /* kill blink */
+  transition: none !important;
+  display: inline-block;        /* allow scale */
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 0.15em;
+  text-decoration-color: rgba(255,255,255,0.95);
+  text-shadow:
+    0 0 0.25em #e3f3f2,
+    0 0 0.6em  #5C6B73,
+    0 0 1.1em  #e3f3f2;
+}
+
+/* instant enlarge on hover/focus */
+.poem_home_blink:hover,
+.poem_home_blink:focus-visible {
+  transform: scale(1.4) !important;
+}
+// === POEM home arrow blink END ===
+
+// === POEM 4 (march pain( blink link  class STARAT ===
+.poem_4_blink:hover,
+.poem_4_blink:focus-visible {
+  transform: scale(1.4) !important;
+}
 .poem_4_blink {
   @include blink-cycle(poem4_cycle 7s, -1s);
   text-shadow:
-    0 0 0.25em currentColor,
-    0 0 0.6em  #d77063,
-    0 0 1.1em  #4B5960;
+    0 0 0.7em #e0764b,
+    0 0 1.4em  #e0764b,
+    0 0 2.8em  #d770;
+    outline: #22031F
 }
 // === POEM 4 blink END ===
 
@@ -397,20 +413,81 @@ h1, h2, h3, h4, h5, h6 {
 }
 // === POEM 5 blink END ===
 
+// === POEM 6 blink link  class STARAT ===
+.poem_6_blink {
+  @include blink-cycle(poem6_cycle 21s, -1s);
+  text-shadow:
+    0 0 0.7em #72b4b2,
+    0 0 0.7em  currentColor,
+    0 0 0.7em  #6f6d6c;
+}
+// === POEM 6 blink END ===
+
+// === POEM 7 blink link  class STARAT ===
+.poem_7_blink {
+  @include blink-cycle(poem7_cycle 7s, -1s);
+  text-shadow:
+    0 0 0.1em #e3f3f2,
+    0 0 0.7em  #72b4b2,
+    0 0 0.1em  #929BA2;
+}
+// === POEM 7 blink END ===
 
 
-/* === Minimal hover/focus: only enlarge text (applies to both) === */
+// === POEM 8 blink link  class STARAT ===
+.poem_8_blink {
+  @include blink-cycle(poem7_cycle 7s, -1s);
+  text-shadow:
+    0 0 0.1em #e3f3f2,
+    0 0 0.7em  #72b4b2,
+    0 0 0.1em  #929BA2;
+}
+// === POEM 8 blink END ===
+
+// === POEM 9 stop dont blink link  class STARAT ===
+.poem_9_blink {
+  @include blink-cycle(poem1_cycle 7s, -1s);
+  text-shadow:
+    0 0 0.7em #1b3f6d,
+    0 0 1.4em  #929BA2,
+    0 0 1.4em  #1b3f6d;
+    outline: #e3f3f2
+}
+// === POEM 9 blink END ===
+
+
+
+
+
+/* === FREEZE ALL BLINKS & LINKS ON HOVER/FOCUS === */
 .poem-title:hover span,
 .poem-title a:hover,
 a.poem-link:hover,
 .poem_1_blink:hover,
 .poem_2_blink:hover,
+.poem_3_blink:hover,
+.poem_4_blink:hover,
+.poem_5_blink:hover,
+.poem_6_blink:hover,
+.poem_7_blink:hover,
+.poem_8_blink:hover,
+.multi-blink-7_COLD:hover,
 .poem-title:focus-visible span,
 .poem-title a:focus-visible,
 a.poem-link:focus-visible,
 .poem_1_blink:focus-visible,
-.poem_2_blink:focus-visible {
-  font-size: 120%;
+.poem_2_blink:focus-visible,
+.poem_3_blink:focus-visible,
+.poem_4_blink:focus-visible,
+.poem_5_blink:focus-visible,
+.poem_6_blink:focus-visible,
+.poem_7_blink:focus-visible,
+.poem_8_blink:focus-visible,
+.multi-blink-7_COLD:focus-visible {
+  animation-play-state: paused !important; /* freeze animation */
+  transition: none !important;
+  display: inline-block;
+  font-size: 120%; /* bump size */
 }
 
 
@@ -445,11 +522,11 @@ a.multi-blink-1 {
 }
 
 
-a.multi-blink-1:hover {
-  animation-play-state: paused !important;  // <-- Force it
-  transform: scale(1.5) !important;
-  text-shadow: 0 0 10px $warm-1 !important;
-}
+// a.multi-blink-1:hover {
+//   animation-play-state: paused !important;  // <-- Force it
+//   transform: scale(1.5) !important;
+//   text-shadow: 0 0 10px $warm-1 !important;
+// }
 
 
 
@@ -504,21 +581,21 @@ a.multi-blink-3:hover {
 }
 
 // 4 ===
-a.multi-blink-4 {
-  color: #{$warm-4} !important;
-  text-decoration: none !important;
-  font-weight: bold !important;
-  transition: transform 0.5s ease !important;
-  animation: 
-    blink $speed-slow infinite,
-    multiColorCycle4 $speed-slow infinite;
-}
+// a.multi-blink-4 {
+//   color: #{$warm-4} !important;
+//   text-decoration: none !important;
+//   font-weight: bold !important;
+//   transition: transform 0.5s ease !important;
+//   animation: 
+//     blink $speed-slow infinite,
+//     multiColorCycle4 $speed-slow infinite;
+// }
 
-a.multi-blink-4:hover {
-  animation-play-state: paused !important;  // <-- Force it
-  transform: scale(1.5) !important;
-  text-shadow: 0 0 10px $warm-1 !important;
-}
+// a.multi-blink-4:hover {
+//   animation-play-state: paused !important;  // <-- Force it
+//   transform: scale(1.5) !important;
+//   text-shadow: 0 0 10px $warm-1 !important;
+// }
 
 // 5 ===
 
@@ -584,33 +661,33 @@ a.multi-blink-5:hover {
 
 // 7 ===
 
-.multi-blink-0,
-.multi-blink-0:link,
-.multi-blink-0:visited,
-.multi-blink-0:active,
-.multi-blink-0:hover {
-  color:  #{$warm-7}  !important;
-  text-decoration: none !important;
-  font-weight: bold;
-  transition: transform 0.25s ease;
-  animation: blink $speed-slow infinite, multiColorCycle2 $speed-xl-slow infinite;
-  animation-play-state: running !important;
-}
+// .multi-blink-0,
+// .multi-blink-0:link,
+// .multi-blink-0:visited,
+// .multi-blink-0:active,
+// .multi-blink-0:hover {
+//   color:  #{$warm-7}  !important;
+//   text-decoration: none !important;
+//   font-weight: bold;
+//   transition: transform 0.25s ease;
+//   animation: blink $speed-slow infinite, multiColorCycle2 $speed-xl-slow infinite;
+//   animation-play-state: running !important;
+// }
 
-a.multi-blink-0 {
-  color: #{$warm-7} !important;
-  text-decoration: none !important;
-  font-weight: bold !important;
-  transition: transform 0.25s ease !important;
-  animation: 
-    blink $speed-slow infinite,
-    multiColorCycle2 $speed-xl-slow infinite;
-}
-a.multi-blink-0:hover {
-  animation-play-state: paused !important;  // <-- Force it
-  transform: scale(1.5) !important;
-  text-shadow: 0 0 10px $warm-6 !important;
-}
+// a.multi-blink-0 {
+//   color: #{$warm-7} !important;
+//   text-decoration: none !important;
+//   font-weight: bold !important;
+//   transition: transform 0.25s ease !important;
+//   animation: 
+//     blink $speed-slow infinite,
+//     multiColorCycle2 $speed-xl-slow infinite;
+// }
+// a.multi-blink-0:hover {
+//   animation-play-state: paused !important;  // <-- Force it
+//   transform: scale(1.5) !important;
+//   text-shadow: 0 0 10px $warm-6 !important;
+// }
 
 
 

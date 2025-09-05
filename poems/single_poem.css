@@ -468,3 +468,26 @@ html, body {
   width: 100% !important;
   max-width: none !important;
 }
+
+
+
+/* === TODO refactor === */
+/* === Align plates + title with poem column === */
+.poem-title { text-align: left; } /* ensure left */
+
+/* Plates sit flush with poem's left edge, same vertical rhythm */
+.poem-container .plate-img {
+  margin: 1.5rem 0;           /* matches poem spacing; no auto-centering */
+  display: block;
+}
+
+/* Optional: keep head/foot same width knob, but left-aligned */
+.bookplate-container { --img-width: 65%; }  /* tweak as you like */
+
+/* Dedication line: italic, between title & body; > body, < title */
+.poem-dedication {
+  font-size: 1.35rem;         /* larger than .poem-body (1.2rem), < title */
+  font-style: italic;
+  margin: 0 0 1.5rem 0;       /* breathing room before poem body */
+  text-align: left;
+}

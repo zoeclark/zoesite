@@ -6,48 +6,67 @@
   <link href="https://fonts.googleapis.com/css2?family=STIX+Two+Text&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="single_poem.css">
   <title>Poem 2</title>
+
+  <!-- Minimal overrides just for this page -->
   <style>
-    /* Center and size the plates */
-    .plate-img {
+    /* Align plates with poem column (no auto-centering) */
+    .poem-container .plate-img {
       display: block;
-      margin: 2rem auto;          /* centers relative to poem text */
-      max-width: 75%;            /* not too wide */
+      margin: 1.5rem 0; /* same vertical rhythm as poem */
       height: auto;
+      max-width: 100%;
     }
 
-    .foot-plate {
-      max-width: 90%;            /* foot plate takes up most of the screen */
+    /* Head plate: modest width within the column */
+    .poem-container .plate-img.head-plate {
+      width: 65%;
+    }
+
+    /* Foot plate: most of the page, but left edge aligned to poem column */
+    .poem-container .plate-img.foot-plate {
+      width: 92vw;      /* big! */
+      max-width: none;  /* allow > container width */
+    }
+
+    /* Title already left via site CSS; keep it explicit here */
+    .poem-title { text-align: left; }
+
+    /* Dedication line: italic, > body, < title */
+    .poem-dedication {
+      font-size: 1.35rem;
+      font-style: italic;
+      margin: 0 0 1.5rem 0;
+      text-align: left;
     }
   </style>
 </head>
 <body>
   <!-- Banner -->
- <div class="poem-banner">
-  <a href="../index.html">home →</a>
-  <div class="spacer"></div>
-  <a href="index.html">← Table of Contents</a>
-</div>
-<div class="poem-container">
-  <!-- ===== BOOKPLATE START ===== -->
-  <div class="bookplate-container" style="--img-width: 65%; --bg-opacity: 0.5;">
-    <img src="images/head_plate.png" alt="Decorative plate" class="plate-img">
-    <div class="bookplate-text">
-  <div class="bookplate-panel">
-    this book belongs to<br>
-    Elizabeth Batelle Clark<br>
-    In it she may put all<br>
-    quotations, thoughts etc<br>
-    she want to.<br>
-    Ex Libris, 1969.<br>
+  <div class="poem-banner">
+    <a href="../index.html">home →</a>
+    <div class="spacer"></div>
+    <a href="index.html">← Table of Contents</a>
   </div>
-</div>
-  </div>
-  <!-- ===== BOOKPLATE END ===== -->
 
-  <h1 class="poem-title"><a href="index.html">Ex Libris</a></h1>
-  <!-- poem body… -->
-</div>
+  <div class="poem-container">
+    <!-- ===== HEAD BOOKPLATE (left-aligned to poem column) ===== -->
+    <div class="bookplate-container" style="--img-width: 65%; --bg-opacity: 0.5;">
+      <img src="images/head_plate.png" alt="Decorative plate" class="plate-img head-plate">
+      <div class="bookplate-text">
+        <div class="bookplate-panel">
+          this book belongs to<br>
+          Elizabeth Batelle Clark<br>
+          In it she may put all<br>
+          quotations, thoughts etc<br>
+          she want to.<br>
+          Ex Libris, 1969.<br>
+        </div>
+      </div>
+    </div>
+    <!-- ===== END HEAD BOOKPLATE ===== -->
 
+    <h1 class="poem-title"><a href="index.html">Ex Libris</a></h1>
+    <div class="poem-dedication">For Elizabeth B., and the love she inspires</div>
 
     <pre class="poem-body">
 She's up late talking to the moon machine people again, 
@@ -113,40 +132,29 @@ The time has come for ghosts to shout.
 Rouse the rabble, storm the state, 
 let the wild rumpus out.
     </pre>
-  
-      </div> <!-- end poem container -->
-  
 
-  <!-- ===== FOOTPLATE WITH OVERLAY ===== -->
-<div class="bookplate-container" style="--img-width:65%; --overlay-frac:0.5; --band-opacity:0.45; --panel-opacity:0.92;">
-  <img src="images/foot_plate.png" alt="Foot Plate" class="plate-img foot-plate">
-  <div class="bookplate-text">
-    <div class="bookplate-panel">
-     <a href="stubs/love_songSTUB.html" class="poem-link">I have heard the mermaids singing each to each.</a><br>
-<a href="stubs/love_songSTUB.html" class="poem-link">I do not think they will sing to me.</a><br>
-      <br>
-      S'io credesse che mia risposta fosse<br>
-      A persona che mai tornasse al mondo,<br>
-      Questa fiamma staria senza piu scosse.<br>
-      Ma percioche giammai di questo fondo<br>
-      Non torno vivo alcun, s'i'odo <a href="stubs/odi_et_amo.html" class="poem-link">te amo</a><br>
-    <a href="stubs/odi_et_amo.html" class="poem-link">Quare id faciam fortasse requīris,</a><br>
-     <a href="stubs/odi_et_amo.html" class="poem-link">Nescīō</a>. But sentieced ... <a href="/">Ding</a>ed,<br>
-      Halved idself id est,<br>
-      Non Torro vivo alcun, obs of epiwo<br>
-      inside tehm. Senza tema<br>
-      d'infamia ti excrunciondo.<br>
-  
+    <!-- ===== FOOTPLATE (BIG, left edge aligned to poem column) ===== -->
+    <div class="bookplate-container" style="--img-width:65%; --overlay-frac:0.5; --band-opacity:0.45; --panel-opacity:0.92;">
+      <img src="images/foot_plate.png" alt="Foot Plate" class="plate-img foot-plate">
+      <div class="bookplate-text">
+        <div class="bookplate-panel">
+          <a href="stubs/love_songSTUB.html" class="poem-link">I have heard the mermaids singing each to each.</a><br>
+          <a href="stubs/love_songSTUB.html" class="poem-link">I do not think they will sing to me.</a><br><br>
+          S'io credesse che mia risposta fosse<br>
+          A persona che mai tornasse al mondo,<br>
+          Questa fiamma staria senza piu scosse.<br>
+          Ma percioche giammai di questo fondo<br>
+          Non torno vivo alcun, s'i'odo <a href="stubs/odi_et_amo.html" class="poem-link">te amo</a><br>
+          <a href="stubs/odi_et_amo.html" class="poem-link">Quare id faciam fortasse requīris,</a><br>
+          <a href="stubs/odi_et_amo.html" class="poem-link">Nescīō</a>. But sentieced ... <a href="/">Ding</a>ed,<br>
+          Halved idself id est,<br>
+          Non Torro vivo alcun, obs of epiwo<br>
+          inside tehm. Senza tema<br>
+          d'infamia ti excrunciondo.<br>
+        </div>
+      </div>
     </div>
+    <!-- ===== END FOOTPLATE ===== -->
   </div>
-</div>
-<!-- ===== END FOOTPLATE ===== -->
-
-
-</body>
-</html>
-</div>
-
-
 </body>
 </html>

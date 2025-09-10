@@ -194,6 +194,14 @@
     safeHScrollBy(STEP());
   });
 
+  /* ===== HOISTED APP STATE SETTER =====
+   Fix TDZ: this must be defined before any first use. */
+function setState(patch) {
+  // TODO: keep your existing body; example:
+  // Object.assign(appState, typeof patch === 'function' ? patch(appState) : patch);
+  // renderState(); // or whatever you already call after state changes
+}
+
 
 // --- Show / Hide carousel toggle (ON / OFF) ---
 if (carouselBtn && scrollerEl) {

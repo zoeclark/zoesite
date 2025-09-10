@@ -99,16 +99,13 @@ body {
 
 /* ===== BANNER ===== */
 .poem-banner {
-  max-width: 900px;       /* match poem width, tweak if needed */
-  margin: 0 auto;         /* center the banner */
-    /* add color + faint white border without touching other props */
-  background: #22031F;        /* deep background */
-  color: #fff;                /* readable on dark bg */
-  border-top: 1px solid rgba(255,255,255,0.10);
-  border-right: 1px solid rgba(255,255,255,0.10);
-  border-left: 1px solid rgba(255,255,255,0.10);
-  /* keeps your existing border-bottom as-is */
-
+  max-width: 900px;       /* match poem width */
+  margin: 0 auto 2.25rem; /* center banner + bottom space */
+  
+  background: #22031F;    /* deep plum bg */
+  color: #fff;            /* readable on dark */
+  border: 1px solid rgba(255,255,255,0.15);  /* faint white border */
+  box-shadow: 0 2px 6px rgba(0,0,0,0.4);     /* soft drop shadow */
 
   display: flex;
   align-items: center;
@@ -133,24 +130,10 @@ body {
   text-decoration: underline;
 }
 
-/* Spacer takes up half the screen width */
 .poem-banner .spacer {
-  flex: 0 0 50vw;   /* fixed to 50% of viewport width */
+  flex: 0 0 50vw;   /* fixed half viewport width */
 }
 
-.poem_picture {
-  display: flex;
-  justify-content: center;
-  margin: 2rem 0;
-}
-
-.poem_picture img {
-  max-width: 50vw;   /* half the screen width */
-  height: auto;
-  border: 1px solid black;  /* minimal sleek border */
-}
-
-.poem-banner { margin-bottom: 2.25rem; }
 
 /* ===== GLOBAL NUKES ===== */
 

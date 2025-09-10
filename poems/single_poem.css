@@ -102,7 +102,7 @@ body {
   max-width: 900px;       /* match poem width */
   margin: 0 auto 2.25rem; /* center banner + bottom space */
   
-  background: #1f031c;    /* deep plum bg */
+  background: #20071e;    /* deep plum bg */
   color: #fff;            /* readable on dark */
   border: 3px solid rgba(239, 239, 234, 0.232);  /* faint white border */
   box-shadow: 0 4px 12px rgba(0,0,0,0.4);     /* soft drop shadow */
@@ -472,5 +472,14 @@ html, body {
   font-size: 1.35rem;         /* larger than .poem-body (1.2rem), < title */
   font-style: italic;
   margin: 0 0 1.5rem 0;       /* breathing room before poem body */
+  text-align: left;
+}
+
+/* Dedication line: italic, between title & body; > body, < title */
+.poem-dedication,
+.poem-dedication * {
+  font-size: 1.35rem;
+  font-style: italic !important;
+  margin: 0 0 1.5rem 0;
   text-align: left;
 }

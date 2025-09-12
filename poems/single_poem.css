@@ -313,12 +313,17 @@ html, body {
   margin: 1.5rem 0;            /* vertical spacing only */
 
   /* knobs */
-  --img-width: 75%;            /* image width as % of poem column */
+  --img-width: 90%;            /* DEFAULT width as % of poem column (top plate stays the same) */
   --overlay-frac: 0.5;         /* overlay is 50% of image width */
-  --band-opacity: 0.6;         /* semi-opaque band behind panel (0–1) */
-  --panel-opacity: 0.88;       /* solid panel behind text (0–1) */
+  --overlay-vfrac: 0.5;        /* overlay is 50% of image height */
+  --band-opacity: 0.6;         /* (legacy) semi-opaque band behind panel (0–1) */
+  --panel-opacity: 0.88;       /* (legacy) solid panel behind text (0–1) */
   --fg-color: black;           /* text color; switch to white if needed */
   --panel-text: #111;          /* text color on the panel */
+
+  /* unified color controls used by overlay (preferred) */
+  --bg-opacity: 0.9;           /* 0–1 */
+  --use-black: 0.3;            /* 1 = black bg, 0 = transparent/off */
 }
 
 /* Plate image: centered within the poem column */
@@ -330,14 +335,14 @@ html, body {
   margin: 0 auto;              /* centers image */
 }
 
-/* Overlay band: centered, HALF the image width by default */
+/* Overlay band (legacy form) */
 .bookplate-container .bookplate-text {
   position: absolute;
-  top: 0;
-  bottom: 0;
   left: 50%;
-  width: calc(var(--img-width) * var(--overlay-frac));
-  transform: translateX(-50%);
+  top: 50%;
+  width: calc(var(--img-width) * var(--overlay-frac));    /* width fraction of image */
+  height: calc(100% * var(--overlay-vfrac));              /* height fraction of image */
+  transform: translate(-50%, -50%);
   z-index: 1;
 
   display: flex;
@@ -346,112 +351,122 @@ html, body {
   text-align: center;
 
   padding: 1rem;
-  background: rgba(255, 255, 255, var(--band-opacity)) !important; /* survive global resets */
-  color: var(--fg-color);
   line-height: 1.4;
   font-family: 'STIX Two Text', serif;
+  color: var(--fg-color);
 
-  /* Optional nice-to-haves */
-  backdrop-filter: blur(2px);
-  -webkit-backdrop-filter: blur(2px);
+  /* unified overlay background (preferred) */
+  background: rgba(0,0,0, calc(var(--use-black) * var(--bg-opacity))) !important;
+
+  /* visuals */
   border-radius: 8px;
   box-shadow: 0 0 12px rgba(0,0,0,0.25);
+
+  /* keep overlay sharp (no blur) */
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+
+  /* if text is long, consider enabling scroll */
+  /* overflow: auto; */
 }
 
-/* Text panel: higher opacity behind the words */
-/* Overlay: HALF the image width AND HALF the image height, centered */
-.bookplate-container .bookplate-text {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  width: calc(var(--img-width) * var(--overlay-frac));     /* ← half the image width */
-  height: calc(100% * var(--overlay-vfrac));               /* ← half the image height */
-  transform: translate(-50%, -50%);                        /* center both axes */
-  z-index: 1;
-
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-
-  padding: 1rem;
-  background: rgba(255, 255, 255, var(--band-opacity)) !important;
-  color: var(--fg-color);
-  line-height: 1.4;
-  font-family: 'STIX Two Text', serif;
-
-
-  border-radius: 8px;
-  box-shadow: 0 0 12px rgba(0,0,0,0.25);
-
-  /* if your text is long, consider overflow:auto; or bump --overlay-vfrac */
-  /* overflow: auto; */
+/* Optional text panel behind the words (same two knobs) */
+.bookplate-container .bookplate-text .bookplate-panel {
+  background: rgba(0,0,0, calc(var(--use-black) * (var(--bg-opacity) + 0.2))) !important;
+  color: #fff;
+  padding: 0.5rem 0.75rem;
+  border-radius: 6px;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
 }
 
 /* Emphasis + Ex Libris sizing */
 .bookplate-text em { font-style: italic; }
 .bookplate-text .ex-libris { font-size: 1.6em; font-weight: 700; margin-top: 1rem; }
 
-/* Optional: foot-plate variant (bigger image) */
-.bookplate-container .plate-img.foot-plate { width: 65%; }
+/* ===== Variants ===== */
 
-/* ===== Minimal color controls ===== */
-.bookplate-container {
-  /* your existing sizing knobs */
-  --img-width: 90%;
-  --overlay-frac: 0.5;    /* width fraction of image */
-  --overlay-vfrac: 0.5;   /* height fraction of image */
-
-  /* ONLY these two color controls */
-  --bg-opacity: 0.9;      /* 0–1 */
-  --use-black: 0.3;         /* 1 = black bg, 0 = transparent/off */
+/* Make ONLY foot plates smaller (overrides the default 90% without touching top plate) */
+.bookplate-container.bookplate--foot {
+  --img-width: 60%;
 }
 
-/* Overlay band (uses ONLY the two knobs above) */
-.bookplate-container .bookplate-text {
-  background: rgba(0,0,0, calc(var(--use-black) * var(--bg-opacity))) !important;
-  color: #fff;
-}
-
-/* Optional text panel behind the words (same two knobs) */
-.bookplate-container .bookplate-text .bookplate-panel {
-  /* Slightly stronger than the band; keep bg-opacity ≤ 0.8 to avoid >1 alpha */
-  background: rgba(0,0,0, calc(var(--use-black) * (var(--bg-opacity) + 0.2))) !important;
-  color: #fff;
-}
-
-/* Kill blur on the overlay band */
-.bookplate-container .bookplate-text {
-  backdrop-filter: none !important;
-  -webkit-backdrop-filter: none !important;
-}
-
-/* If you added a panel inside, kill its blur too */
-.bookplate-container .bookplate-text .bookplate-panel {
-  backdrop-filter: none !important;
-  -webkit-backdrop-filter: none !important;
-}
-
-/* 1) Foot plate = 75% of poem column */
-.bookplate--foot {
-  --img-width: 75%;
-}
-
-/* 2) Foot plate = “little under a screen” (centered viewport width) */
+/* Foot plate viewport-centered option */
 .bookplate--screenish {
-  /* width driven by viewport, not the poem column */
-  --img-width: 65vw;                 /* ~a bit under full screen */
+  --img-width: 50vw;                 /* driven by viewport */
   width: var(--img-width);
   max-width: 70vw;
   margin-left: 50%;
   transform: translateX(-50%);       /* center in viewport */
 }
-
-/* Ensure the image fits the container in the screenish mode */
 .bookplate--screenish .plate-img.foot-plate {
-  width: 100% !important;
+  width: 75% !important;
   max-width: none !important;
 }
 
+/* === Align plates + title with poem column === */
+.poem-title { text-align: left; } /* ensure left */
+.poem-container .plate-img {
+  margin: 1.5rem 0;           /* matches poem spacing; no auto-centering */
+  display: block;
+}
+
+/* ===== Shut Up bookplate ===== */
+.shutup_plate {
+  position: relative;
+  margin: 1.5rem 0;
+
+  /* sizing knobs */
+  --img-width: 75%;     /* this plate at ~65% */
+  --overlay-frac: 0.7;  /* overlay width fraction */
+  --overlay-vfrac: 0.7; /* overlay height fraction */
+
+  /* overlay look */
+  --bg-opacity: 0.9;
+  --use-black: 0.5;
+  --fg-color: #fff;
+}
+
+.shutup_plate .plate-img {
+  display: block;
+  width: var(--img-width);
+  max-width: 100%;
+  height: auto;
+  margin: 0 auto; /* center */
+}
+
+.shutup_plate .bookplate-text {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: calc(var(--img-width) * var(--overlay-frac));
+  height: calc(100% * var(--overlay-vfrac));
+  transform: translate(-50%, -50%);
+  z-index: 1;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+
+  padding: 1rem;
+  font-family: 'STIX Two Text', serif;
+  color: var(--fg-color);
+  line-height: 1.4;
+
+  background: rgba(0, 0, 0, calc(var(--use-black) * var(--bg-opacity)));
+  border-radius: 8px;
+  box-shadow: 0 0 12px rgba(0,0,0,0.25);
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+
+.shutup_plate .bookplate-text em { font-style: italic; }
+.shutup_plate .bookplate-text .ex-libris {
+  font-size: 1.7em;
+  font-weight: 700;
+  margin-top: 1rem;
+}
 
 
 /* === TODO refactor === */
@@ -474,10 +489,10 @@ html, body {
   margin: 1.5rem 0;
 
   /* sizing knobs */
-  --img-width: 65%;     /* 70% of poem column */
+  --img-width: 50%;     /* 70% of poem column */
   --overlay-frac: 0.7;  /* overlay width fraction */
   --overlay-vfrac: 0.7; /* overlay height fraction */
-  --bg-opacity: 0.9;
+  --bg-opacity: 0.4;
   --use-black: 0.5;
   --fg-color: #fff;
 }
@@ -522,6 +537,19 @@ html, body {
   font-size: 1.7em;
   font-weight: 700;
   margin-top: 1rem;
+}
+
+
+/* Align ALL bookplates to the poem column width */
+.bookplate-container {
+  max-width: 700px;           /* <-- set this to whatever .poem-container uses */
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Make ONLY the footplate smaller (keeps top plate the same) */
+.bookplate-container.bookplate--foot {
+  --img-width: 60%;
 }
 
 

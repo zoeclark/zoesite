@@ -439,9 +439,9 @@ html, body {
 /* 2) Foot plate = “little under a screen” (centered viewport width) */
 .bookplate--screenish {
   /* width driven by viewport, not the poem column */
-  --img-width: 92vw;                 /* ~a bit under full screen */
+  --img-width: 65vw;                 /* ~a bit under full screen */
   width: var(--img-width);
-  max-width: 92vw;
+  max-width: 70vw;
   margin-left: 50%;
   transform: translateX(-50%);       /* center in viewport */
 }
@@ -466,6 +466,67 @@ html, body {
 
 /* Optional: keep head/foot same width knob, but left-aligned */
 .bookplate-container { --img-width: 65%; }  /* tweak as you like */
+
+
+/* ===== Shut Up bookplate ===== */
+.shutup_plate {
+  position: relative;
+  margin: 1.5rem 0;
+
+  /* sizing knobs */
+  --img-width: 65%;     /* 70% of poem column */
+  --overlay-frac: 0.7;  /* overlay width fraction */
+  --overlay-vfrac: 0.7; /* overlay height fraction */
+  --bg-opacity: 0.9;
+  --use-black: 0.5;
+  --fg-color: #fff;
+}
+
+.shutup_plate .plate-img {
+  display: block;
+  width: var(--img-width);
+  max-width: 100%;
+  height: auto;
+  margin: 0 auto; /* center */
+}
+
+.shutup_plate .bookplate-text {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: calc(var(--img-width) * var(--overlay-frac));
+  height: calc(100% * var(--overlay-vfrac));
+  transform: translate(-50%, -50%);
+  z-index: 1;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+
+  padding: 1rem;
+  font-family: 'STIX Two Text', serif;
+  color: var(--fg-color);
+  line-height: 1.4;
+
+  background: rgba(0, 0, 0, calc(var(--use-black) * var(--bg-opacity)));
+  border-radius: 8px;
+  box-shadow: 0 0 12px rgba(0,0,0,0.25);
+
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+
+.shutup_plate .bookplate-text em { font-style: italic; }
+.shutup_plate .bookplate-text .ex-libris {
+  font-size: 1.7em;
+  font-weight: 700;
+  margin-top: 1rem;
+}
+
+
+/* === dedication === */
+
 
 /* Dedication line: italic, between title & body; > body, < title */
 .poem-dedication {

@@ -194,57 +194,47 @@
     safeHScrollBy(STEP());
   });
 
-  /* ===== HOISTED APP STATE SETTER =====
-   Fix TDZ: this must be defined before any first use. */
-function setState(patch) {
-  // TODO: keep your existing body; example:
-  // Object.assign(appState, typeof patch === 'function' ? patch(appState) : patch);
-  // renderState(); // or whatever you already call after state changes
-}
-
 
 // --- Show / Hide carousel toggle (ON / OFF) ---
 if (carouselBtn && scrollerEl) {
-  // let CSS control layout; we only use the .is-hidden class
   scrollerEl.style.display = '';
 
-
   // init from DOM
-  setState(scrollerEl.classList.contains('is-hidden'));
+  setCarouselState(scrollerEl.classList.contains('is-hidden'));
 
-  // single handler (overwrite any previous click logic)
+  // single handler
   carouselBtn.onclick = () =>
-    setState(!scrollerEl.classList.contains('is-hidden'));
+    setCarouselState(!scrollerEl.classList.contains('is-hidden'));
 }
 
-const setState = (hidden) => {
+function setCarouselState(hidden) {
   scrollerEl.classList.toggle('is-hidden', hidden);
   scrollerEl.setAttribute('aria-hidden', String(hidden));
   carouselBtn.setAttribute('aria-expanded', String(!hidden));
 
   // ensure minimal label exists and update it
-  var lbl = carouselBtn.querySelector('#carouselLabel');
+  let lbl = carouselBtn.querySelector('#carouselLabel');
   if (!lbl) {
     lbl = document.createElement('span');
     lbl.id = 'carouselLabel';
-    lbl.className = 'carousel-label'; // optional for styling
+    lbl.className = 'carousel-label';
     carouselBtn.appendChild(lbl);
   }
   lbl.textContent = hidden ? 'off' : 'on';
-};
+}
 
     // Transport buttons
-    prevBtn?.addEventListener("click", (e) => { e.stopPropagation(); console.log("🖱 ←"); manualShift(-1); hScrollBy?.(-STEP()); });
-    nextBtn?.addEventListener("click", (e) => { e.stopPropagation(); console.log("🖱 →"); manualShift( 1); hScrollBy?.( STEP()); });
-    pauseBtnEl?.addEventListener("click", (e) => { e.stopPropagation(); console.log("🖱 ⏯"); togglePause(); });
+    // prevBtn?.addEventListener("click", (e) => { e.stopPropagation(); console.log("🖱 ←"); manualShift(-1); hScrollBy?.(-STEP()); });
+    // nextBtn?.addEventListener("click", (e) => { e.stopPropagation(); console.log("🖱 →"); manualShift( 1); hScrollBy?.( STEP()); });
+    // pauseBtnEl?.addEventListener("click", (e) => { e.stopPropagation(); console.log("🖱 ⏯"); togglePause(); });
 
     // Delegated clicks
     // Delegated clicks
 controlsEl?.addEventListener("click", (e) => {
   const btn = e.target.closest("#prevBtn, #nextBtn, #pauseBtn, #speedBtn, #carouselBtn");
   if (!btn) return;
-  if (btn.id === "prevBtn")       { manualShift(-1); hScrollBy?.(-STEP()); }
-  else if (btn.id === "nextBtn")  { manualShift( 1); hScrollBy?.( STEP()); }
+  if (btn.id === "prevBtn")        { manualShift(-1); safeHScrollBy(-STEP()); }
+  else if (btn.id === "nextBtn")  { manualShift( 1); safeHScrollBy( STEP()); }
   else if (btn.id === "pauseBtn") { togglePause(); }
   else if (btn.id === "speedBtn") { /* slider toggled below */ }
   // 🚫 remove this line, let the new on/off code handle carousel

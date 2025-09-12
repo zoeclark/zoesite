@@ -134,7 +134,6 @@
 })();
 
 
-
 // show/hide helpers (single global timer) — with logs
 window.__carousel = window.__carousel || {};
 const AUTO_HIDE_MS = 3000;
@@ -145,6 +144,14 @@ function showCarousel() {
     document.body.classList.add('show-carousel');
     btns[i]?.scrollIntoView({ inline: 'center', block: 'nearest', behavior: 'auto' });
     console.log('[carousel] SHOW → centered index', i);
+
+    // ✅ if slideshow is paused (black frame risk), force resume
+    if (document.body.classList.contains('paused') && typeof window.resumeFader === 'function') {
+      window.resumeFader();
+    }
+    // ✅ also hard-hide any pause overlay just in case
+    const p = document.getElementById('pauseImg');
+    if (p) { p.style.opacity = '0'; p.style.pointerEvents = 'none'; }
   } else {
     console.log('[carousel] show (already visible) → index', i);
   }
@@ -166,7 +173,6 @@ function hideCarousel() {
   }
 }
 
-
 function resetCarouselHide() {
   clearTimeout(window.__carousel.hideTimer);
   window.__carousel.hideTimer = setTimeout(() => {
@@ -175,7 +181,6 @@ function resetCarouselHide() {
   }, AUTO_HIDE_MS);
   console.log('[carousel] reset hide timer →', AUTO_HIDE_MS, 'ms');
 }
-
 
 
 

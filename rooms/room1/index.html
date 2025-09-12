@@ -6,14 +6,8 @@
   <link rel="stylesheet" href="../shared/style.css">
 </head>
 <body>
-<div class="back-cluster">
-  <a href="../" class="back-button" aria-label="return to doors">
-    <img src="../../shared_imgs/door_icon.jpg" alt="back" class="back-icon">
-    <span class="back-arrow">←</span>
-  </a>
-</div>
 
- <!-- CXANGE room # stuffer here 1234 -->
+ <!-- IMAGE CONTAINER -->
 
   <div id="image-container">
     <img class="fade-img" id="imgA" src="images/room1_1.png" />
@@ -21,9 +15,6 @@
     <img id="pauseImg" class="fade-img" src="room1_pause_screen.png"/>
     <div id="pauseOverlayText">you cannot pause</div>
     <div id="hscroll" class="hscroll"></div>
-  <div class="hpanel">1</div>
-  <div class="hpanel">2</div>
-  <div class="hpanel">3</div>
   </div>
 
    <div id="controls" role="region" aria-label="Slideshow controls">
@@ -66,7 +57,7 @@
 <!-- Scripts -->
 <script src="room1_imageList.js"></script>
 <script src="../shared/fader.js"></script>
-<script src="../shared/carousel_bind.js"></script>
+<script src="../room1/room1_bind_ALTERNATE.js"></script>
 <script>
   document.addEventListener("DOMContentLoaded", () => {
     const images = window.room1images;

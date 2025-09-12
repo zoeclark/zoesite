@@ -304,44 +304,43 @@ html, body {
   margin-bottom: 2rem;   /* adjust this number until it feels right */
 }
 
+/* ===== BOOKPLATE (clean, refactor — no functional changes) ===== */
 
-/* ===== BOOKPLATE (clean) ===== */
-
-/* Container sits inside .poem-container so it aligns with poem column */
+/* Base container (column-aligned by page-level max-width below) */
 .bookplate-container {
   position: relative;
-  margin: 1.5rem 0;            /* vertical spacing only */
+  margin: 1.5rem 0;
 
-  /* knobs */
-  --img-width: 90%;            /* DEFAULT width as % of poem column (top plate stays the same) */
-  --overlay-frac: 0.5;         /* overlay is 50% of image width */
-  --overlay-vfrac: 0.5;        /* overlay is 50% of image height */
-  --band-opacity: 0.6;         /* (legacy) semi-opaque band behind panel (0–1) */
-  --panel-opacity: 0.88;       /* (legacy) solid panel behind text (0–1) */
-  --fg-color: black;           /* text color; switch to white if needed */
-  --panel-text: #111;          /* text color on the panel */
+  /* default knobs */
+  --img-width: 90%;   /* default width as % of poem column */
+  --overlay-frac: 0.5;  /* overlay width fraction of image */
+  --overlay-vfrac: 0.5; /* overlay height fraction of image */
+  --band-opacity: 0.6;  /* legacy */
+  --panel-opacity: 0.88; /* legacy */
+  --fg-color: black;
+  --panel-text: #111;
 
-  /* unified color controls used by overlay (preferred) */
-  --bg-opacity: 0.9;           /* 0–1 */
-  --use-black: 0.3;            /* 1 = black bg, 0 = transparent/off */
+  /* unified overlay controls */
+  --bg-opacity: 0.9;  /* 0–1 */
+  --use-black: 0.3;   /* 1 = black bg, 0 = transparent */
 }
 
-/* Plate image: centered within the poem column */
+/* Image picks up the variable width */
 .bookplate-container .plate-img {
   display: block;
   width: var(--img-width);
   max-width: 100%;
   height: auto;
-  margin: 0 auto;              /* centers image */
+  margin: 0 auto; /* centered by default */
 }
 
-/* Overlay band (legacy form) */
+/* Default overlay (absolute model used by most plates) */
 .bookplate-container .bookplate-text {
   position: absolute;
   left: 50%;
   top: 50%;
-  width: calc(var(--img-width) * var(--overlay-frac));    /* width fraction of image */
-  height: calc(100% * var(--overlay-vfrac));              /* height fraction of image */
+  width: calc(var(--img-width) * var(--overlay-frac));
+  height: calc(100% * var(--overlay-vfrac));
   transform: translate(-50%, -50%);
   z-index: 1;
 
@@ -355,22 +354,18 @@ html, body {
   font-family: 'STIX Two Text', serif;
   color: var(--fg-color);
 
-  /* unified overlay background (preferred) */
+  /* unified background */
   background: rgba(0,0,0, calc(var(--use-black) * var(--bg-opacity))) !important;
 
-  /* visuals */
   border-radius: 8px;
   box-shadow: 0 0 12px rgba(0,0,0,0.25);
-
-  /* keep overlay sharp (no blur) */
   backdrop-filter: none !important;
   -webkit-backdrop-filter: none !important;
 
-  /* if text is long, consider enabling scroll */
-  /* overflow: auto; */
+  /* overflow: auto;  // enable if long text clips */
 }
 
-/* Optional text panel behind the words (same two knobs) */
+/* Optional inner panel */
 .bookplate-container .bookplate-text .bookplate-panel {
   background: rgba(0,0,0, calc(var(--use-black) * (var(--bg-opacity) + 0.2))) !important;
   color: #fff;
@@ -380,195 +375,116 @@ html, body {
   -webkit-backdrop-filter: none !important;
 }
 
-/* Emphasis + Ex Libris sizing */
+/* Emphasis */
 .bookplate-text em { font-style: italic; }
 .bookplate-text .ex-libris { font-size: 1.6em; font-weight: 700; margin-top: 1rem; }
 
 /* ===== Variants ===== */
 
-/* Make ONLY foot plates smaller (overrides the default 90% without touching top plate) */
-.bookplate-container.bookplate--foot {
-  --img-width: 60%;
-}
+/* Foot plate smaller (top plate remains at default) */
+.bookplate-container.bookplate--foot { --img-width: 60%; }
 
-/* Foot plate viewport-centered option */
+/* Viewport-centered option */
 .bookplate--screenish {
-  --img-width: 50vw;                 /* driven by viewport */
+  --img-width: 50vw;
   width: var(--img-width);
   max-width: 70vw;
   margin-left: 50%;
-  transform: translateX(-50%);       /* center in viewport */
+  transform: translateX(-50%);
 }
 .bookplate--screenish .plate-img.foot-plate {
   width: 75% !important;
   max-width: none !important;
 }
 
-/* === Align plates + title with poem column === */
-.poem-title { text-align: left; } /* ensure left */
+/* ===== Column alignment + title spacing ===== */
+.poem-title { text-align: left; }
+
 .poem-container .plate-img {
-  margin: 1.5rem 0;           /* matches poem spacing; no auto-centering */
+  margin: 1.5rem 0;
   display: block;
 }
 
-/* ===== Shut Up bookplate ===== */
-.shutup_plate {
+/* Constrain all bookplates to poem column width (update to match your column) */
+.bookplate-container {
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ===== Shut Up bookplate (left-aligned grid overlay) ===== */
+.bookplate-container.shutup_plate {
+  /* left-align within the poem column */
+  display: grid;
+  justify-items: start;
+  align-items: center;
   position: relative;
-  margin: 1.5rem 0;
+  isolation: isolate;
 
-  /* sizing knobs */
-  --img-width: 75%;     /* this plate at ~65% */
-  --overlay-frac: 0.7;  /* overlay width fraction */
-  --overlay-vfrac: 0.7; /* overlay height fraction */
-
-  /* overlay look */
+  /* current knobs for this plate */
+  --img-width: 85%;
+  --overlay-frac: 0.96;
+  --overlay-vfrac: 0.9; /* kept for parity, not used in grid height */
   --bg-opacity: 0.9;
   --use-black: 0.5;
   --fg-color: #fff;
 }
 
-.shutup_plate .plate-img {
-  display: block;
+.bookplate-container.shutup_plate .plate-img {
+  grid-area: 1 / 1;
   width: var(--img-width);
   max-width: 100%;
   height: auto;
-  margin: 0 auto; /* center */
+  margin: 0;             /* no auto-center */
+  justify-self: start;   /* left aligned image */
+  z-index: 0;
 }
 
-.shutup_plate .bookplate-text {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  width: calc(var(--img-width) * var(--overlay-frac));
-  height: calc(100% * var(--overlay-vfrac));
-  transform: translate(-50%, -50%);
-  z-index: 1;
+.bookplate-container.shutup_plate .bookplate-text {
+  grid-area: 1 / 1;
+  /* neutralize absolute model from defaults */
+  position: static !important;
+  left: auto !important;
+  top: auto !important;
+  transform: none !important;
 
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-
-  padding: 1rem;
-  font-family: 'STIX Two Text', serif;
-  color: var(--fg-color);
-  line-height: 1.4;
-
-  background: rgba(0, 0, 0, calc(var(--use-black) * var(--bg-opacity)));
-  border-radius: 8px;
-  box-shadow: 0 0 12px rgba(0,0,0,0.25);
-  backdrop-filter: none;
-  -webkit-backdrop-filter: none;
-}
-
-.shutup_plate .bookplate-text em { font-style: italic; }
-.shutup_plate .bookplate-text .ex-libris {
-  font-size: 1.7em;
-  font-weight: 700;
-  margin-top: 1rem;
-}
-
-
-/* === TODO refactor === */
-/* === Align plates + title with poem column === */
-.poem-title { text-align: left; } /* ensure left */
-
-/* Plates sit flush with poem's left edge, same vertical rhythm */
-.poem-container .plate-img {
-  margin: 1.5rem 0;           /* matches poem spacing; no auto-centering */
-  display: block;
-}
-
-/* Optional: keep head/foot same width knob, but left-aligned */
-.bookplate-container { --img-width: 65%; }  /* tweak as you like */
-
-
-/* ===== Shut Up bookplate ===== */
-.shutup_plate {
-  position: relative;
-  margin: 1.5rem 0;
-
-  /* sizing knobs */
-  --img-width: 50%;     /* 70% of poem column */
-  --overlay-frac: 0.7;  /* overlay width fraction */
-  --overlay-vfrac: 0.7; /* overlay height fraction */
-  --bg-opacity: 0.4;
-  --use-black: 0.5;
-  --fg-color: #fff;
-}
-
-.shutup_plate .plate-img {
-  display: block;
-  width: var(--img-width);
-  max-width: 100%;
-  height: auto;
-  margin: 0 auto; /* center */
-}
-
-.shutup_plate .bookplate-text {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  width: calc(var(--img-width) * var(--overlay-frac));
-  height: calc(100% * var(--overlay-vfrac));
-  transform: translate(-50%, -50%);
-  z-index: 1;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-
-  padding: 1rem;
-  font-family: 'STIX Two Text', serif;
-  color: var(--fg-color);
-  line-height: 1.4;
-
-  background: rgba(0, 0, 0, calc(var(--use-black) * var(--bg-opacity)));
-  border-radius: 8px;
-  box-shadow: 0 0 12px rgba(0,0,0,0.25);
-
-  backdrop-filter: none;
-  -webkit-backdrop-filter: none;
-}
-
-.shutup_plate .bookplate-text em { font-style: italic; }
-.shutup_plate .bookplate-text .ex-libris {
-  font-size: 1.7em;
-  font-weight: 700;
-  margin-top: 1rem;
-}
-
-
-/* Align ALL bookplates to the poem column width */
-.bookplate-container {
-  max-width: 700px;           /* <-- set this to whatever .poem-container uses */
-  margin-left: auto;
-  margin-right: auto;
-}
-
-/* Make ONLY the footplate smaller (keeps top plate the same) */
-.bookplate-container.bookplate--foot {
-  --img-width: 60%;
-}
-
-
-/* === dedication === */
-
-
-/* Dedication line: italic, between title & body; > body, < title */
-.poem-dedication {
-  font-size: 1.35rem;         /* larger than .poem-body (1.2rem), < title */
-  font-style: italic;
-  margin: 0 0 1.5rem 0;       /* breathing room before poem body */
+  justify-self: start;   /* panel left edge = image left edge */
   text-align: left;
+  width: clamp(260px, calc(var(--img-width) * var(--overlay-frac)), 100%);
+  height: auto;          /* content-sized */
+  z-index: 1;
+
+  display: flex;
+  align-items: center;
+  padding: 0.75rem 0.9rem;
+  line-height: 1.4;
+  white-space: normal;
+
+  background: rgba(0,0,0, calc(var(--use-black) * var(--bg-opacity))) !important;
+  color: var(--fg-color);
+  border-radius: 8px;
+  box-shadow: 0 0 12px rgba(0,0,0,0.25);
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
 }
 
-/* Dedication line: italic, between title & body; > body, < title */
-.poem-dedication,
-.poem-dedication * {
+.bookplate-container.shutup_plate .bookplate-text em { font-style: italic; }
+.bookplate-container.shutup_plate .bookplate-text .ex-libris {
+  font-size: 1.7em;
+  font-weight: 700;
+  margin-top: 1rem;
+}
+
+/* Mobile safety */
+@media (max-width: 720px) {
+  .bookplate-container.shutup_plate { --img-width: 100%; }
+  .bookplate-container.shutup_plate .bookplate-text { width: 96%; }
+}
+
+/* ===== Dedication ===== */
+.poem-dedication {
   font-size: 1.35rem;
-  font-style: italic !important;
+  font-style: italic;
   margin: 0 0 1.5rem 0;
   text-align: left;
 }

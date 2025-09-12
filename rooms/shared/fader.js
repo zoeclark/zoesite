@@ -105,6 +105,7 @@
     if (pauseBtn) pauseBtn.textContent = "⏸";
     console.log("▶ Resumed slideshow");
   }
+  window.resumeFader = resumeFader;
 
   function togglePause() { isPaused ? resumeFader() : showPauseScreen(); }
 
@@ -206,6 +207,23 @@ if (carouselBtn && scrollerEl) {
   carouselBtn.onclick = () =>
     setCarouselState(!scrollerEl.classList.contains('is-hidden'));
 }
+
+function setCarouselState(hidden) {
+  scrollerEl.classList.toggle('is-hidden', hidden);
+  scrollerEl.setAttribute('aria-hidden', String(hidden));
+  carouselBtn.setAttribute('aria-expanded', String(!hidden));
+
+  // ensure minimal label exists and update it
+  let lbl = carouselBtn.querySelector('#carouselLabel');
+  if (!lbl) {
+    lbl = document.createElement('span');
+    lbl.id = 'carouselLabel';
+    lbl.className = 'carousel-label';
+    carouselBtn.appendChild(lbl);
+  }
+  lbl.textContent = hidden ? 'off' : 'on';
+}
+
 
 function setCarouselState(hidden) {
   scrollerEl.classList.toggle('is-hidden', hidden);

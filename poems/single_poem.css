@@ -382,18 +382,18 @@ html, body {
 /* ===== Variants ===== */
 
 /* Foot plate smaller (top plate remains at default) */
-.bookplate-container.bookplate--foot { --img-width: 60%; }
+.bookplate-container.bookplate--foot { --img-width: 90%; }
 
 /* Viewport-centered option */
 .bookplate--screenish {
   --img-width: 50vw;
   width: var(--img-width);
   max-width: 70vw;
-  margin-left: 50%;
+  margin-left: 20%;
   transform: translateX(-50%);
 }
 .bookplate--screenish .plate-img.foot-plate {
-  width: 75% !important;
+  width: 120% !important;
   max-width: none !important;
 }
 
@@ -422,10 +422,10 @@ html, body {
   isolation: isolate;
 
   /* current knobs for this plate */
-  --img-width: 85%;
-  --overlay-frac: 0.96;
+  --img-width: 95%;
+  --overlay-frac: 0.89;
   --overlay-vfrac: 0.9; /* kept for parity, not used in grid height */
-  --bg-opacity: 0.9;
+  --bg-opacity: 0.4;
   --use-black: 0.5;
   --fg-color: #fff;
 }
@@ -475,6 +475,87 @@ html, body {
   margin-top: 1rem;
 }
 
+/* ===== Ex Libris footplate — smaller, left-aligned, longer lines ===== */
+.bookplate-container.ex_lib_footplate {
+  /* keep it in the poem column and align left */
+  display: grid;
+  justify-items: start;
+  align-items: center;
+  position: relative;
+  isolation: isolate;
+
+  /* knobs for this plate only */
+  --img-width: 100% !important;   /* smaller image -> tweak 55–65% to taste */
+  --overlay-frac: 0.6 !important; /* wider panel -> longer lines */
+  --bg-opacity: 0.1;
+  --use-black: 0.9;
+  --fg-color: #fff;
+}
+
+/* image: left-aligned, not auto-centered */
+.bookplate-container.ex_lib_footplate .plate-img {
+  grid-area: 1 / 1;
+  width: var(--img-width) !important;   /* wins over earlier foot-plate rules */
+  max-width: 200% !important;
+  height: auto;
+  margin: 0;     
+  font-size: 2.9em;
+  font-weight: 700;                        /* no auto-centering */
+  justify-self: start;                   /* align to column left */
+  z-index: 0;
+}
+
+/* overlay: sits on same grid cell, left-aligned, wider lines */
+.bookplate-container.ex_lib_footplate .bookplate-text {
+  grid-area: 1 / 1;
+  /* neutralize any absolute positioning declared earlier */
+  position: static !important;
+  left: auto !important;
+  top: auto !important;
+  transform: none !important;
+
+  justify-self: start;                   /* panel left edge = image left edge */
+  text-align: left;
+  width: calc(var(--img-width) * var(--overlay-frac));
+  height: auto;
+  z-index: 1;
+
+  display: flex;
+  align-items: center;
+  padding: 0.85rem 1rem;
+  line-height: 1.45;
+  white-space: normal;
+
+  background: rgba(0,0,0, calc(var(--use-black) * var(--bg-opacity))) !important;
+  color: var(--fg-color);
+  border-radius: 8px;
+  box-shadow: 0 0 12px rgba(0,0,0,0.25);
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+/* ===== Foot plate only overrides ===== */
+.bookplate-container.bookplate--foot {
+  --img-width: 90%;
+  --overlay-frac: 0.70;  /* wider panel for nicer centering */
+}
+
+.bookplate-container.bookplate--foot .plate-img {
+  margin-left: 0;
+  margin-right: auto;    /* image aligns with poem column left */
+}
+
+.bookplate-container.bookplate--foot .bookplate-text {
+  left: calc(var(--img-width) / 2);
+  top: 50%;
+  transform: translate(-50%, -50%);
+
+  text-align: center;
+  font-size: 1.7em;     /* bigger text */
+  padding: 1.1rem 1.25rem;
+}
+
+
 /* Mobile safety */
 @media (max-width: 720px) {
   .bookplate-container.shutup_plate { --img-width: 100%; }
@@ -483,8 +564,8 @@ html, body {
 
 /* ===== Dedication ===== */
 .poem-dedication {
-  font-size: 1.35rem;
-  font-style: italic;
-  margin: 0 0 1.5rem 0;
+  font-size: 1.35rem;    /* larger than body, smaller than title */
+  font-style: italic;    /* <-- real italics */
+  margin: 0 0 1.5rem 0;  /* spacing before body */
   text-align: left;
 }

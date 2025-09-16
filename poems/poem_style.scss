@@ -342,24 +342,24 @@ body > h1:first-of-type {
 //     0 0 2.8em  #faa672; /* glow */
 //   outline: #
 // }
-// === POEM 1 stop dont blink link  class STARAT ===
+// === POEM 1: SCARED HAPPY PPLE stop dont blink link  class STARAT ===
 .poem_1_blink {
   @include blink-cycle(poem1_cycle 7s, -1s);
   text-shadow:
-    0 0 0.7em #d77063,
+    0 0 1.4em #d77063,
     0 0 1.4em  #d77063,
     0 0 1.4em  #d77063;
 }
 // === POEM 1 blink END ===
 
-// === POEM 2 blink START ===
+// === POEM 2: EX LIBRIS blink START ===
 .poem_2_blink {
   @include blink-cycle(poem2_cycle 28s, -1s);
   text-shadow:
-    0 0 0.7em #72b4b2,
     0 0 1.4em #72b4b2,
-    0 0 2.8em #72b4b2;
-    outline: #929BA2
+    0 0 1.4em #72b4b2,
+    0 0 1.4em #72b4b2;
+    outline: #d77063
 }
 // === POEM 2 blink END ===
 
@@ -407,14 +407,14 @@ body > h1:first-of-type {
 }
 // === POEM home arrow blink END ===
 
-// === POEM 4 (march pain( blink link  class STARAT ===
+// === POEM 4: MARCH PAIN ( blink link  class STARAT ===
 
 .poem_4_blink {
   @include blink-cycle(poem4_cycle 7s, -1s);
   text-shadow:
-    0 0 0.7em #72b4b2,
-    0 0 1.4em  #72b4b2,
-    0 0 2.8em  #72b4b2;
+    0 0 2.1em #72b4b2,
+    0 0 2.1em  #72b4b2,
+    0 0 2.1em  #72b4b2;
     outline: #e3e3e3
 }
 .poem_4_blink:hover,
@@ -447,9 +447,9 @@ body > h1:first-of-type {
 .poem_7_blink {
   @include blink-cycle(poem7_cycle 7s, -1s);
   text-shadow:
-    0 0 0.1em #d77063,
-    0 0 0.7em  #d77063,
-    0 0 0.1em  #d77063;
+    0 0 2.1em #d77063,
+    0 0 2.1em  #d77063,
+    0 0 2.1em  #d77063;
 }
 // === POEM 7 blink END ===
 
@@ -464,13 +464,13 @@ body > h1:first-of-type {
 }
 // === POEM 8 blink END ===
 
-// === POEM 9 stop dont blink link  class STARAT ===
+// === POEM 9: SHUT UP stop dont blink link  class STARAT ===
 .poem_9_blink {
   @include blink-cycle(poem1_cycle 7s, -1s);
   text-shadow:
     0 0 0.7em #72b4b2,
-    0 0 1.4em  #72b4b2,
-    0 0 1.4em  #72b4b2;
+    0 0 0.7em  #72b4b2,
+    0 0 0.7em  #72b4b2;
     outline: #1b3f6d;
 }
 .poem_9_blink:hover,

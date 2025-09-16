@@ -569,7 +569,7 @@ body > h1:first-of-type {
   text-decoration: none;
   font-weight: bold;
   transition: transform 0.7s ease;
-  text-shadow: 0 0 0.7em #d77063, 0 0 1.4em #d77063, 0 0 1.4em #d77063;
+  text-shadow: 0 0 1.4em #d77063, 0 0 1.4em #d77063, 0 0 1.4em #d77063;
 }
 
 .poem_2_blink {
@@ -579,8 +579,8 @@ body > h1:first-of-type {
   text-decoration: none;
   font-weight: bold;
   transition: transform 0.7s ease;
-  text-shadow: 0 0 0.7em #72b4b2, 0 0 1.4em #72b4b2, 0 0 2.8em #72b4b2;
-  outline: #929BA2;
+  text-shadow: 0 0 1.4em #72b4b2, 0 0 1.4em #72b4b2, 0 0 1.4em #72b4b2;
+  outline: #d77063;
 }
 
 .poem_3_blink {
@@ -624,7 +624,7 @@ body > h1:first-of-type {
   text-decoration: none;
   font-weight: bold;
   transition: transform 0.7s ease;
-  text-shadow: 0 0 0.7em #72b4b2, 0 0 1.4em #72b4b2, 0 0 2.8em #72b4b2;
+  text-shadow: 0 0 2.1em #72b4b2, 0 0 2.1em #72b4b2, 0 0 2.1em #72b4b2;
   outline: #e3e3e3;
 }
 
@@ -660,7 +660,7 @@ body > h1:first-of-type {
   text-decoration: none;
   font-weight: bold;
   transition: transform 0.7s ease;
-  text-shadow: 0 0 0.1em #d77063, 0 0 0.7em #d77063, 0 0 0.1em #d77063;
+  text-shadow: 0 0 2.1em #d77063, 0 0 2.1em #d77063, 0 0 2.1em #d77063;
 }
 
 .poem_8_blink {
@@ -680,7 +680,7 @@ body > h1:first-of-type {
   text-decoration: none;
   font-weight: bold;
   transition: transform 0.7s ease;
-  text-shadow: 0 0 0.7em #72b4b2, 0 0 1.4em #72b4b2, 0 0 1.4em #72b4b2;
+  text-shadow: 0 0 0.7em #72b4b2, 0 0 0.7em #72b4b2, 0 0 0.7em #72b4b2;
   outline: #1b3f6d;
 }
 

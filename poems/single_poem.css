@@ -423,10 +423,10 @@ html, body {
 
   /* current knobs for this plate */
   --img-width: 95%;
-  --overlay-frac: 0.89;
+  --overlay-frac: 0.55;
   --overlay-vfrac: 0.9; /* kept for parity, not used in grid height */
-  --bg-opacity: 0.4;
-  --use-black: 0.5;
+  --bg-opacity: 0.5;
+  --use-black: 0.6;
   --fg-color: #fff;
 }
 
@@ -488,7 +488,7 @@ html, body {
   --img-width: 100% !important;   /* smaller image -> tweak 55–65% to taste */
   --overlay-frac: 0.6 !important; /* wider panel -> longer lines */
   --bg-opacity: 0.1;
-  --use-black: 0.9;
+  --use-black: 0.5;
   --fg-color: #fff;
 }
 
@@ -537,7 +537,7 @@ html, body {
 /* ===== Foot plate only overrides ===== */
 .bookplate-container.bookplate--foot {
   --img-width: 90%;
-  --overlay-frac: 0.70;  /* wider panel for nicer centering */
+  --overlay-frac: 0.60;  /* wider panel for nicer centering */
 }
 
 .bookplate-container.bookplate--foot .plate-img {
@@ -559,7 +559,7 @@ html, body {
 /* Mobile safety */
 @media (max-width: 720px) {
   .bookplate-container.shutup_plate { --img-width: 100%; }
-  .bookplate-container.shutup_plate .bookplate-text { width: 96%; }
+  .bookplate-container.shutup_plate .bookplate-text { width: 9%; }
 }
 
 /* ===== Dedication ===== */

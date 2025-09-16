@@ -129,6 +129,24 @@ body > h1:first-of-type {
 
 // === POEM 1 Shut Up color cycle ===
 @keyframes poem1_cycle {
+  0%      { color: $cold-1; }
+  7.14%   { color: $cold-1; }
+  14.29%  { color: $cold-3; }
+  21.43%  { color: $cold-3; }
+  28.57%  { color: $cold-3; }
+  35.71%  { color: $cold-4; }
+  42.86%  { color: $cold-4; }
+  50.00%  { color: $cold-7; }
+  57.14%  { color: $cold-7; }
+  64.29%  { color: $warm-1; }
+  71.43%  { color: $warm-1; }
+  78.57%  { color: $warm-1; }
+  85.71%  { color: $cold-1; }
+  100%    { color: $cold-1; }
+}
+
+// === UNUSED old Shut Up color cycle ===
+@keyframes unused_poem_cycle {
    0%      { color: $warm-bg; }
   7.14%   { color: $warm-6; }
   7.14%   { color: $warm-7; }
@@ -151,6 +169,7 @@ body > h1:first-of-type {
   85.71%  { color: $warm-7; }
   100%    { color: $cold-bg; }
 }
+
 
 
 // === POEM 2  Ex Libris color cycle ===
@@ -327,10 +346,9 @@ body > h1:first-of-type {
 .poem_1_blink {
   @include blink-cycle(poem1_cycle 7s, -1s);
   text-shadow:
-    0 0 0.7em #e3e3e3,
-    0 0 1.4em  #e3e3e3,
-    0 0 1.4em  #faa672;
-    outline: #6f6d6c
+    0 0 0.7em #d77063,
+    0 0 1.4em  #d77063,
+    0 0 1.4em  #d77063;
 }
 // === POEM 1 blink END ===
 
@@ -338,9 +356,10 @@ body > h1:first-of-type {
 .poem_2_blink {
   @include blink-cycle(poem2_cycle 28s, -1s);
   text-shadow:
-    0 0 0.7em #fa915b,
-    0 0 1.4em #faa672,
-    0 0 2.8em #faa672;
+    0 0 0.7em #72b4b2,
+    0 0 1.4em #72b4b2,
+    0 0 2.8em #72b4b2;
+    outline: #929BA2
 }
 // === POEM 2 blink END ===
 
@@ -389,17 +408,18 @@ body > h1:first-of-type {
 // === POEM home arrow blink END ===
 
 // === POEM 4 (march pain( blink link  class STARAT ===
-.poem_4_blink:hover,
-.poem_4_blink:focus-visible {
-  transform: scale(1.4) !important;
-}
+
 .poem_4_blink {
   @include blink-cycle(poem4_cycle 7s, -1s);
   text-shadow:
-    0 0 0.7em #e0764b,
-    0 0 1.4em  #e0764b,
-    0 0 2.8em  #d770;
-    outline: #22031F
+    0 0 0.7em #72b4b2,
+    0 0 1.4em  #72b4b2,
+    0 0 2.8em  #72b4b2;
+    outline: #e3e3e3
+}
+.poem_4_blink:hover,
+.poem_4_blink:focus-visible {
+  transform: scale(1.0) !important;
 }
 // === POEM 4 blink END ===
 
@@ -427,9 +447,9 @@ body > h1:first-of-type {
 .poem_7_blink {
   @include blink-cycle(poem7_cycle 7s, -1s);
   text-shadow:
-    0 0 0.1em #e3f3f2,
-    0 0 0.7em  #72b4b2,
-    0 0 0.1em  #929BA2;
+    0 0 0.1em #d77063,
+    0 0 0.7em  #d77063,
+    0 0 0.1em  #d77063;
 }
 // === POEM 7 blink END ===
 
@@ -448,10 +468,14 @@ body > h1:first-of-type {
 .poem_9_blink {
   @include blink-cycle(poem1_cycle 7s, -1s);
   text-shadow:
-    0 0 0.7em #1b3f6d,
-    0 0 1.4em  #929BA2,
-    0 0 1.4em  #1b3f6d;
-    outline: #e3f3f2
+    0 0 0.7em #72b4b2,
+    0 0 1.4em  #72b4b2,
+    0 0 1.4em  #72b4b2;
+    outline: #1b3f6d;
+}
+.poem_9_blink:hover,
+.poem_9_blink:focus-visible {
+  transform: scale(1.0) !important;
 }
 // === POEM 9 blink END ===
 
@@ -471,6 +495,7 @@ a.poem-link:hover,
 .poem_6_blink:hover,
 .poem_7_blink:hover,
 .poem_8_blink:hover,
+.poem_9_blink:hover,
 .multi-blink-7_COLD:hover,
 .poem-title:focus-visible span,
 .poem-title a:focus-visible,
@@ -483,6 +508,7 @@ a.poem-link:focus-visible,
 .poem_6_blink:focus-visible,
 .poem_7_blink:focus-visible,
 .poem_8_blink:focus-visible,
+.poem_9_blink:focus-visible,
 .multi-blink-7_COLD:focus-visible {
   animation-play-state: paused !important; /* freeze animation */
   transition: none !important;

@@ -174,6 +174,50 @@ body > h1:first-of-type {
 }
 @keyframes poem1_cycle {
   0% {
+    color: #e3f3f2;
+  }
+  7.14% {
+    color: #e3f3f2;
+  }
+  14.29% {
+    color: #929BA2;
+  }
+  21.43% {
+    color: #929BA2;
+  }
+  28.57% {
+    color: #929BA2;
+  }
+  35.71% {
+    color: #5C6B73;
+  }
+  42.86% {
+    color: #5C6B73;
+  }
+  50.00% {
+    color: #51504d;
+  }
+  57.14% {
+    color: #51504d;
+  }
+  64.29% {
+    color: #faa672;
+  }
+  71.43% {
+    color: #faa672;
+  }
+  78.57% {
+    color: #faa672;
+  }
+  85.71% {
+    color: #e3f3f2;
+  }
+  100% {
+    color: #e3f3f2;
+  }
+}
+@keyframes unused_poem_cycle {
+  0% {
     color: #22031F;
   }
   7.14% {
@@ -525,8 +569,7 @@ body > h1:first-of-type {
   text-decoration: none;
   font-weight: bold;
   transition: transform 0.7s ease;
-  text-shadow: 0 0 0.7em #e3e3e3, 0 0 1.4em #e3e3e3, 0 0 1.4em #faa672;
-  outline: #6f6d6c;
+  text-shadow: 0 0 0.7em #d77063, 0 0 1.4em #d77063, 0 0 1.4em #d77063;
 }
 
 .poem_2_blink {
@@ -536,7 +579,8 @@ body > h1:first-of-type {
   text-decoration: none;
   font-weight: bold;
   transition: transform 0.7s ease;
-  text-shadow: 0 0 0.7em #fa915b, 0 0 1.4em #faa672, 0 0 2.8em #faa672;
+  text-shadow: 0 0 0.7em #72b4b2, 0 0 1.4em #72b4b2, 0 0 2.8em #72b4b2;
+  outline: #929BA2;
 }
 
 .poem_3_blink {
@@ -573,11 +617,6 @@ body > h1:first-of-type {
   transform: scale(1.4) !important;
 }
 
-.poem_4_blink:hover,
-.poem_4_blink:focus-visible {
-  transform: scale(1.4) !important;
-}
-
 .poem_4_blink {
   animation: blink -1s infinite, poem4_cycle 7s -1s linear infinite;
   animation-delay: 0s;
@@ -585,8 +624,13 @@ body > h1:first-of-type {
   text-decoration: none;
   font-weight: bold;
   transition: transform 0.7s ease;
-  text-shadow: 0 0 0.7em #e0764b, 0 0 1.4em #e0764b, 0 0 2.8em rgba(221, 119, 119, 0);
-  outline: #22031F;
+  text-shadow: 0 0 0.7em #72b4b2, 0 0 1.4em #72b4b2, 0 0 2.8em #72b4b2;
+  outline: #e3e3e3;
+}
+
+.poem_4_blink:hover,
+.poem_4_blink:focus-visible {
+  transform: scale(1) !important;
 }
 
 .poem_5_blink {
@@ -616,7 +660,7 @@ body > h1:first-of-type {
   text-decoration: none;
   font-weight: bold;
   transition: transform 0.7s ease;
-  text-shadow: 0 0 0.1em #e3f3f2, 0 0 0.7em #72b4b2, 0 0 0.1em #929BA2;
+  text-shadow: 0 0 0.1em #d77063, 0 0 0.7em #d77063, 0 0 0.1em #d77063;
 }
 
 .poem_8_blink {
@@ -636,8 +680,13 @@ body > h1:first-of-type {
   text-decoration: none;
   font-weight: bold;
   transition: transform 0.7s ease;
-  text-shadow: 0 0 0.7em #1b3f6d, 0 0 1.4em #929BA2, 0 0 1.4em #1b3f6d;
-  outline: #e3f3f2;
+  text-shadow: 0 0 0.7em #72b4b2, 0 0 1.4em #72b4b2, 0 0 1.4em #72b4b2;
+  outline: #1b3f6d;
+}
+
+.poem_9_blink:hover,
+.poem_9_blink:focus-visible {
+  transform: scale(1) !important;
 }
 
 /* === FREEZE ALL BLINKS & LINKS ON HOVER/FOCUS === */
@@ -652,6 +701,7 @@ a.poem-link:hover,
 .poem_6_blink:hover,
 .poem_7_blink:hover,
 .poem_8_blink:hover,
+.poem_9_blink:hover,
 .multi-blink-7_COLD:hover,
 .poem-title:focus-visible span,
 .poem-title a:focus-visible,
@@ -664,6 +714,7 @@ a.poem-link:focus-visible,
 .poem_6_blink:focus-visible,
 .poem_7_blink:focus-visible,
 .poem_8_blink:focus-visible,
+.poem_9_blink:focus-visible,
 .multi-blink-7_COLD:focus-visible {
   animation-play-state: paused !important; /* freeze animation */
   transition: none !important;

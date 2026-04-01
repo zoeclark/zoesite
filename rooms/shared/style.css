@@ -96,7 +96,7 @@ body.paused #pauseBtnWrapper { display: block !important; }
   --panel-gap: 12px;
   --panel-pad-y: 12px;
   --panel-pad-x: 14px;
-  --hide-pill-space: 36px;   /* reserve for the Hide pill */
+  --hide-pill-space: 5px;   /* reserve for the Hide pill */
 
   --btn-box: 42px;
   --btn-radius: 12px;
@@ -130,14 +130,21 @@ html, body { font-family: var(--app-font, system-ui, -apple-system, Segoe UI, Ro
 #controls {
   position: fixed;
   z-index: 1000;
-  left: auto; right: 0;
-  top: calc(env(safe-area-inset-top) + 12px);
-  bottom: calc(env(safe-area-inset-bottom) + 12px);
 
-  display: flex;                 /* simpler than grid here */
+  /* REMOVE these */
+  /* left: auto; right: 0; */
+  /* top: calc(...); */
+  /* bottom: calc(...); */
+
+  /* new defaults */
+  left: 0;              /* JS will override */
+  top: 50%;
+  transform: translateY(-50%);
+
+  display: flex;
   flex-direction: column;
-  justify-content: center;       /* center the 3 shelves vertically */
-  align-items: center;           /* center shelves horizontally */
+  justify-content: center;
+  align-items: center;
   gap: var(--panel-gap);
 
   padding: calc(var(--panel-pad-y) + var(--hide-pill-space, 0px))
@@ -152,10 +159,19 @@ html, body { font-family: var(--app-font, system-ui, -apple-system, Segoe UI, Ro
   box-shadow: 0 8px 22px rgba(0,0,0,.25);
   color:#000;
 
-  overflow: hidden;   /* prevents stray horizontal scroll */
+  overflow: hidden;
   container-type: inline-size;
 }
-
+@media (max-width: 768px) {
+  #controls {
+    left: 50%;
+    top: auto;
+    bottom: calc(env(safe-area-inset-bottom) + 12px);
+    transform: translateX(-50%);
+    width: min(92vw, 560px);
+    max-width: 92vw;
+  }
+}
 #controls::before{ /* optional shield */
   content:""; position:absolute; inset:0; border-radius:16px;
   background: rgba(255,255,255,.5); pointer-events:none; z-index:0;
@@ -169,17 +185,23 @@ html, body { font-family: var(--app-font, system-ui, -apple-system, Segoe UI, Ro
   justify-content:center;        /* horizontal center */
   gap:10px;
 
-  width: calc(100% - 20px);      /* equal L/R margins; no overflow */
-  background: rgba(255,255,255,var(--shelf-alpha));
-  border: var(--border-w) solid #fff;
-  border-radius: 12px;
-  padding: 10px;
+  width: calc(100% - 30px);      /* equal L/R margins; no overflow */
+
+  gap: 8px;                   /* slightly tighter spacing */
+  padding: 8px 10px;
   min-height: 64px;
 }
 
 .cp-row.cp-row-top{
   flex: 0 0 auto;                /* size to content only */
   flex-wrap: nowrap;             /* keep trio on one line */
+}
+.cp-row.cp-row-top{
+  flex: 0 0 auto;
+  flex-wrap: nowrap;
+  justify-content: center;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 
 .cp-row:not(.cp-row-top){
@@ -197,12 +219,12 @@ html, body { font-family: var(--app-font, system-ui, -apple-system, Segoe UI, Ro
   min-height: var(--btn-box);
   display:inline-flex; align-items:center; justify-content:center;
   background: rgba(255,255,255,var(--btn-alpha));
-  border: var(--border-w) solid #fff; color:#000;
+  border: var(--border-w) solid #ff0000; color:#000;
   font-size: var(--btn-font); padding:0; border-radius: var(--btn-radius);
   cursor:pointer; transition: transform .12s, box-shadow .15s, background .15s;
 }
 #controls button * { pointer-events:none; }   /* child nodes don’t eat clicks */
-#controls button:hover{ transform: translateY(-1px); background:#fff; box-shadow:0 2px 6px rgba(0,0,0,.2); }
+#controls button:hover{ transform: translateY(-1px); background:#ff3232; box-shadow:0 2px 6px rgba(0,0,0,.2); }
 
 /* Big buttons fill their shelf */
 .cp-big{ width:100%; height:100%; font-size:.98rem; font-weight:600; letter-spacing:.01em; }
@@ -216,6 +238,41 @@ html, body { font-family: var(--app-font, system-ui, -apple-system, Segoe UI, Ro
   }
   .cp-big{ font-size: clamp(.9rem, 2.2cqw, 1.05rem); }
 }
+
+/* tighter top row */
+.cp-row.cp-row-top {
+  gap: 6px;
+  padding: 8px;
+}
+
+/* make prev / pause / next smaller */
+#controls .cp-row-top button {
+  width: 34px;
+  height: 34px;
+  min-width: 34px;
+  min-height: 34px;
+  font-size: 1rem;
+}
+#controls .cp-row-top button {
+  width: 36px;
+  height: 36px;
+}
+
+#controlsHide {
+  width: auto !important;
+  min-width: 75px;
+  height: 28px;
+  min-height: 28px;
+  padding: 0 12px;
+  border-radius: 999px !important;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  white-space: nowrap;
+  flex: 0 0 auto;
+}
+
 
 /* --- slider numbers --- */
 #speedVal {
@@ -242,7 +299,7 @@ html, body { font-family: var(--app-font, system-ui, -apple-system, Segoe UI, Ro
   justify-content: center;
   gap: 8px;
   height: 50%;
-  background: #000;                      /* solid black base */
+  background: #000000;                      /* solid black base */
   padding: 10px;
   border-radius: 12px;
   box-shadow:
@@ -256,7 +313,7 @@ html, body { font-family: var(--app-font, system-ui, -apple-system, Segoe UI, Ro
   -webkit-appearance: slider-vertical;
           appearance: slider-vertical;
   width: 24px;
-  height: 170px;
+  height: 100px;
   margin: 0;
   padding: 0;
   background: #111;                        /* dark track */
@@ -296,8 +353,8 @@ html, body { font-family: var(--app-font, system-ui, -apple-system, Segoe UI, Ro
   display: flex;
   gap: var(--gap);
   padding: 10px;
-  margin: 12px auto;
-  max-width: min(90vw, 900px);
+  margin: 0;
+
 
   background: rgba(255,255,255,0.06);
   border: 1px solid rgba(255,255,255,0.1);

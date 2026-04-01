@@ -16,9 +16,10 @@
   let speedBtn;  // ; added
 
   // ---------- FADER CORE ----------
-  function setOpacityWithTransition(element, targetOpacity, durationSeconds) {
-    element.style.transition = `opacity ${durationSeconds}s ease-in-out`;
-  }
+ function setOpacityWithTransition(element, targetOpacity, durationSeconds) {
+  element.style.transition = `opacity ${durationSeconds}s ease-in-out`;
+  element.style.opacity = String(targetOpacity);
+}
 
   function crossfadeTo(index) {
     if (!images.length || isFading || isPaused) return;
@@ -71,6 +72,34 @@
       console.log(`[${new Date().toLocaleTimeString()}] 🔄 Resuming auto-fader`);
     }, 100);
   }
+
+  function restartFaderLoop() {
+  clearInterval(intervalId);
+
+  if (!isPaused) {
+    intervalId = setInterval(nextImage, fadeSeconds * 1000);
+    console.log(`[${new Date().toLocaleTimeString()}] 🔄 Resuming auto-fader`);
+  }
+}
+
+function jumpToImage(index) {
+  if (!images.length) return;
+
+  isFading = false;
+
+  // switch instantly using your existing function
+  showInstantImage(index);
+
+  // restart autoplay from this new position
+  restartFaderLoop();
+
+  console.log(
+    `[${new Date().toLocaleTimeString()}] 🎯 Jumped to image ${current}: ${images[current]}`
+  );
+}
+
+// expose to carousel
+window.jumpToImage = jumpToImage;
 
   function updateCSSFadeTime(seconds) {
     fadeSeconds = seconds;
@@ -171,7 +200,21 @@
     carouselBtn?.setAttribute("aria-expanded", "true");
     scrollerEl?.setAttribute("aria-hidden", "false");
 
+if (scrollerEl) {
+  scrollerEl.classList.remove("is-y");
+  scrollerEl.classList.add("is-x");
 
+  // mouse wheel / trackpad scrolls the thumbnail strip sideways
+  scrollerEl.addEventListener("wheel", (e) => {
+    if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
+      e.preventDefault();
+      scrollerEl.scrollBy({
+        left: e.deltaY,
+        behavior: "auto"
+      });
+    }
+  }, { passive: false });
+}
       // --- Carousel helpers (fixes ReferenceError) ---
   // How far to scroll on prev/next. “Page-ish” width feels good.
   const STEP = () => Math.round((scrollerEl?.clientWidth ?? 600) * 0.85);
@@ -183,19 +226,39 @@
 
   // Replace ANY old calls like: hScrollBy?.(STEP());
   // with theseTO DO DELETET THIS NOTE WHEN SO SURE:
-  prevBtn?.addEventListener("click", () => {
-    console.log("🖱 ←");
+  // prevBtn?.addEventListener("click", () => {
+  //   console.log("🖱 ←");
+  //   manualShift(-1);
+    
+  // });
+
+  // nextBtn?.addEventListener("click", () => {
+  //   console.log("🖱 →");
+  //   manualShift(1);
+  // });
+
+document.addEventListener("keydown", (e) => {
+  if (e.repeat) return;
+
+  const t = e.target;
+  const tag = (t.tagName || "").toLowerCase();
+  if (tag === "input" || tag === "textarea" || t.isContentEditable) return;
+
+  if (e.code === "ArrowLeft") {
+    e.preventDefault();
     manualShift(-1);
-    safeHScrollBy(-STEP());
-  });
+    //thumbCenter = current;
+    //console.log("LEFT");
+    //renderCarousel();
+  }
 
-  nextBtn?.addEventListener("click", () => {
-    console.log("🖱 →");
+  if (e.code === "ArrowRight") {
+    e.preventDefault();
     manualShift(1);
-    safeHScrollBy(STEP());
-  });
-
-
+    // thumbCenter = current;
+    // renderCarousel();
+  }
+});
 // --- Show / Hide carousel toggle (ON / OFF) ---
 if (carouselBtn && scrollerEl) {
   scrollerEl.style.display = '';
@@ -251,10 +314,10 @@ function setCarouselState(hidden) {
 controlsEl?.addEventListener("click", (e) => {
   const btn = e.target.closest("#prevBtn, #nextBtn, #pauseBtn, #speedBtn, #carouselBtn");
   if (!btn) return;
-  if (btn.id === "prevBtn")        { manualShift(-1); safeHScrollBy(-STEP()); }
-  else if (btn.id === "nextBtn")  { manualShift( 1); safeHScrollBy( STEP()); }
+  if (btn.id === "prevBtn")        { manualShift(-1);  }
+  else if (btn.id === "nextBtn")  { manualShift( 1); }
   else if (btn.id === "pauseBtn") { togglePause(); }
-  else if (btn.id === "speedBtn") { /* slider toggled below */ }
+
   // 🚫 remove this line, let the new on/off code handle carousel
   // else if (btn.id === "carouselBtn"){ toggleCarouselVisibility(); }
 });
@@ -331,11 +394,11 @@ controlsEl?.addEventListener("click", (e) => {
     if (!hideBtn) {
       hideBtn = document.createElement("button");
       hideBtn.id = "controlsHide";
-      hideBtn.textContent = "Hide";
+      hideBtn.textContent = "Hide Controls";
       Object.assign(hideBtn.style, {
-        position: "absolute", top: "8px", right: "8px",
-        background: "rgba(255,255,255,0.6)", color: "#000",
-        border: "2px solid #fff", borderRadius: "999px",
+        //position: "absolute", top: "8px", right: "8px",
+        background: "rgba(0, 0, 0, 1)", color: "#ffffffff",
+        border: "0px solid #fff", borderRadius: "999px",
         padding: "4px 10px", cursor: "pointer",
         fontSize: "13px", fontWeight: "600", zIndex: "10"
       });
@@ -370,66 +433,76 @@ controlsEl?.addEventListener("click", (e) => {
   }); // <-- END DOMContentLoaded
 
   // ---------- Arrow keys for main images ----------
-  if (window.__arrowCtl) window.__arrowCtl.abort();
-  window.__arrowCtl = new AbortController();
-  document.addEventListener("keydown", (e) => {
-    if (e.repeat) return;
-    const t = e.target, tag = (t.tagName || "").toLowerCase();
-    if (tag === "input" || tag === "textarea" || t.isContentEditable) return;
+  // if (window.__arrowCtl) window.__arrowCtl.abort();
+  // window.__arrowCtl = new AbortController();
+  // document.addEventListener("keydown", (e) => {
+  //   if (e.repeat) return;
+  //   const t = e.target, tag = (t.tagName || "").toLowerCase();
+  //   if (tag === "input" || tag === "textarea" || t.isContentEditable) return;
 
-    if (e.code === "ArrowLeft")  { e.preventDefault(); window.__carousel?.show?.(); prevImage(); }
-    if (e.code === "ArrowRight") { e.preventDefault(); window.__carousel?.show?.(); nextImage(); }
-  }, { signal: window.__arrowCtl.signal });
+  //   if (e.code === "ArrowLeft")  { e.preventDefault(); window.__carousel?.show?.(); prevImage(); }
+  //   if (e.code === "ArrowRight") { e.preventDefault(); window.__carousel?.show?.(); nextImage(); }
+  // }, { signal: window.__arrowCtl.signal });
 
   // Fit panel to right gutter (your helper IIFE unchanged)
-  (function fitPanelToRightGutter(){
-    const panel = document.getElementById('controls');
-    if (!panel) return;
+ (function fitPanelToRightGutter(){
+  const panel = document.getElementById('controls');
+  if (!panel) return;
 
-    const css = getComputedStyle(document.documentElement);
-    const MIN = parseInt(css.getPropertyValue('--panel-min-w')) || 128;
-    const MAX = parseInt(css.getPropertyValue('--panel-max-w')) || 500;
+  const clamp = (n, lo, hi) => Math.max(lo, Math.min(hi, n));
 
-    const INNER_MARGIN_X = 12;
-    const EDGE_GAP = 0;
-    const clamp = (n, lo, hi) => Math.max(lo, Math.min(hi, n));
+  function activeImageRight(){
+    const els = ['imgA','imgB','pauseImg']
+      .map(id => document.getElementById(id))
+      .filter(Boolean);
 
-    function activeImageRight(){
-      const els = ['imgA','imgB','pauseImg'].map(id => document.getElementById(id)).filter(Boolean);
-      if (!els.length) return 0;
-      let bestRight = 0, bestScore = -1;
-      els.forEach(el => {
-        const r  = el.getBoundingClientRect();
-        const op = parseFloat(getComputedStyle(el).opacity) || 0;
-        const s  = op * 10 + r.width;
-        if (s > bestScore) { bestScore = s; bestRight = r.right; }
-      });
-      const maxRight = Math.max(...els.map(el => el.getBoundingClientRect().right));
-      return Math.max(bestRight, maxRight);
-    }
+    if (!els.length) return window.innerWidth * 0.7;
 
-    function sizeOnce(){
-      const vpW = window.innerWidth;
-      const right = activeImageRight();
-      let gutterW = vpW - right - EDGE_GAP;
-      if (gutterW <= 0) gutterW = MIN + INNER_MARGIN_X * 2;
+    let bestRight = 0;
+    let bestScore = -1;
 
-      const desired = gutterW - INNER_MARGIN_X * 2;
-      const panelW  = clamp(desired, MIN, MAX);
-      const centered = right + (gutterW - panelW) / 2;
-      const left = clamp(centered, 0 + EDGE_GAP, vpW - EDGE_GAP - panelW);
+    els.forEach(el => {
+      const r  = el.getBoundingClientRect();
+      const op = parseFloat(getComputedStyle(el).opacity) || 0;
+      const score = op * 10 + r.width;
 
-      panel.style.width = panelW + 'px';
-      panel.style.left  = Math.round(left) + 'px';
-      panel.style.right = 'auto';
-      panel.style.top   = 'calc(env(safe-area-inset-top) + 12px)';
-      panel.style.bottom= 'calc(env(safe-area-inset-bottom) + 12px)';
-      panel.style.zIndex= '1000';
-    }
+      if (score > bestScore) {
+        bestScore = score;
+        bestRight = r.right;
+      }
+    });
 
-    sizeOnce();
-    window.addEventListener('resize', sizeOnce);
-    window.addEventListener('load',   sizeOnce);
-  })();
+    return bestRight;
+  }
+
+  function layout(){
+    if (window.innerWidth <= 768) return; // mobile handled by CSS
+
+    const vpW = window.innerWidth;
+
+    const MIN = 128;
+    const MAX = 320;
+    const MARGIN = 12;
+    const EDGE_MARGIN = 20; // ← tweak this
+
+    const rightEdge = activeImageRight();
+    const gutterWidth = vpW - rightEdge - EDGE_MARGIN;
+
+    const width = clamp(gutterWidth - MARGIN * 2, MIN, MAX);
+
+    const left = clamp(
+  rightEdge + (gutterWidth - width) / 2,
+  0,
+  vpW - width - EDGE_MARGIN
+);
+
+    panel.style.width = `${width}px`;
+    panel.style.left = `${Math.round(left)}px`;
+  }
+
+  layout();
+  window.addEventListener('resize', layout);
+  window.addEventListener('load', layout);
+})();
 
 })(); // <-- END master IIFE
